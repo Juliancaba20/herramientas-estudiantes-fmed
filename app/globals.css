@@ -45,3 +45,25 @@ th,td{text-align:left;padding:.65rem .8rem;border-bottom:1px solid var(--line);v
 .tools{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));padding:2rem 0}
 .tool{display:block;color:inherit;text-decoration:none;border-top-color:var(--ink)}.tool:hover{border-color:var(--ink)}
 .tool h2{margin:0 0 .4rem;font-size:1.6rem}.page{padding-bottom:3rem}.btn{display:inline-block;margin:.5rem .75rem .5rem 0;padding:.6rem 1.1rem;border:2px solid var(--ink);border-radius:6px;font:600 1rem "Bricolage Grotesque Variable",system-ui,sans-serif;text-decoration:none;color:var(--ink)}
+
+/* ---------- Teclado Científico (/teclado) ---------- */
+.aviso-movil{display:none;margin:1rem 0 0;padding:.8rem 1rem;border:2px solid var(--ink);border-radius:6px;background:var(--sf)}
+@media (hover:none) and (pointer:coarse){.aviso-movil{display:block}}
+.descargas{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));padding:1rem 0 .5rem}
+.descarga{display:flex;flex-direction:column;justify-content:space-between;gap:1.1rem;padding:1.25rem 1.25rem;background:var(--sf);border:1px solid var(--line);border-top:6px solid var(--ink);border-radius:6px;color:inherit;text-decoration:none}
+.descarga:hover{border-color:var(--ink)}
+.descarga b{display:block;font:700 1.35rem "Bricolage Grotesque Variable","Segoe UI",system-ui,sans-serif}
+.descarga small{display:block;color:var(--mut);font-size:.95rem;line-height:1.45;margin-top:.15rem}
+.descarga .boton{align-self:flex-start;padding:.5rem 1rem;border:2px solid var(--ink);border-radius:6px;font:600 1rem "Bricolage Grotesque Variable","Segoe UI",system-ui,sans-serif}
+.descarga:hover .boton{background:var(--ink);color:var(--bg)}
+.descarga.es-su-equipo{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink)}
+.recomendado{display:block;font:700 .8rem "Bricolage Grotesque Variable","Segoe UI",system-ui,sans-serif;text-transform:uppercase;letter-spacing:.05em;font-style:normal;margin-bottom:.25rem}
+.version{margin:.75rem 0 0;font-size:.95rem}
+.vista{margin:2rem auto 2.5rem;max-width:30rem}
+.vista img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px}
+.vista figcaption{margin-top:.6rem;font-size:.92rem;text-align:center}
+.dos-col{display:grid;gap:2rem}
+@media(min-width:60rem){.dos-col{grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}}
+.dos-col>*{min-width:0}
+.dos-col ol{padding-left:1.2rem;margin:0 0 1rem}.dos-col li{margin-bottom:.35rem}
+code{background:var(--sf);border:1px solid var(--line);border-radius:4px;padding:0 .3em;font-size:.9em}

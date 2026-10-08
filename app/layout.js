@@ -4,6 +4,7 @@ import './globals.css';
 import Link from 'next/link';
 
 export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://herramientas-estudiantes-fmed.vercel.app'),
   title: { default: 'Herramientas para estudiantes', template: '%s | Herramientas para estudiantes' },
   description: 'Herramientas gratuitas y sin fines de lucro para estudiantes, en especial de medicina.',
 };
