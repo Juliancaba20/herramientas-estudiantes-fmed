@@ -1,0 +1,18 @@
+{
+  "n": "Método Cornell",
+  "q": "Formato de apuntes con columna de pistas y resumen.",
+  "l": 1,
+  "t": [
+    "poco"
+  ],
+  "e": "Baja",
+  "u": "Tomar notas en clase",
+  "p": [
+    "Dividir la hoja en tres zonas.",
+    "Tomar notas en la zona principal.",
+    "Escribir preguntas clave en la columna lateral.",
+    "Resumir al pie y usar las preguntas para autoevaluarse."
+  ],
+  "f": "Es un formato: el beneficio depende de usar las pistas para recordar.",
+  "r": "Limitado: hay pocos estudios, pequeños y fuera de medicina. En uno aleatorizado con estudiantes de educación, lo que más ayudó fue revisar los apuntes."
+}

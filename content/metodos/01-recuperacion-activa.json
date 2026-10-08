@@ -1,0 +1,19 @@
+{
+  "n": "Recuperación activa",
+  "q": "Intentar recordar sin mirar el material.",
+  "l": 3,
+  "t": [
+    "memorizar",
+    "comprender"
+  ],
+  "e": "Media",
+  "u": "Datos, mecanismos y clasificaciones",
+  "p": [
+    "Leer una sección.",
+    "Cerrar el apunte.",
+    "Escribir o decir todo lo que se recuerde.",
+    "Comparar con el material y marcar lo que faltó."
+  ],
+  "f": "Resulta incómodo al principio. Sin corregir contra el material, se pueden consolidar errores.",
+  "r": "Utilidad alta como práctica con pruebas (Dunlosky et al., 2013). En educación médica, recordar activamente rinde más que reestudiar de forma pasiva (Augustin)."
+}

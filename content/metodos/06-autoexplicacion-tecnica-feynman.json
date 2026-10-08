@@ -1,0 +1,18 @@
+{
+  "n": "Autoexplicación (técnica Feynman)",
+  "q": "Explicar un tema con palabras simples.",
+  "l": 2,
+  "t": [
+    "comprender"
+  ],
+  "e": "Media a alta",
+  "u": "Entender procesos y mecanismos",
+  "p": [
+    "Elegir un tema.",
+    "Explicarlo en voz alta o por escrito, sin apuntes.",
+    "Notar dónde se traba.",
+    "Volver al material y explicarlo de nuevo."
+  ],
+  "f": "Sirve poco para datos sueltos. Es fácil conformarse con explicaciones vagas.",
+  "r": "El respaldo es para la autoexplicación, de utilidad moderada (Dunlosky et al., 2013). La técnica con nombre propio casi no tiene investigación directa."
+}

@@ -1,0 +1,17 @@
+{
+  "n": "Intercalado",
+  "q": "Alternar temas en una misma sesión.",
+  "l": 2,
+  "t": [
+    "comprender"
+  ],
+  "e": "Media",
+  "u": "Distinguir cuadros parecidos, como diagnósticos diferenciales",
+  "p": [
+    "Elegir dos o tres temas relacionados.",
+    "Alternar bloques de 20 a 30 minutos.",
+    "Volver a cada tema más de una vez."
+  ],
+  "f": "Se siente menos productivo. En medicina la evidencia es limitada y mixta: un ensayo con 80 estudiantes de primer año que aprendían electrocardiogramas halló ventaja de la práctica en bloques en la prueba diferida.",
+  "r": "Utilidad moderada (Dunlosky et al., 2013), con resultados mixtos en educación médica."
+}

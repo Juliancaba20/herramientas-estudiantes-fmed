@@ -1,0 +1,17 @@
+{
+  "n": "Pomodoro",
+  "q": "Bloques de estudio con pausas cortas programadas.",
+  "l": 1,
+  "t": [
+    "poco"
+  ],
+  "e": "Baja",
+  "u": "Empezar y sostener la concentración",
+  "p": [
+    "Estudiar 25 minutos.",
+    "Pausar 5 minutos.",
+    "Hacer una pausa larga cada cuatro bloques (los tiempos se ajustan)."
+  ],
+  "f": "Organiza el tiempo, pero no hay evidencia consistente de que mejore el rendimiento.",
+  "r": "Limitado: una revisión de alcance halló menos fatiga y mejor enfoque que con pausas libres, y un estudio en estudiantes de laboratorio médico no halló diferencias de rendimiento."
+}

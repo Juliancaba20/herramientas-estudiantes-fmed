@@ -1,0 +1,18 @@
+{
+  "n": "Práctica con preguntas",
+  "q": "Resolver preguntas o casos y analizar los errores.",
+  "l": 3,
+  "t": [
+    "memorizar",
+    "comprender"
+  ],
+  "e": "Media",
+  "u": "Preparar parciales y finales, integrar temas",
+  "p": [
+    "Elegir preguntas del tema.",
+    "Responder sin ayuda.",
+    "Revisar cada error y anotar por qué falló."
+  ],
+  "f": "Hacer muchas sin analizar los errores rinde poco. La calidad de las preguntas importa.",
+  "r": "Equivale a la práctica con pruebas, de utilidad alta (Dunlosky et al., 2013). Se solapa con la recuperación activa: ambas aprovechan el efecto de la prueba."
+}
