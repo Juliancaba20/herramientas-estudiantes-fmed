@@ -1,5 +1,5 @@
 import Descargas from './Descargas';
-import { urlRepo, urlCodigo } from './config';
+import { urlRepo } from './config';
 
 export const metadata = {
   title: 'Teclado Científico',
@@ -78,7 +78,6 @@ export default function Teclado() {
 
       <section className="src" style={{ paddingTop: '2rem' }}>
         <p>Programa gratuito y sin publicidad. No recopila datos ni usa internet.</p>
-        <a className="btn" href={urlCodigo}>Código en GitHub</a>
         <a className="btn" href={`${urlRepo}/issues`}>Informar un problema</a>
         <a className="btn" href={`${urlRepo}/releases`}>Todas las versiones</a>
       </section>

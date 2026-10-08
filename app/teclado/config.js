@@ -9,5 +9,4 @@ export const PREFIJO_TAG = 'teclado-v';
 export const TAG_INICIAL = 'teclado-v1.3';
 
 export const urlRepo = `https://github.com/${REPO}`;
-export const urlCodigo = `${urlRepo}/tree/main/apps/teclado`;
 export const urlArchivo = (tag, archivo) => `${urlRepo}/releases/download/${tag}/${archivo}`;
