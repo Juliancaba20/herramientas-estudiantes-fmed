@@ -1,0 +1,100 @@
+name: Compilar Teclado Científico
+
+on:
+  push:
+    tags: ["teclado-v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compilar:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            archivo: TecladoGriego-Windows.exe
+          - os: macos-latest
+            archivo: TecladoGriego-Mac.zip
+          - os: ubuntu-latest
+            archivo: TecladoGriego-Linux.tar.gz
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: apps/teclado
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar Tk y pantalla virtual en Linux
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y python3-tk xvfb
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pyinstaller==6.22.3
+          if [ "$RUNNER_OS" != "Windows" ]; then python -m pip install pynput==1.8.2; fi
+
+      - name: Compilar (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          pyinstaller --onefile --noconsole --name TecladoGriego --icon icono.ico --add-data "icono.ico;." --add-data "icono.png;." teclado_griego.py
+          mv dist/TecladoGriego.exe TecladoGriego-Windows.exe
+
+      - name: Compilar (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          pyinstaller --windowed --name TecladoGriego --icon icono.icns --add-data "icono.png:." --collect-submodules pynput --hidden-import pynput.keyboard._darwin --hidden-import pynput.mouse._darwin --hidden-import pynput._util.darwin teclado_griego.py
+          ditto -c -k --keepParent dist/TecladoGriego.app TecladoGriego-Mac.zip
+
+      - name: Compilar (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          # Los módulos de pynput para X11 se cargan dinámicamente y, al compilar sin
+          # pantalla, PyInstaller no los detecta: sin esto el programa no podría escribir.
+          pyinstaller --onefile --noconsole --name TecladoGriego --add-data "icono.png:." --collect-submodules pynput --hidden-import pynput.keyboard._xorg --hidden-import pynput.mouse._xorg --hidden-import pynput._util.xorg --collect-submodules Xlib teclado_griego.py
+
+      - name: Probar arranque (Linux, pantalla virtual)
+        if: runner.os == 'Linux'
+        run: |
+          # Comprueba que el ejecutable incluya el módulo para escribir.
+          xvfb-run -a dist/TecladoGriego --autodiagnostico
+          # El programa no termina solo: si sigue vivo tras 8 s (código 124), arrancó bien.
+          set +e
+          timeout 8 xvfb-run -a dist/TecladoGriego
+          codigo=$?
+          set -e
+          if [ "$codigo" -ne 124 ]; then
+            echo "El programa terminó antes de tiempo (código $codigo): falló el arranque."
+            exit 1
+          fi
+          echo "Arranque correcto."
+
+      - name: Empaquetar (Linux)
+        if: runner.os == 'Linux'
+        run: tar -czf TecladoGriego-Linux.tar.gz -C dist TecladoGriego
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.archivo }}
+          path: apps/teclado/${{ matrix.archivo }}
+
+  publicar:
+    needs: compilar
+    if: ${{ !cancelled() && startsWith(github.ref, 'refs/tags/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: salida
+          merge-multiple: true
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: salida/*

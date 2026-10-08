@@ -4,7 +4,21 @@ Sitio gratuito y sin fines de lucro con herramientas para estudiantes, en especi
 
 - `/` portada con las herramientas
 - `/metodos` catálogo de métodos de estudio con nivel de respaldo
-- `/teclado` página del Teclado Científico, con las descargas para Windows, Mac y Linux (los instaladores se publican como *Releases* del repositorio [Teclado-Griego](https://github.com/Juliancaba20/Teclado-Griego); la página enlaza siempre a la última versión)
+- `/teclado` página del Teclado Científico, con las descargas para Windows, Mac y Linux
+
+## Estructura del repositorio
+
+Todo el proyecto vive en este único repositorio:
+
+| Carpeta | Contenido |
+|---------|-----------|
+| `app/` | El sitio (Next.js, App Router): portada, `metodos/` y `teclado/` |
+| `content/metodos/` | Un archivo JSON por método de estudio |
+| `public/teclado/` | Imágenes de la página del teclado |
+| `apps/teclado/` | Código y íconos del programa de escritorio (Python) |
+| `.github/workflows/compilar-teclado.yml` | Compila el programa para Windows, Mac y Linux al publicar un release `teclado-vX.Y` |
+
+Para sumar otra herramienta: una carpeta nueva en `app/` para su página y, si tiene programa propio, otra en `apps/`.
 
 ## Desarrollo
 
@@ -34,7 +48,7 @@ Para corregir o agregar un método, edite o cree un archivo en esa carpeta y abr
 
 ## Teclado Científico
 
-La página está en `app/teclado/` (`page.js` con el contenido y `Descargas.js` con la detección del sistema y la versión). Las imágenes están en `public/teclado/`. Si cambia el repositorio de los instaladores, edite la constante `REPO` en `app/teclado/Descargas.js` y los enlaces de `page.js`.
+La página está en `app/teclado/`: `page.js` (contenido), `Descargas.js` (detección del sistema y de la última versión) y `config.js` (repositorio y versión de respaldo). El programa está en `apps/teclado/`; allí se explica cómo publicar una versión nueva (`apps/teclado/LEEME.md`).
 
 ## Publicación
 
