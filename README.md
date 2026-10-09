@@ -48,7 +48,7 @@ Para corregir o agregar un método, edite o cree un archivo en esa carpeta y abr
 
 ## Teclado Científico
 
-La página está en `app/teclado/`: `page.js` (contenido), `Descargas.js` (detección del sistema y de la última versión) y `config.js` (repositorio y versión de respaldo). El programa está en `apps/teclado/`; allí se explica cómo publicar una versión nueva (`apps/teclado/LEEME.md`).
+La página está en `app/teclado/`: `page.js` (contenido), `Descargas.js` (enlaces de descarga y número de versión) y `config.js` (repositorio y nombres de los archivos). La página enlaza siempre a la última versión publicada en *Releases*, sea cual sea el nombre de su etiqueta. El programa está en `apps/teclado/`; allí se explica cómo publicar una versión nueva (`apps/teclado/LEEME.md`).
 
 ## Publicación
 

@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { REPO, PREFIJO_TAG, TAG_INICIAL, urlArchivo } from './config';
+import { REPO, ARCHIVOS, urlUltima } from './config';
 
 const SISTEMAS = [
-  { id: 'windows', nombre: 'Windows', detalle: 'Archivo .exe, se abre con doble clic', archivo: 'TecladoGriego-Windows.exe' },
-  { id: 'mac', nombre: 'Mac', detalle: 'Archivo .zip, para Mac con chip M1 o posterior. Versión en prueba', archivo: 'TecladoGriego-Mac.zip' },
-  { id: 'linux', nombre: 'Linux', detalle: 'Archivo .tar.gz, para escritorio con X11. Versión en prueba', archivo: 'TecladoGriego-Linux.tar.gz' },
+  { id: 'windows', nombre: 'Windows', detalle: 'Archivo .exe, se abre con doble clic' },
+  { id: 'mac', nombre: 'Mac', detalle: 'Archivo .zip, para Mac con chip M1 o posterior. Versión en prueba' },
+  { id: 'linux', nombre: 'Linux', detalle: 'Archivo .tar.gz, para escritorio con X11. Versión en prueba' },
 ];
 
 function detectarSistema() {
@@ -19,16 +19,16 @@ function detectarSistema() {
   return null;
 }
 
-// Mejoras opcionales: las descargas funcionan igual sin JavaScript
-// (apuntan a la versión indicada en config.js).
+// Las descargas funcionan sin JavaScript: los enlaces apuntan a "la última versión".
+// Con JavaScript se busca además el número de versión publicado.
 export default function Descargas() {
   const [so, setSo] = useState(null);
-  const [tag, setTag] = useState(TAG_INICIAL);
+  const [version, setVersion] = useState(null);
+  const [enlaces, setEnlaces] = useState({});
 
   useEffect(() => {
     setSo(detectarSistema());
 
-    // Busca la última versión publicada del teclado en este repositorio.
     const control = new AbortController();
     const espera = setTimeout(() => control.abort(), 6000);
     fetch(`https://api.github.com/repos/${REPO}/releases?per_page=30`, {
@@ -37,23 +37,32 @@ export default function Descargas() {
     })
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((lista) => {
-        const ultima = lista.find((r) => !r.draft && !r.prerelease && String(r.tag_name || '').startsWith(PREFIJO_TAG));
-        const etiqueta = ultima && String(ultima.tag_name);
-        if (etiqueta && /^[0-9A-Za-z.\-]{1,40}$/.test(etiqueta)) setTag(etiqueta);
+        // La primera publicación (la más reciente) que tenga archivos del teclado.
+        for (const pub of lista) {
+          if (pub.draft || pub.prerelease) continue;
+          const urls = {};
+          for (const [id, nombre] of Object.entries(ARCHIVOS)) {
+            const a = (pub.assets || []).find((x) => x.name === nombre);
+            if (a && String(a.browser_download_url).startsWith('https://github.com/')) urls[id] = a.browser_download_url;
+          }
+          if (!Object.keys(urls).length) continue;
+          const m = String(pub.tag_name || '').match(/(\d+(?:\.\d+)+)\s*$/);
+          if (m) setVersion(m[1]);
+          setEnlaces(urls);
+          break;
+        }
       })
-      .catch(() => {}) // sin conexión o límite de GitHub: queda la versión fija
+      .catch(() => {}) // sin conexión o límite de GitHub: quedan los enlaces a la última versión
       .finally(() => clearTimeout(espera));
 
     return () => { clearTimeout(espera); control.abort(); };
   }, []);
 
-  const version = tag.replace(PREFIJO_TAG, '');
-
   return (
     <>
       <div className="descargas">
         {SISTEMAS.map((s) => (
-          <a key={s.id} className={`descarga${so === s.id ? ' es-su-equipo' : ''}`} href={urlArchivo(tag, s.archivo)}>
+          <a key={s.id} className={`descarga${so === s.id ? ' es-su-equipo' : ''}`} href={enlaces[s.id] || urlUltima(ARCHIVOS[s.id])}>
             <span>
               {so === s.id && <em className="recomendado">Recomendado para su equipo</em>}
               <b>{s.nombre}</b>
@@ -63,7 +72,7 @@ export default function Descargas() {
           </a>
         ))}
       </div>
-      <p className="mut version">Versión actual: <b>{version}</b></p>
+      {version && <p className="mut version">Versión actual: <b>{version}</b></p>}
     </>
   );
 }

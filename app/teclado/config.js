@@ -1,12 +1,14 @@
 // Repositorio único del proyecto: el sitio y el programa del teclado viven aquí.
 export const REPO = 'Juliancaba20/herramientas-estudiantes-fmed';
 
-// Las versiones del teclado se publican como Releases con etiqueta "teclado-v1.3", "teclado-v1.4", etc.
-export const PREFIJO_TAG = 'teclado-v';
-
-// Versión que se enlaza si GitHub no responde. Actualícela al publicar una versión nueva (opcional:
-// la página busca sola la última publicada).
-export const TAG_INICIAL = 'teclado-v1.3';
+// Nombres de los archivos que genera la compilación (.github/workflows/compilar-teclado.yml).
+export const ARCHIVOS = {
+  windows: 'TecladoCientifico-Windows.exe',
+  mac: 'TecladoCientifico-Mac.zip',
+  linux: 'TecladoCientifico-Linux.tar.gz',
+};
 
 export const urlRepo = `https://github.com/${REPO}`;
-export const urlArchivo = (tag, archivo) => `${urlRepo}/releases/download/${tag}/${archivo}`;
+
+// Enlace que siempre apunta a la última versión publicada, sin importar cómo se llame la etiqueta.
+export const urlUltima = (archivo) => `${urlRepo}/releases/latest/download/${archivo}`;

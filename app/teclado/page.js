@@ -3,13 +3,13 @@ import { urlRepo } from './config';
 
 export const metadata = {
   title: 'Teclado Científico',
-  description: 'Teclado flotante gratuito para escribir letras griegas y símbolos científicos con un clic en sus resúmenes. Windows, Mac y Linux.',
+  description: 'Teclado flotante gratuito para escribir letras griegas y símbolos científicos (subíndices, flechas, química y medicina) con un clic en sus resúmenes. Windows, Mac y Linux.',
   openGraph: {
     title: 'Teclado Científico',
-    description: 'Un teclado flotante para escribir letras griegas en sus resúmenes: clic en el símbolo y se escribe donde esté el cursor. Gratis para Windows, Mac y Linux.',
+    description: 'Un teclado flotante para escribir letras griegas y símbolos en sus resúmenes: clic en el símbolo y se escribe donde esté el cursor. Gratis para Windows, Mac y Linux.',
     locale: 'es_AR',
     type: 'website',
-    images: [{ url: '/teclado/vista-previa.png', width: 1200, height: 630, alt: 'Teclado griego: letras α β γ Δ μ y una vista del teclado flotante' }],
+    images: [{ url: '/teclado/vista-previa.png', width: 1200, height: 630, alt: 'Teclado Científico: letras α β γ Δ μ y una vista del teclado flotante' }],
   },
   twitter: { card: 'summary_large_image' },
 };
@@ -71,7 +71,7 @@ export default function Teclado() {
           </details>
           <details>
             <summary>Linux</summary>
-            <p>Descomprima el archivo con <code>tar -xzf TecladoGriego-Linux.tar.gz</code> y ejecute <code>./TecladoGriego</code>. Funciona en entornos con X11; en Wayland puede no escribir (el programa avisa). Versión en prueba.</p>
+            <p>Descomprima el archivo con <code>tar -xzf TecladoCientifico-Linux.tar.gz</code> y ejecute <code>./TecladoCientifico</code>. Funciona en entornos con X11; en Wayland puede no escribir (el programa avisa). Versión en prueba.</p>
           </details>
         </section>
       </div>

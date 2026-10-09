@@ -10,12 +10,15 @@ Teclado flotante para escribir letras griegas y símbolos con un clic. Funciona 
 
 ## Publicar una versión nueva
 
-1. Modifique `teclado_griego.py` y actualice la constante `VERSION` (por ejemplo `"1.4"`).
-2. En GitHub: *Releases > Draft a new release*. En *Choose a tag* escriba `teclado-v1.4` (la etiqueta debe empezar con `teclado-v`), elija *Create new tag* y luego *Publish release*.
-3. Espere unos 5 minutos y revise la pestaña *Actions*: deben aparecer tres tareas en verde (Windows, macOS, Linux). Al terminar, los tres archivos quedan adjuntos al release.
-4. La página `/teclado` detecta sola la última versión publicada y enlaza a sus archivos. Si GitHub no responde, usa la versión indicada en `app/teclado/config.js` (`TAG_INICIAL`); conviene actualizarla en este paso.
+1. Modifique `teclado_griego.py` y actualice la constante `VERSION` (por ejemplo `"1.5"`). Suba el cambio a GitHub.
+2. En GitHub: *Releases > Draft a new release*. En *Choose a tag* escriba `teclado-v1.5` (la etiqueta debe empezar con `teclado-v` y terminar con el número de versión), elija *Create new tag* y luego *Publish release*.
+3. Espere unos 5 minutos y revise la pestaña *Actions*: deben aparecer tres tareas en verde (Windows, macOS, Linux). Al terminar, los tres archivos quedan adjuntos al release: `TecladoCientifico-Windows.exe`, `TecladoCientifico-Mac.zip` y `TecladoCientifico-Linux.tar.gz`.
+4. La página `/teclado` enlaza siempre a la última versión publicada y toma el número de la etiqueta. No hay que editar nada en el sitio.
 
-También puede ejecutar la compilación a mano desde *Actions > Compilar Teclado Científico > Run workflow* (genera los archivos, pero no los publica).
+Notas:
+- La compilación usa el código que existe **en el momento de crear la etiqueta**. Por eso conviene subir primero el cambio del programa (paso 1) y recién después publicar el release.
+- Si un release quedó mal (archivos con otro nombre o de una versión equivocada), bórrelo junto con su etiqueta (*Releases > Delete*, y luego *Tags* para borrar la etiqueta) y vuelva a crearlo.
+- También puede ejecutar la compilación a mano desde *Actions > Compilar Teclado Científico > Run workflow*, eligiendo una etiqueta existente.
 
 ## Uso del teclado
 
@@ -29,9 +32,9 @@ También puede ejecutar la compilación a mano desde *Actions > Compilar Teclado
 
 El programa guarda su configuración en un archivo `config.json`:
 
-- Windows: `%APPDATA%\TecladoGriego\config.json`
-- Mac: `~/Library/Application Support/TecladoGriego/config.json`
-- Linux: `~/.config/TecladoGriego/config.json`
+- Windows: `%APPDATA%\TecladoCientifico\config.json`
+- Mac: `~/Library/Application Support/TecladoCientifico/config.json`
+- Linux: `~/.config/TecladoCientifico/config.json`
 
 Con el programa cerrado, edite la línea `"atajo"`. Formato: modificadores (`ctrl`, `alt`, `shift`, `win`) más una letra, número o tecla F1 a F12, unidos con `+`; por ejemplo `"ctrl+shift+k"` o `"ctrl+alt+f9"`. Con `""` el atajo queda desactivado.
 
