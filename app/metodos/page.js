@@ -4,7 +4,7 @@ import Catalogo from './Catalogo';
 
 export const metadata = {
   title: 'Métodos de estudio',
-  description: 'Catálogo gratuito de métodos de estudio: cómo se aplica cada uno, dónde falla y qué respaldo tiene en la evidencia.',
+  description: 'Catálogo de métodos de estudio: cómo se aplica cada uno, dónde falla y qué respaldo tiene en la evidencia.',
 };
 
 function cargar() {

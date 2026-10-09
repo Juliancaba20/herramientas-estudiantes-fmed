@@ -3,10 +3,10 @@ import { urlRepo } from './config';
 
 export const metadata = {
   title: 'Teclado Científico',
-  description: 'Teclado flotante gratuito para escribir letras griegas y símbolos científicos (subíndices, flechas, química y medicina) con un clic en sus resúmenes. Windows, Mac y Linux.',
+  description: 'Teclado flotante para escribir letras griegas y símbolos científicos (subíndices, flechas, química y medicina) con un clic en sus resúmenes. Windows, Mac y Linux.',
   openGraph: {
     title: 'Teclado Científico',
-    description: 'Un teclado flotante para escribir letras griegas y símbolos en sus resúmenes: clic en el símbolo y se escribe donde esté el cursor. Gratis para Windows, Mac y Linux.',
+    description: 'Un teclado flotante para escribir letras griegas y símbolos en sus resúmenes: clic en el símbolo y se escribe donde esté el cursor. Disponible para Windows, Mac y Linux.',
     locale: 'es_AR',
     type: 'website',
     images: [{ url: '/teclado/vista-previa.png', width: 1200, height: 630, alt: 'Teclado Científico: letras α β γ Δ μ y una vista del teclado flotante' }],
@@ -19,7 +19,7 @@ export default function Teclado() {
     <main className="page">
       <header className="top t-tec">
         <h1>Teclado Científico</h1>
-        <p className="sub">Un teclado flotante y de tamaño reducido que queda visible sobre otras aplicaciones. Haga clic en una letra o un símbolo y se escribe donde esté el cursor, sin copiar ni pegar. Gratis.</p>
+        <p className="sub">Un teclado flotante y de tamaño reducido que queda visible sobre otras aplicaciones. Haga clic en una letra o un símbolo y se escribe donde esté el cursor, sin copiar ni pegar.</p>
       </header>
 
       <figure className="vista">
@@ -77,7 +77,7 @@ export default function Teclado() {
       </div>
 
       <section className="src" style={{ paddingTop: '2rem' }}>
-        <p>Programa gratuito y sin publicidad. No recopila datos ni usa internet.</p>
+        <p>El teclado funciona sin conexión a internet.</p>
         <a className="btn" href={`${urlRepo}/issues`}>Informar un problema</a>
         <a className="btn" href={`${urlRepo}/releases`}>Todas las versiones</a>
       </section>
