@@ -17,17 +17,10 @@ export const metadata = {
 export default function Teclado() {
   return (
     <main className="page">
-      <header className="top">
+      <header className="top t-tec">
         <h1>Teclado Científico</h1>
         <p className="sub">Un teclado flotante y de tamaño reducido que queda visible sobre otras aplicaciones. Haga clic en una letra o un símbolo y se escribe donde esté el cursor, sin copiar ni pegar. Gratis.</p>
       </header>
-
-      <section className="src" style={{ paddingTop: '2rem' }}>
-        <h2 className="t" style={{ marginTop: 0 }}>Descarga</h2>
-        <p className="aviso-movil" role="note"><b>Este programa es para computadoras</b> (Windows, Mac o Linux). Si está en un celular o una tablet, abra esta página desde su computadora para descargarlo.</p>
-      </section>
-
-      <Descargas />
 
       <figure className="vista">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -36,13 +29,20 @@ export default function Teclado() {
           width="627"
           height="230"
           alt="Vista del teclado: una barra con las pestañas α, Α, ± y H₂, una fila de símbolos usados recientemente y la cuadrícula de letras. Al pasar el mouse sobre un símbolo, la barra muestra su nombre."
-          loading="lazy"
         />
         <figcaption className="mut">Así se ve. Captura en Linux; en Windows y Mac la tipografía cambia levemente.</figcaption>
       </figure>
 
+      <section className="src" style={{ paddingTop: '2rem' }}>
+        <h2 className="t" style={{ marginTop: 0 }}>Descarga</h2>
+        <p className="aviso-movil" role="note"><b>Este programa es para computadoras</b> (Windows, Mac o Linux). Si está en un celular o una tablet, abra esta página desde su computadora para descargarlo.</p>
+      </section>
+
+      <Descargas />
+
+
       <div className="dos-col">
-        <section>
+        <section className="rv">
           <h2 className="t" style={{ marginTop: 0 }}>Cómo se usa</h2>
           <ol>
             <li>Abra el programa: aparece una barra pequeña que queda siempre visible.</li>
@@ -53,7 +53,7 @@ export default function Teclado() {
           <p className="mut">El botón ▴ reduce el teclado a una sola fila. En Windows y en Linux con X11, <code>Ctrl+Alt+G</code> lo oculta y lo vuelve a mostrar.</p>
         </section>
 
-        <section>
+        <section className="rv">
           <h2 className="t" style={{ marginTop: 0 }}>La primera vez</h2>
           <details>
             <summary>Windows</summary>

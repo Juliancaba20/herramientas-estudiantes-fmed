@@ -1,14 +1,14 @@
 import '@fontsource-variable/bricolage-grotesque';
 import '@fontsource-variable/source-serif-4';
 import './globals.css';
-import Link from 'next/link';
+import Nav from './Nav';
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://herramientas-estudiantes-fmed.vercel.app'),
   title: { default: 'Herramientas para estudiantes', template: '%s | Herramientas para estudiantes' },
   description: 'Herramientas gratuitas y sin fines de lucro para estudiantes, en especial de medicina.',
 };
-export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover' };
+export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', colorScheme: 'light', themeColor: '#0f766e' };
 
 export default function RootLayout({ children }) {
   return (
@@ -16,11 +16,7 @@ export default function RootLayout({ children }) {
       <body>
         <a className="skip" href="#contenido">Saltar al contenido</a>
         <div className="wrap">
-          <nav className="nav" aria-label="Principal">
-            <Link className="brand" href="/">Herramientas para estudiantes</Link>
-            <Link href="/metodos">Métodos de estudio</Link>
-            <Link href="/teclado">Teclado Científico</Link>
-          </nav>
+          <Nav />
           <div id="contenido">{children}</div>
           <footer>Proyectos gratuitos, sin fines de lucro y sin recolección de datos personales.</footer>
         </div>

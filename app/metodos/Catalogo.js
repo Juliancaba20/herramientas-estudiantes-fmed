@@ -42,14 +42,14 @@ export default function Catalogo({ metodos }) {
           const items = visibles.filter((m) => g.niv.includes(m.l));
           if (!items.length) return null;
           return (
-            <section className="grp" key={g.t}>
+            <section className="grp" data-l={g.niv[0]} key={g.t}>
               <h2>{g.t}</h2>
               <p>{g.d}</p>
               <div className="cards">
-                {items.map((m) => (
-                  <article className="card" id={m.id} data-l={m.l} key={m.id}>
+                {items.map((m, i) => (
+                  <article className="card" id={m.id} data-l={m.l} key={m.id} style={{ '--i': i }}>
                     <h3><a href={'#' + m.id} style={{ textDecoration: 'none', color: 'inherit' }}>{m.n}</a></h3>
-                    <span className="lv" aria-hidden="true">{marca[m.l]} </span><span className="lv">Respaldo: {niveles[m.l]}</span>
+                    <span className="pill"><span aria-hidden="true">{marca[m.l]}</span> Respaldo: {niveles[m.l]} <span className="bar" aria-hidden="true">{[0, 1, 2, 3].map((n) => <i key={n} className={n <= m.l ? 'on' : ''} />)}</span></span>
                     <p className="q">{m.q}</p>
                     <dl>
                       <div><dt>Esfuerzo</dt><dd>{m.e}</dd></div>
