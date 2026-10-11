@@ -15,5 +15,40 @@
     "Comparar con el material y marcar lo que faltó."
   ],
   "f": "Resulta incómodo al principio. Sin corregir contra el material, se pueden consolidar errores.",
-  "r": "Utilidad alta como práctica con pruebas (Dunlosky et al., 2013). En educación médica, recordar activamente rinde más que reestudiar de forma pasiva (Augustin)."
+  "r": "Utilidad alta como práctica con pruebas (Dunlosky et al., 2013). En educación médica, recordar activamente rinde más que reestudiar de forma pasiva (Augustin).",
+  "x": "Después de leer la circulación coronaria, cierre el apunte y escriba en una hoja el recorrido de cada arteria y su territorio. Luego compare con el atlas y marque lo que olvidó.",
+  "c": [
+    "Intente recordar antes de mirar: aunque no salga completo, el intento ya cuenta.",
+    "Corrija siempre con el material. En los metaanálisis el efecto fue mayor cuando hubo retroalimentación.",
+    "Hágalo después de una primera lectura: sin haber estudiado, no hay nada que recuperar.",
+    "Repita el ejercicio en otro día. Un solo intento rinde menos que varios espaciados."
+  ],
+  "d": [
+    "Rowland (2014): promedio de g = 0,50 a favor de la práctica de recuperación frente a reestudiar. El efecto crecía con el tiempo transcurrido hasta la prueba y con la retroalimentación.",
+    "Adesope et al. (2017): g = 0,61 a favor de los exámenes de práctica frente a otras condiciones de estudio (118 artículos).",
+    "Karpicke y Blunt (2011, Science): la práctica de recuperación superó a elaborar mapas conceptuales en una prueba una semana después.",
+    "Dunlosky et al. (2013) la clasifican como técnica de utilidad alta, por la variedad de materiales, edades y plazos en que funciona."
+  ],
+  "m": [
+    "repeticion-espaciada",
+    "practica-con-preguntas",
+    "tarjetas-y-anki"
+  ],
+  "s": [
+    {
+      "t": "Dunlosky, Rawson, Marsh, Nathan y Willingham (2013). Improving Students' Learning With Effective Learning Techniques. Psychological Science in the Public Interest, 14(1), 4-58.",
+      "u": "https://doi.org/10.1177/1529100612453266"
+    },
+    {
+      "t": "Rowland (2014). The effect of testing versus restudy on retention: A meta-analytic review of the testing effect. Psychological Bulletin."
+    },
+    {
+      "t": "Adesope, Trevisan y Sundararajan (2017). Rethinking the use of tests: A meta-analysis of practice testing. Review of Educational Research.",
+      "u": "https://doi.org/10.3102/0034654316689306"
+    },
+    {
+      "t": "Karpicke y Blunt (2011). Retrieval practice produces more learning than elaborative studying with concept mapping. Science.",
+      "u": "https://pubmed.ncbi.nlm.nih.gov/21252317/"
+    }
+  ]
 }

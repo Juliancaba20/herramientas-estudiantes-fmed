@@ -1,0 +1,43 @@
+{
+  "n": "Casos clínicos y guiones de enfermedad",
+  "q": "Resumir cada enfermedad en un «guion» y aplicarlo a casos.",
+  "l": 1,
+  "t": [
+    "comprender"
+  ],
+  "e": "Alta",
+  "u": "Pasar de datos sueltos a razonamiento clínico y diagnóstico diferencial",
+  "p": [
+    "Arme una ficha por enfermedad con tres partes: factores predisponentes, fisiopatología y consecuencias clínicas (síntomas, signos, estudios).",
+    "Lea o resuelva un caso breve e intente decidir qué enfermedades encajan.",
+    "Compare el caso con su ficha y con las de enfermedades parecidas.",
+    "Corrija la ficha con lo que aprendió del caso."
+  ],
+  "f": "La base experimental es limitada: la teoría tiene respaldo en estudios sobre cómo representan los casos estudiantes y médicos, pero hay pocos ensayos que midan si estudiar con guiones mejora el rendimiento. Requiere conocimientos previos de las enfermedades.",
+  "r": "Limitado. Schmidt y Rikers (2007) revisan evidencia de que el conocimiento biomédico se organiza en guiones con la experiencia clínica, y recomiendan enseñar ciencias básicas en contexto clínico y presentar pacientes tempranamente. Un ensayo aleatorizado con 53 estudiantes no halló diferencias en un inventario general de pensamiento diagnóstico tras un taller con guiones, aunque sugirió posible beneficio en problemas diagnósticos.",
+  "x": "Neumonía adquirida en la comunidad. Predisponentes: edad y tabaquismo. Fisiopatología: infección alveolar con consolidación. Consecuencias: fiebre, tos, crepitantes e infiltrado en la radiografía. Luego compárela con el tromboembolismo pulmonar.",
+  "c": [
+    "Empiece con pocas enfermedades y compárelas de a pares.",
+    "Sume a la ficha lo que aprenda de cada caso clínico.",
+    "Use casos de la cátedra o libros de casos."
+  ],
+  "d": [
+    "Schmidt y Rikers (2007): la mayoría de los estudios sobre cómo médicos y estudiantes representan los casos es coherente con la formación de guiones; persiste el debate sobre el rol del conocimiento biomédico.",
+    "Ensayo aleatorizado en 53 estudiantes de cuarto año: un taller de 3 horas con guiones, con retroalimentación individual, no cambió el puntaje general del inventario de pensamiento diagnóstico entre grupos."
+  ],
+  "m": [
+    "intercalado",
+    "preguntas-elaborativas",
+    "practica-con-preguntas"
+  ],
+  "s": [
+    {
+      "t": "Schmidt y Rikers (2007). How expertise develops in medicine: Knowledge encapsulation and illness script formation. Medical Education, 41(12), 1133-1139.",
+      "u": "https://doi.org/10.1111/j.1365-2923.2007.02915.x"
+    },
+    {
+      "t": "Using illness scripts to teach clinical reasoning skills to medical students. Family Medicine (2010).",
+      "u": "https://pubmed.ncbi.nlm.nih.gov/20373168/"
+    }
+  ]
+}

@@ -13,5 +13,35 @@
     "Volver a cada tema más de una vez."
   ],
   "f": "Se siente menos productivo. En medicina la evidencia es limitada y mixta: un ensayo con 80 estudiantes de primer año que aprendían electrocardiogramas halló ventaja de la práctica en bloques en la prueba diferida.",
-  "r": "Utilidad moderada (Dunlosky et al., 2013), con resultados mixtos en educación médica."
+  "r": "Utilidad moderada (Dunlosky et al., 2013), con resultados mixtos en educación médica.",
+  "x": "En lugar de estudiar tres tardes seguidas solo hipertensión, solo diabetes y solo dislipemias, alterne preguntas de cada una en la misma sesión para practicar cómo distinguir un cuadro de otro.",
+  "c": [
+    "Funciona mejor con contenidos parecidos que se confunden: diagnósticos diferenciales, fármacos de una misma familia.",
+    "Aprenda primero cada tema por separado e intercale en el repaso y en la práctica con preguntas.",
+    "No lo use para leer textos expositivos largos: en el metaanálisis el beneficio fue menor o dudoso con textos y palabras.",
+    "Espere que se sienta más difícil. Esa sensación no indica que rinda menos."
+  ],
+  "d": [
+    "Brunmair y Richter (2019): 59 estudios, efecto moderado (g = 0,42). Fue mayor cuando las categorías se parecían entre sí y los ejemplos de una misma categoría se parecían poco, y con material más complejo.",
+    "Kornell y Bjork (2008): al aprender estilos de pintores, los participantes aprendieron mejor con las obras intercaladas, aunque creían haber aprendido mejor con ellas agrupadas.",
+    "Dunlosky et al. (2013) la clasifican como práctica intercalada de utilidad moderada."
+  ],
+  "m": [
+    "practica-con-preguntas",
+    "repeticion-espaciada",
+    "casos-clinicos-y-guiones-de-enfermedad"
+  ],
+  "s": [
+    {
+      "t": "Dunlosky, Rawson, Marsh, Nathan y Willingham (2013). Improving Students' Learning With Effective Learning Techniques. Psychological Science in the Public Interest, 14(1), 4-58.",
+      "u": "https://doi.org/10.1177/1529100612453266"
+    },
+    {
+      "t": "Brunmair y Richter (2019). Similarity matters: A meta-analysis of interleaved learning and its moderators. Psychological Bulletin, 145, 1029-1052.",
+      "u": "https://doi.org/10.1037/bul0000209"
+    },
+    {
+      "t": "Kornell y Bjork (2008). Learning concepts and categories: Is spacing the 'enemy of induction'? Psychological Science, 19, 585-592."
+    }
+  ]
 }

@@ -1,0 +1,42 @@
+{
+  "n": "Autoevaluación y calibración",
+  "q": "Comparar lo que cree saber con lo que realmente responde.",
+  "l": 0,
+  "t": [
+    "comprender"
+  ],
+  "e": "Baja a media",
+  "u": "Decidir qué repasar y detectar la ilusión de saber",
+  "p": [
+    "Antes de probarse, anote cuánto cree saber de cada tema (por ejemplo, del 1 al 5).",
+    "Resuelva preguntas o recuerde el tema sin material.",
+    "Compare su estimación con el resultado real.",
+    "Dedique el repaso a los temas con mayor brecha, sobre todo donde se sobreestimó."
+  ],
+  "f": "Estimarse solo por la sensación de familiaridad engaña. Hace falta una prueba objetiva, como preguntas o tarjetas, para contrastar.",
+  "r": "Variable. La revisión de Bjork, Dunlosky y Kornell (2013) trata las creencias e ilusiones de los estudiantes sobre su propio aprendizaje. En médicos (no en estudiantes), una revisión sistemática halló que la autoevaluación coincidía poco con medidas externas de competencia, con peor precisión entre los menos hábiles y los más confiados (Davis et al., 2006). No hay aquí evidencia directa de que entrenar la calibración mejore las notas.",
+  "x": "Antes de un práctico de histología, califique de 1 a 5 su dominio de cada tejido y resuelva cinco preguntas de cada uno. Si se puso 4 y acertó 1 de 5, ese tejido pasa al principio de la lista de repaso.",
+  "c": [
+    "Haga la estimación antes de la prueba, no después.",
+    "Registre las brechas por tema en una planilla simple.",
+    "Pida a un compañero que le pregunte: una prueba externa suele ser más objetiva que la propia impresión."
+  ],
+  "d": [
+    "Davis et al. (2006, JAMA): revisión sistemática sobre la exactitud de la autoevaluación de médicos frente a medidas observadas; concluye que los procesos de desarrollo profesional pueden necesitar más evaluación externa. Excluyó estudios de estudiantes de medicina."
+  ],
+  "m": [
+    "practica-con-preguntas",
+    "recuperacion-activa",
+    "intercalado"
+  ],
+  "s": [
+    {
+      "t": "Bjork, Dunlosky y Kornell (2013). Self-regulated learning: Beliefs, techniques, and illusions. Annual Review of Psychology, 64, 417-444.",
+      "u": "https://doi.org/10.1146/annurev-psych-113011-143823"
+    },
+    {
+      "t": "Davis et al. (2006). Accuracy of physician self-assessment compared with observed measures of competence: a systematic review. JAMA, 296(9), 1094-1102.",
+      "u": "https://pubmed.ncbi.nlm.nih.gov/16954489/"
+    }
+  ]
+}

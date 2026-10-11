@@ -1,0 +1,43 @@
+{
+  "n": "Estudio de último momento",
+  "q": "Concentrar el estudio en las horas o días previos al examen.",
+  "l": 0,
+  "t": [
+    "poco"
+  ],
+  "e": "Alta en poco tiempo",
+  "u": "Prepararse para un examen cercano cuando ya no queda margen",
+  "p": [
+    "Elija los temas que más pesan o que más se preguntan.",
+    "Alterne lectura breve con preguntas o recitado de memoria, en lugar de releer.",
+    "Resuelva preguntas de exámenes anteriores y corrija.",
+    "Si hay más de un día, separe las sesiones todo lo que el plazo permita."
+  ],
+  "f": "Lo estudiado se olvida más rápido que si se hubiera repartido en el tiempo. Con plazos largos, el estudio repartido supera al concentrado.",
+  "r": "Variable. Concentrar el estudio puede alcanzar para una prueba inmediata, pero la investigación sobre práctica distribuida indica que, si el examen está lejano o hay que conservar lo aprendido, repartir las sesiones rinde más (Cepeda et al., 2008; Dunlosky et al., 2013). Si no queda otra opción, conviene dedicar ese tiempo a recuperación activa y práctica con preguntas, no a releer.",
+  "x": "A tres días del examen de farmacología, en lugar de releer el libro, resuelva preguntas de años anteriores por bloques, corrija y vuelva a las falladas al día siguiente.",
+  "c": [
+    "Priorice y acepte que no verá todo.",
+    "Haga pruebas de práctica en lugar de releer.",
+    "Separe las sesiones: la misma cantidad de horas repartida en dos días rinde más que seguida."
+  ],
+  "d": [
+    "Cepeda et al. (2008): la separación óptima entre sesiones aumenta con el plazo hasta la prueba; muchas prácticas educativas son poco eficientes porque ignoran esa relación.",
+    "Dunlosky et al. (2013): la práctica distribuida es una técnica de utilidad alta."
+  ],
+  "m": [
+    "practica-con-preguntas",
+    "recuperacion-activa",
+    "repeticion-espaciada"
+  ],
+  "s": [
+    {
+      "t": "Cepeda, Vul, Rohrer, Wixted y Pashler (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095-1102.",
+      "u": "https://pubmed.ncbi.nlm.nih.gov/19076480/"
+    },
+    {
+      "t": "Dunlosky, Rawson, Marsh, Nathan y Willingham (2013). Improving Students' Learning With Effective Learning Techniques. Psychological Science in the Public Interest, 14(1), 4-58.",
+      "u": "https://doi.org/10.1177/1529100612453266"
+    }
+  ]
+}

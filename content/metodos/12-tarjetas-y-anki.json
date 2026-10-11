@@ -1,0 +1,57 @@
+{
+  "n": "Tarjetas de estudio y Anki",
+  "q": "Tarjetas con una pregunta por cara y repaso programado por software.",
+  "l": 2,
+  "t": [
+    "memorizar"
+  ],
+  "e": "Media; crear tarjetas lleva tiempo",
+  "u": "Datos que deben recordarse mucho tiempo: fármacos, estructuras, valores",
+  "p": [
+    "Convierta cada dato en una pregunta con una respuesta breve, no en un párrafo.",
+    "Responda de memoria antes de dar vuelta la tarjeta.",
+    "Califique qué tan fácil le resultó: el programa decide cuándo mostrársela de nuevo.",
+    "Repase las pendientes todos los días y agregue una cantidad de tarjetas nuevas que pueda sostener."
+  ],
+  "f": "Es un hábito diario: acumular tarjetas atrasadas lo vuelve inmanejable. Las tarjetas hechas por otros pueden no coincidir con lo que evalúa su cátedra. Las pruebas de que mejora las notas son sobre todo observacionales.",
+  "r": "Combina práctica de recuperación y repetición espaciada, de utilidad alta (Dunlosky et al., 2013). Un metaanálisis en educación médica favoreció la repetición espaciada (Maye y Hurley, 2026). Los estudios sobre Anki y exámenes de licencia son mayormente observacionales: asocian más uso con mejores puntajes, pero no prueban que lo cause.",
+  "x": "Microbiología. Anverso: «¿Qué agente causa la escarlatina?». Reverso: «Streptococcus pyogenes (exotoxina pirogénica)».",
+  "c": [
+    "Una idea por tarjeta, formulada como pregunta.",
+    "Mantenga una cantidad diaria de tarjetas nuevas que pueda sostener durante semanas: entre quienes usaron Anki, el uso más constante se asoció con mejores puntajes.",
+    "Prefiera tarjetas propias o revisadas, alineadas con lo que evalúa su cátedra.",
+    "Use imágenes cuando el dato es visual, como en histología o anatomía."
+  ],
+  "d": [
+    "Deng et al. (2015): en 72 estudiantes, más tarjetas con repetición espaciada y más preguntas de práctica se asociaron con mejor puntaje en el USMLE Step 1; cerca de un punto más por cada 1.700 tarjetas completadas, una diferencia pequeña. Estudio observacional.",
+    "Un estudio transversal con 165 estudiantes halló que el uso diario de Anki se asoció con puntajes más altos en el Step 1, pero no en el Step 2.",
+    "Un cohorte retrospectivo (35 usuarios de Anki frente a 268 no usuarios) no halló diferencia significativa en el puntaje del USMLE Step 1 (223,71 frente a 222,58).",
+    "Maye y Hurley (2026): 13 estudios y 21.415 estudiantes; diferencia media estandarizada de 0,78 a favor de la repetición espaciada, con tarjetas, preguntas por correo y cuestionarios espaciados."
+  ],
+  "m": [
+    "repeticion-espaciada",
+    "recuperacion-activa",
+    "mnemotecnias"
+  ],
+  "s": [
+    {
+      "t": "Dunlosky, Rawson, Marsh, Nathan y Willingham (2013). Improving Students' Learning With Effective Learning Techniques. Psychological Science in the Public Interest, 14(1), 4-58.",
+      "u": "https://doi.org/10.1177/1529100612453266"
+    },
+    {
+      "t": "Deng, Gluckstein y Larsen (2015). Student-directed retrieval practice is a predictor of medical licensing examination performance. Perspectives on Medical Education, 4(6), 308-313.",
+      "u": "https://doi.org/10.1007/s40037-015-0220-x"
+    },
+    {
+      "t": "Maye y Hurley (2026). Revisión sistemática y metaanálisis sobre repetición espaciada en educación médica. The Clinical Teacher, 23(2)."
+    },
+    {
+      "t": "Uso de Anki y puntaje del USMLE Step 1: estudio transversal con estudiantes de medicina de 2.º a 4.º año.",
+      "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8651966"
+    },
+    {
+      "t": "The effect of spaced repetition learning through Anki on medical board exam performance. International Journal of Medical Students (2023).",
+      "u": "https://ijms.pitt.edu/IJMS/article/view/1549"
+    }
+  ]
+}

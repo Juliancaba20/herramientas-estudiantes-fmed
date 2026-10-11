@@ -13,5 +13,29 @@
     "Rehacer o completar el mapa de memoria."
   ],
   "f": "Copiar un mapa ya hecho aporta poco. Consume tiempo.",
-  "r": "Un metaanálisis halló más efecto al construir mapas que al estudiar mapas ya hechos. Aun así, practicar la recuperación rindió más que estudiar elaborando mapas (Karpicke y Blunt, 2011). Funcionan mejor si se usan para recordar, rehaciéndolos de memoria."
+  "r": "Un metaanálisis halló más efecto al construir mapas que al estudiar mapas ya hechos. Aun así, practicar la recuperación rindió más que estudiar elaborando mapas (Karpicke y Blunt, 2011). Funcionan mejor si se usan para recordar, rehaciéndolos de memoria.",
+  "x": "Para insuficiencia renal aguda, ponga el concepto en el centro y conéctelo con flechas rotuladas (por ejemplo, «causa prerrenal → hipoperfusión renal»). Al día siguiente rehaga el mapa de memoria.",
+  "c": [
+    "Rotule las flechas con verbos («provoca», «inhibe»). Sin rótulos es un dibujo de palabras sueltas.",
+    "Rehaga el mapa sin mirar: así se combina con la recuperación activa.",
+    "Limite cada mapa a un tema para que sea legible."
+  ],
+  "d": [
+    "Nesbit y Adesope (2006): metaanálisis sobre mapas conceptuales. El beneficio fue mayor al construirlos que al estudiar mapas ya hechos.",
+    "Karpicke y Blunt (2011, Science): practicar la recuperación rindió más que estudiar elaborando mapas conceptuales en una prueba una semana después."
+  ],
+  "m": [
+    "recuperacion-activa",
+    "mapas-mentales",
+    "casos-clinicos-y-guiones-de-enfermedad"
+  ],
+  "s": [
+    {
+      "t": "Nesbit y Adesope (2006). Learning with concept and knowledge maps: A meta-analysis. Review of Educational Research."
+    },
+    {
+      "t": "Karpicke y Blunt (2011). Retrieval practice produces more learning than elaborative studying with concept mapping. Science.",
+      "u": "https://pubmed.ncbi.nlm.nih.gov/21252317/"
+    }
+  ]
 }

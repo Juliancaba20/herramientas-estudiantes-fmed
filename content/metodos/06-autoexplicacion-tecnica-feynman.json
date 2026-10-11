@@ -14,5 +14,27 @@
     "Volver al material y explicarlo de nuevo."
   ],
   "f": "Sirve poco para datos sueltos. Es fácil conformarse con explicaciones vagas.",
-  "r": "El respaldo es para la autoexplicación, de utilidad moderada (Dunlosky et al., 2013). La técnica con nombre propio casi no tiene investigación directa."
+  "r": "El respaldo es para la autoexplicación, de utilidad moderada (Dunlosky et al., 2013). La técnica con nombre propio casi no tiene investigación directa.",
+  "x": "Explique en voz alta, como a un compañero que no sabe del tema, cómo la hipoventilación produce acidosis respiratoria. Donde se trabe (¿por qué sube el CO₂?, ¿qué hace el bicarbonato?), anote la laguna y vuelva al texto.",
+  "c": [
+    "Pregúntese «¿por qué?» y «¿cómo lo sé?» en cada paso.",
+    "Use sus palabras. Si repite el texto de memoria, todavía no lo comprendió.",
+    "Guarde las lagunas como lista de repaso.",
+    "Termine con una versión sin apuntes del tema completo."
+  ],
+  "d": [
+    "Dunlosky et al. (2013) la clasifican como autoexplicación de utilidad moderada, junto con las preguntas elaborativas y la práctica intercalada.",
+    "La técnica con el nombre de Feynman, como tal, no fue evaluada en esa revisión."
+  ],
+  "m": [
+    "preguntas-elaborativas",
+    "ensenar-a-otros",
+    "recuperacion-activa"
+  ],
+  "s": [
+    {
+      "t": "Dunlosky, Rawson, Marsh, Nathan y Willingham (2013). Improving Students' Learning With Effective Learning Techniques. Psychological Science in the Public Interest, 14(1), 4-58.",
+      "u": "https://doi.org/10.1177/1529100612453266"
+    }
+  ]
 }

@@ -1,0 +1,42 @@
+{
+  "n": "Preguntas previas (pretest)",
+  "q": "Intentar responder preguntas del tema antes de estudiarlo.",
+  "l": 2,
+  "t": [
+    "comprender"
+  ],
+  "e": "Baja",
+  "u": "Orientar la atención antes de una clase o una lectura",
+  "p": [
+    "Antes de la clase o la lectura, escriba cinco preguntas o tome las de la guía de la cátedra.",
+    "Intente responder cada una, aunque suponga que no la sabe.",
+    "Estudie el material y busque las respuestas.",
+    "Revise cuáles acertó y cuáles no."
+  ],
+  "f": "El beneficio se concentra en los datos preguntados y casi no alcanza a lo que no se preguntó. Sin un momento posterior para ver las respuestas correctas, no sirve.",
+  "r": "Un metaanálisis preinscripto halló un efecto moderado sobre lo preguntado (g = 0,54) y prácticamente nulo sobre lo no preguntado (g = 0,04) (St. Hilaire, Chan y Ahn, 2024). Los autores señalan que faltan estudios en aulas reales; esta página no incluye estudios específicos en estudiantes de medicina.",
+  "x": "Antes de la clase de endocrinología, intente responder «¿qué hormonas regulan la calcemia y dónde actúa cada una?». Durante la clase, preste atención a esos puntos.",
+  "c": [
+    "Intente responder: el efecto fue mayor cuando se pidió una respuesta (g = 0,65) que cuando solo se leyeron las preguntas (g = 0,22).",
+    "Pocas preguntas, sobre lo que realmente debe saber.",
+    "Después haga recuperación activa: las preguntas previas orientan la atención, no consolidan por sí solas."
+  ],
+  "d": [
+    "St. Hilaire et al. (2024): 97 comparaciones para el efecto sobre lo preguntado y 91 para lo no preguntado; datos de más de 7.700 participantes.",
+    "Pan y Sana (2021): tanto las preguntas previas como las posteriores mejoraron la memoria frente a no hacer pruebas, y las previas dieron puntajes iguales o más altos en pruebas a los 5 minutos y a las 48 horas (estudio de laboratorio)."
+  ],
+  "m": [
+    "recuperacion-activa",
+    "practica-con-preguntas",
+    "preguntas-elaborativas"
+  ],
+  "s": [
+    {
+      "t": "St. Hilaire, Chan y Ahn (2024). Guessing as a learning intervention: A meta-analytic review of the prequestion effect. Psychonomic Bulletin & Review, 31, 411-441.",
+      "u": "https://doi.org/10.3758/s13423-023-02353-8"
+    },
+    {
+      "t": "Pan y Sana (2021). Pretesting versus posttesting: Comparing the pedagogical benefits of errorful generation and retrieval practice. American Psychological Association."
+    }
+  ]
+}

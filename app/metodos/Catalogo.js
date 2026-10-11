@@ -15,6 +15,18 @@ export default function Catalogo({ metodos, children }) {
   const [k, setK] = useState('todos');
   const [q, setQ] = useState('');
   const [abiertos, setAbiertos] = useState(false);
+  const nombres = Object.fromEntries(metodos.map((x) => [x.id, x.n]));
+  const ir = (id) => (e) => {
+    e.preventDefault();
+    setK('todos'); setQ('');
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      el.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' });
+      history.replaceState(null, '', '#' + id);
+    }, 0);
+  };
   const visibles = metodos.filter((m) => (k === 'todos' || m.t.includes(k)) && m.n.toLowerCase().includes(q.trim().toLowerCase()));
 
   return (
@@ -65,7 +77,13 @@ export default function Catalogo({ metodos, children }) {
                     <details key={String(abiertos)} open={abiertos}>
                       <summary>Cómo se aplica y qué dice la evidencia</summary>
                       <ol>{m.p.map((x) => <li key={x}>{x}</li>)}</ol>
+                      {m.x && <p className="ej"><b>Ejemplo en medicina.</b> {m.x}</p>}
+                      {m.c && <><h4>Consejos para aplicarlo mejor</h4><ul>{m.c.map((x) => <li key={x}>{x}</li>)}</ul></>}
+                      <h4>Qué dice la evidencia</h4>
                       <p>{m.r}</p>
+                      {m.d && <ul>{m.d.map((x) => <li key={x}>{x}</li>)}</ul>}
+                      {m.m && <p className="comb"><b>Combina bien con:</b> {m.m.filter((id) => nombres[id]).map((id, j) => <span key={id}>{j > 0 && ', '}<a href={'#' + id} onClick={ir(id)}>{nombres[id]}</a></span>)}</p>}
+                      {m.s && <><h4>Fuentes</h4><ul className="fuentes">{m.s.map((x) => <li key={x.t}>{x.u ? <a href={x.u} target="_blank" rel="noopener noreferrer">{x.t}</a> : x.t}</li>)}</ul></>}
                     </details>
                   </article>
                 ))}

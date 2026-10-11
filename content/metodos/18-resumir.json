@@ -1,0 +1,39 @@
+{
+  "n": "Resumir",
+  "q": "Escribir una versión corta del texto con palabras propias.",
+  "l": 1,
+  "t": [
+    "poco",
+    "comprender"
+  ],
+  "e": "Media",
+  "u": "Organizar un tema después de leerlo",
+  "p": [
+    "Lea una sección.",
+    "Sin mirar el texto, escriba los puntos centrales con sus palabras.",
+    "Compare con el original y complete lo que omitió.",
+    "Reduzca el resumen hasta que entre en una página."
+  ],
+  "f": "Resumir con el texto a la vista suele terminar en copiado. Consume mucho tiempo y sus beneficios dependen de las condiciones en que se use.",
+  "r": "Limitado. Dunlosky et al. (2013) la calificaron como de utilidad baja: ayudó a algunos estudiantes en algunas tareas, pero las condiciones en que funciona son limitadas y hace falta más investigación.",
+  "x": "Tras leer el capítulo de hepatitis virales, escriba de memoria, en media página, los virus, la vía de transmisión y la evolución de cada uno. Luego corrija con el capítulo.",
+  "c": [
+    "Resuma de memoria, no mirando el texto.",
+    "Use el resumen para autoevaluarse, no como producto final.",
+    "Límite de una página por tema."
+  ],
+  "d": [
+    "Dunlosky et al. (2013): resumir y la imagen mental para textos ayudaron a algunos estudiantes en algunas tareas, con condiciones limitadas de uso."
+  ],
+  "m": [
+    "recuperacion-activa",
+    "metodo-cornell",
+    "mapas-mentales"
+  ],
+  "s": [
+    {
+      "t": "Dunlosky, Rawson, Marsh, Nathan y Willingham (2013). Improving Students' Learning With Effective Learning Techniques. Psychological Science in the Public Interest, 14(1), 4-58.",
+      "u": "https://doi.org/10.1177/1529100612453266"
+    }
+  ]
+}

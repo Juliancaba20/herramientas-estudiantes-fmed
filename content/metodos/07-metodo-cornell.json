@@ -14,5 +14,25 @@
     "Resumir al pie y usar las preguntas para autoevaluarse."
   ],
   "f": "Es un formato: el beneficio depende de usar las pistas para recordar.",
-  "r": "Limitado: hay pocos estudios, pequeños y fuera de medicina. En uno aleatorizado con estudiantes de educación, lo que más ayudó fue revisar los apuntes."
+  "r": "Limitado: hay pocos estudios, pequeños y fuera de medicina. En uno aleatorizado con estudiantes de educación, lo que más ayudó fue revisar los apuntes.",
+  "x": "En una clase de fisiología tome notas a la derecha. Escriba en la columna izquierda preguntas como «¿qué determina el gasto cardíaco?». En casa tape la derecha y conteste esas preguntas.",
+  "c": [
+    "Complete la columna de pistas lo antes posible, mientras la clase está fresca.",
+    "Redacte las pistas como preguntas, no como títulos.",
+    "El valor está en usar la columna para autoevaluarse; si solo se lee, rinde poco."
+  ],
+  "d": [
+    "Un ensayo aleatorizado de 2025 en futuros docentes comparó cuatro formatos de apuntes (Cornell, paralelo, digital y de oraciones) y señala que los resultados de la literatura sobre formatos de apuntes son mixtos.",
+    "El método no fue evaluado por Dunlosky et al. (2013). Su beneficio depende de la recuperación activa que se haga con la columna de pistas."
+  ],
+  "m": [
+    "recuperacion-activa",
+    "resumir"
+  ],
+  "s": [
+    {
+      "t": "The effects of note-taking methods on lasting learning: the role of motivation and cognitive load. Frontiers in Psychology (2025).",
+      "u": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1697151/full"
+    }
+  ]
 }

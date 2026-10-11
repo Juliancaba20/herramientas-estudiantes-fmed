@@ -14,5 +14,30 @@
     "Se explican y se hacen preguntas entre sí."
   ],
   "f": "Puede derivar en charla. Depende de la preparación individual.",
-  "r": "Un metaanálisis de ensayos aleatorizados halló mejor rendimiento con programas estructurados de enseñanza entre pares, más marcado en etapa clínica y en habilidades prácticas que en teoría. No evalúa grupos de estudio informales, donde los resultados dependen de cómo se organicen."
+  "r": "Un metaanálisis de ensayos aleatorizados halló mejor rendimiento con programas estructurados de enseñanza entre pares, más marcado en etapa clínica y en habilidades prácticas que en teoría. No evalúa grupos de estudio informales, donde los resultados dependen de cómo se organicen.",
+  "x": "Dos veces por semana, tres compañeros se reúnen una hora. Cada uno trae preguntas del tema que preparó, las plantea al resto y corrigen juntos.",
+  "c": [
+    "Cada persona prepara su tema antes: sin estudio individual previo, el grupo rinde poco.",
+    "Fije agenda y tiempo, y deje la charla libre para el final.",
+    "Prefieran explicar y preguntar por turnos a leer en voz alta.",
+    "Cierren anotando las dudas que quedaron y quién las resuelve."
+  ],
+  "d": [
+    "Brierley et al. (2022): metaanálisis de ensayos aleatorizados con mejor rendimiento en programas estructurados de enseñanza entre pares, más marcado en etapa clínica y en habilidades prácticas que en teoría. No evalúa grupos de estudio informales.",
+    "Los metaanálisis sobre aprender enseñando muestran mayor beneficio cuando la explicación es interactiva (Kobayashi)."
+  ],
+  "m": [
+    "ensenar-a-otros",
+    "practica-con-preguntas",
+    "autoexplicacion-tecnica-feynman"
+  ],
+  "s": [
+    {
+      "t": "Brierley et al. (2022). Metaanálisis sobre aprendizaje entre pares en educación médica. Medical Education.",
+      "u": "https://doi.org/10.1111/medu.14672"
+    },
+    {
+      "t": "Kobayashi, K. Learning by preparing-to-teach and teaching: A meta-analysis. Japanese Psychological Research."
+    }
+  ]
 }

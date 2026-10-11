@@ -43,7 +43,12 @@ Cada método es un archivo JSON en `content/metodos/` (el prefijo numérico fija
 | `u` | Para qué sirve |
 | `p` | Pasos (lista) |
 | `f` | Dónde falla |
-| `r` | Qué dice la evidencia |
+| `r` | Qué dice la evidencia (resumen) |
+| `x` | Ejemplo aplicado a medicina (opcional) |
+| `c` | Consejos para aplicarlo mejor (lista, opcional) |
+| `d` | Datos de la investigación: estudios, tamaños de muestra y de efecto (lista, opcional) |
+| `m` | Métodos que combinan bien: identificadores, es decir el nombre del archivo sin el número ni `.json` (lista, opcional) |
+| `s` | Fuentes: lista de objetos `{ "t": "cita", "u": "enlace opcional" }` (opcional) |
 
 Para corregir o agregar un método, edite o cree un archivo en esa carpeta y abra un pull request indicando la fuente.
 

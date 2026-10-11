@@ -1,0 +1,44 @@
+{
+  "n": "Mnemotecnias (acrónimos, palabras clave, método de los lugares)",
+  "q": "Asociar datos con frases, imágenes o lugares para recordarlos.",
+  "l": 1,
+  "t": [
+    "memorizar",
+    "poco"
+  ],
+  "e": "Media",
+  "u": "Listas ordenadas y datos arbitrarios, como los pares craneales o series de fármacos",
+  "p": [
+    "Elija una lista o un dato difícil de recordar.",
+    "Cree una asociación: un acrónimo, una frase, una imagen vívida o un recorrido por lugares conocidos.",
+    "Compruebe de memoria que la asociación le devuelve el dato completo y en orden.",
+    "Repáselas con repetición espaciada."
+  ],
+  "f": "Sirven para recordar listas, no para comprender mecanismos. Inventar buenas asociaciones consume tiempo. La revisión de Dunlosky evaluó la mnemotecnia de la palabra clave, no los acrónimos ni el método de los lugares.",
+  "r": "Limitado. Dunlosky et al. (2013) calificaron la mnemotecnia de la palabra clave como de utilidad baja: es difícil de aplicar a algunos materiales y sus beneficios se vieron en pocos materiales y con plazos de retención cortos. En educación médica la investigación es limitada; una publicación reciente señala dos estudios con mejoras en la generación de diagnósticos diferenciales, y solo las mnemotecnias basadas en imágenes mejoraron significativamente los puntajes.",
+  "x": "Método de los lugares para los pares craneales: asigne cada par, en orden, a un punto fijo del recorrido por su casa y recorra mentalmente el camino para recitarlos.",
+  "c": [
+    "Úselas para listas y secuencias; para entender mecanismos rinden más otras técnicas.",
+    "Pruebe de memoria unos días después, no solo el mismo día.",
+    "Combínelas con tarjetas o repaso espaciado para que duren."
+  ],
+  "d": [
+    "Dunlosky et al. (2013): mnemotecnia de la palabra clave y uso de imágenes para textos, ambas de utilidad baja.",
+    "«Weird, Witty and Worthwhile»: sesiones entre pares con mnemotecnias para estudiantes de tercer año de medicina; los autores reconocen que la investigación sobre su utilidad en educación médica es limitada."
+  ],
+  "m": [
+    "tarjetas-y-anki",
+    "repeticion-espaciada",
+    "recuperacion-activa"
+  ],
+  "s": [
+    {
+      "t": "Dunlosky, Rawson, Marsh, Nathan y Willingham (2013). Improving Students' Learning With Effective Learning Techniques. Psychological Science in the Public Interest, 14(1), 4-58.",
+      "u": "https://doi.org/10.1177/1529100612453266"
+    },
+    {
+      "t": "Weird, Witty and Worthwhile: Exploring the Benefits of Mnemonic-Based Medical Education.",
+      "u": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC13543923/"
+    }
+  ]
+}

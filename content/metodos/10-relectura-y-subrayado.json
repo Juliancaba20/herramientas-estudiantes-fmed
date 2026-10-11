@@ -13,5 +13,25 @@
     "Volver a leer."
   ],
   "f": "Da sensación de dominio sin retención duradera.",
-  "r": "Limitado: Dunlosky et al. (2013) lo ubican entre las técnicas de menor utilidad."
+  "r": "Limitado: Dunlosky et al. (2013) lo ubican entre las técnicas de menor utilidad.",
+  "x": "Leer tres veces el capítulo y subrayarlo con tres colores es lo que más se hace y lo que menos retención duradera da. En su lugar, tras una lectura, cierre el libro y escriba lo que recuerde.",
+  "c": [
+    "Haga una lectura atenta y pase enseguida a recuperar.",
+    "Si subraya, úselo como guía para armar preguntas o tarjetas.",
+    "Si va a releer, que sea para corregir lo que falló en una prueba, no como primera opción."
+  ],
+  "d": [
+    "Dunlosky et al. (2013) clasifican la relectura y el subrayado como técnicas de utilidad baja.",
+    "Los autores las incluyeron porque la mayoría de los estudiantes las usa con mucha frecuencia, y señalan que no mejoran de forma consistente el rendimiento."
+  ],
+  "m": [
+    "recuperacion-activa",
+    "resumir"
+  ],
+  "s": [
+    {
+      "t": "Dunlosky, Rawson, Marsh, Nathan y Willingham (2013). Improving Students' Learning With Effective Learning Techniques. Psychological Science in the Public Interest, 14(1), 4-58.",
+      "u": "https://doi.org/10.1177/1529100612453266"
+    }
+  ]
 }

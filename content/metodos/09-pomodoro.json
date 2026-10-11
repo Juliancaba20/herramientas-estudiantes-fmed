@@ -13,5 +13,30 @@
     "Hacer una pausa larga cada cuatro bloques (los tiempos se ajustan)."
   ],
   "f": "Organiza el tiempo, pero no hay evidencia consistente de que mejore el rendimiento.",
-  "r": "Limitado: una revisión de alcance halló menos fatiga y mejor enfoque que con pausas libres, y un estudio en estudiantes de laboratorio médico no halló diferencias de rendimiento."
+  "r": "Limitado: una revisión de alcance halló menos fatiga y mejor enfoque que con pausas libres, y un estudio en estudiantes de laboratorio médico no halló diferencias de rendimiento.",
+  "x": "Primer bloque de 25 minutos con el celular en otra habitación, resolviendo preguntas de cardiología. Pausa de 5 minutos y segundo bloque. Cada cuatro bloques, una pausa larga.",
+  "c": [
+    "Asigne a cada bloque una tarea concreta, como veinte preguntas, en lugar de «estudiar».",
+    "Ajuste los tiempos: en la investigación se usaron bloques de 24 y 6 minutos y de 12 y 3 minutos.",
+    "El Pomodoro organiza el tiempo; el rendimiento depende del método que use dentro de cada bloque."
+  ],
+  "d": [
+    "Revisión de alcance en BMC Medical Education (2025): 32 estudios (5.270 participantes en total), de los cuales 3 eran ensayos aleatorizados y 5 cuasiexperimentales. En los 3 ensayos (87 participantes), los intervalos estructurados se asociaron con cerca de un 20 % menos de fatiga que las pausas libres. Los cuasiexperimentales informaron 15-25 % más de foco autoevaluado.",
+    "Una revisión de alcance mapea la literatura: no mide el efecto sobre las notas.",
+    "Una tesis de grado con estudiantes de ciencias del laboratorio médico no halló diferencias significativas de rendimiento."
+  ],
+  "m": [
+    "practica-con-preguntas",
+    "recuperacion-activa"
+  ],
+  "s": [
+    {
+      "t": "Assessing the efficacy of the Pomodoro technique in enhancing anatomy lesson retention during study sessions: a scoping review. BMC Medical Education (2025).",
+      "u": "https://link.springer.com/article/10.1186/s12909-025-08001-0"
+    },
+    {
+      "t": "Effectiveness of using the Pomodoro technique to improve the academic performance among third-year students of medical laboratory science (tesis, De La Salle Medical and Health Sciences Institute).",
+      "u": "https://greenprints.dlshsi.edu.ph/bsmls/222"
+    }
+  ]
 }

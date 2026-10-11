@@ -1,0 +1,42 @@
+{
+  "n": "Mapas mentales",
+  "q": "Esquema radial con el tema al centro y ramas que parten de él.",
+  "l": 1,
+  "t": [
+    "comprender"
+  ],
+  "e": "Media",
+  "u": "Repasar un tema completo de un vistazo",
+  "p": [
+    "Escriba el tema en el centro de la hoja.",
+    "Dibuje ramas con las ideas principales y subramas con los detalles, usando palabras clave.",
+    "Agregue colores o dibujos que ayuden a distinguir las ramas.",
+    "Al repasar, rehaga el mapa de memoria y compare con el original."
+  ],
+  "f": "Si solo se copian los apuntes en forma de mapa, se aprende poco. Los estudios en medicina son pocos y lo compararon con el estudio habitual, no con técnicas de utilidad alta como la práctica de recuperación.",
+  "r": "Limitado. En un ensayo con 50 estudiantes de medicina, quienes usaron mapas mentales recordaron más datos de un texto una semana después que con su técnica habitual, aunque declararon menor motivación (Farrand et al., 2002).",
+  "x": "Para síndrome coronario agudo: el nombre al centro y cuatro ramas (fisiopatología, clínica, diagnóstico, tratamiento). En «diagnóstico», subramas para ECG y troponinas.",
+  "c": [
+    "Use palabras clave, no frases.",
+    "Rehaga el mapa de memoria al repasar: combina el esquema con la recuperación activa.",
+    "Un mapa por tema, de modo que entre en una hoja."
+  ],
+  "d": [
+    "Farrand, Hussain y Hennessy (2002): 50 estudiantes de medicina de 2.º y 3.º año; mejor recuerdo a una semana con mapas mentales que con la técnica elegida por cada estudiante.",
+    "D'Antoni et al. (2010): estudio con 131 estudiantes de primer año de medicina que comparó mapas mentales con la toma de notas estándar, sobre recuperación de información y pensamiento crítico."
+  ],
+  "m": [
+    "mapas-conceptuales",
+    "recuperacion-activa",
+    "resumir"
+  ],
+  "s": [
+    {
+      "t": "Farrand, Hussain y Hennessy (2002). The efficacy of the «mind map» study technique. Medical Education, 36, 426-431."
+    },
+    {
+      "t": "D'Antoni, Zipp, Olson y Cahill (2010). Does the mind map learning strategy facilitate information retrieval and critical thinking in medical students? BMC Medical Education, 10, 61.",
+      "u": "https://www.biomedcentral.com/1472-6920/10/61/"
+    }
+  ]
+}

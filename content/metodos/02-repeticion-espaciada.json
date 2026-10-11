@@ -14,5 +14,39 @@
     "Repasar con más frecuencia lo que cuesta."
   ],
   "f": "Exige constancia y planificación. Crear tarjetas lleva tiempo.",
-  "r": "Utilidad alta como práctica distribuida (Dunlosky et al., 2013). El beneficio está demostrado sobre todo para la retención a largo plazo; un estudio de 2026 en estudiantes de medicina no halló una asociación significativa con el puntaje de un examen cercano."
+  "r": "Utilidad alta como práctica distribuida (Dunlosky et al., 2013). El beneficio está demostrado sobre todo para la retención a largo plazo; un estudio de 2026 en estudiantes de medicina no halló una asociación significativa con el puntaje de un examen cercano.",
+  "x": "Después de la clase de farmacología del lunes, arme diez preguntas y repáselas el martes, el domingo siguiente y a fin de mes. Saque del ciclo las que ya responde sin dudar.",
+  "c": [
+    "Fije los intervalos según la fecha del examen: cuanto más lejos esté, más conviene separar las sesiones.",
+    "Orientación de Cepeda et al. (2008): con una semana por delante, el repaso óptimo fue a un 20-40 % de ese plazo; con un año por delante, a un 5-10 %. Con un examen dentro de un mes, un primer repaso a los 5-6 días queda cerca de ese 20 %.",
+    "Repase con más frecuencia lo que le cuesta y con menos lo que domina.",
+    "Un repaso corto y constante rinde más que una sesión larga única."
+  ],
+  "d": [
+    "Cepeda et al. (2008): más de 1.350 personas aprendieron datos, los repasaron tras una pausa de hasta 3,5 meses y fueron evaluadas hasta un año después. Alargar la pausa primero mejoró el resultado y luego lo empeoró; la pausa óptima crecía con el plazo hasta la prueba.",
+    "Maye y Hurley (2026), metaanálisis en educación médica: 13 estudios y 21.415 estudiantes. Diferencia media estandarizada de 0,78 (IC 95 %: 0,56 a 0,99) a favor de la repetición espaciada sobre el estudio habitual, medida en pruebas de conocimiento (no en resultados clínicos). Incluyó tarjetas, preguntas enviadas por correo y cuestionarios espaciados en clase.",
+    "Kerfoot (2009, Journal of Urology): en un ensayo con 537 residentes de urología, los beneficios de la educación espaciada por internet se conservaban dos años después.",
+    "Dunlosky et al. (2013) la clasifican como práctica distribuida de utilidad alta."
+  ],
+  "m": [
+    "recuperacion-activa",
+    "tarjetas-y-anki",
+    "estudio-de-ultimo-momento"
+  ],
+  "s": [
+    {
+      "t": "Dunlosky, Rawson, Marsh, Nathan y Willingham (2013). Improving Students' Learning With Effective Learning Techniques. Psychological Science in the Public Interest, 14(1), 4-58.",
+      "u": "https://doi.org/10.1177/1529100612453266"
+    },
+    {
+      "t": "Cepeda, Vul, Rohrer, Wixted y Pashler (2008). Spacing effects in learning: A temporal ridgeline of optimal retention. Psychological Science, 19(11), 1095-1102.",
+      "u": "https://pubmed.ncbi.nlm.nih.gov/19076480/"
+    },
+    {
+      "t": "Maye y Hurley (2026). Revisión sistemática y metaanálisis sobre repetición espaciada en educación médica. The Clinical Teacher, 23(2)."
+    },
+    {
+      "t": "Kerfoot (2009). Learning benefits of on-line spaced education persist for 2 years. Journal of Urology."
+    }
+  ]
 }
