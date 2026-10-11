@@ -11,7 +11,7 @@ const grupos = [
 ];
 const significado = ['depende de cómo se aplique', 'poca investigación', 'buenos resultados, menos estudios en medicina', 'investigación abundante y coherente'];
 
-export default function Catalogo({ metodos }) {
+export default function Catalogo({ metodos, children }) {
   const [k, setK] = useState('todos');
   const [q, setQ] = useState('');
   const [abiertos, setAbiertos] = useState(false);
@@ -24,9 +24,15 @@ export default function Catalogo({ metodos }) {
         <input id="q" type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Nombre del método" aria-label="Buscar método por nombre" />
         <h2>Situación (opcional)</h2>
         <div className="f" role="group" aria-label="Filtrar por situación">
-          {Object.entries(filtros).map(([c, v]) => (
-            <button key={c} type="button" aria-pressed={k === c} onClick={() => setK(c)}>{v}</button>
-          ))}
+          {Object.entries(filtros).map(([c, v]) => {
+            const n = c === 'todos' ? metodos.length : metodos.filter((m) => m.t.includes(c)).length;
+            return (
+              <button key={c} type="button" aria-pressed={k === c} onClick={() => setK(c)}>
+                <span>{v}</span>
+                <span className="n" aria-label={`${n} métodos`}>{n}</span>
+              </button>
+            );
+          })}
         </div>
         <h2>Niveles de respaldo</h2>
         <ul className="leg">
@@ -49,7 +55,7 @@ export default function Catalogo({ metodos }) {
                 {items.map((m, i) => (
                   <article className="card" id={m.id} data-l={m.l} key={m.id} style={{ '--i': i }}>
                     <h3><a href={'#' + m.id} style={{ textDecoration: 'none', color: 'inherit' }}>{m.n}</a></h3>
-                    <span className="pill"><span aria-hidden="true">{marca[m.l]}</span> Respaldo: {niveles[m.l]} <span className="bar" aria-hidden="true">{[0, 1, 2, 3].map((n) => <i key={n} className={n <= m.l ? 'on' : ''} />)}</span></span>
+                    <span className="pill">Respaldo: {niveles[m.l]}</span>
                     <p className="q">{m.q}</p>
                     <dl>
                       <div><dt>Esfuerzo</dt><dd>{m.e}</dd></div>
@@ -79,6 +85,7 @@ export default function Catalogo({ metodos }) {
             </tbody>
           </table>
         </div>
+        {children}
       </section>
     </div>
   );

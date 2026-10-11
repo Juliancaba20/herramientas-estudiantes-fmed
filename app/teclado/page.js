@@ -1,5 +1,8 @@
+import Link from 'next/link';
 import Descargas from './Descargas';
 import { urlRepo } from './config';
+
+export const viewport = { themeColor: '#b8351f' };
 
 export const metadata = {
   title: 'Teclado Científico',
@@ -16,8 +19,8 @@ export const metadata = {
 
 export default function Teclado() {
   return (
-    <main className="page">
-      <header className="top t-tec">
+    <main className="page" data-tema="teclado">
+      <header className="top">
         <h1>Teclado Científico</h1>
         <p className="sub">Un teclado flotante y de tamaño reducido que queda visible sobre otras aplicaciones. Haga clic en una letra o un símbolo y se escribe donde esté el cursor, sin copiar ni pegar.</p>
       </header>
@@ -78,7 +81,7 @@ export default function Teclado() {
 
       <section className="src" style={{ paddingTop: '2rem' }}>
         <p>El teclado funciona sin conexión a internet.</p>
-        <a className="btn" href={`${urlRepo}/issues`}>Informar un problema</a>
+        <Link className="btn" href="/contacto">Informar un problema</Link>
         <a className="btn" href={`${urlRepo}/releases`}>Todas las versiones</a>
       </section>
     </main>

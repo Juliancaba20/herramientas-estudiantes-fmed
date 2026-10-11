@@ -1,6 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import Link from 'next/link';
 import Catalogo from './Catalogo';
+
+export const viewport = { themeColor: '#6d28d9' };
 
 export const metadata = {
   title: 'Métodos de estudio',
@@ -17,12 +20,12 @@ function cargar() {
 
 export default function Metodos() {
   return (
-    <>
+    <div data-tema="metodos">
       <header className="top">
         <h1>Métodos de estudio</h1>
-        <p className="sub">Qué existe y qué dice la evidencia. No hay un método obligatorio: cada ficha explica cómo se aplica, dónde falla y cuánto respaldo tiene, para que cada estudiante elija con información.</p>
+        <p className="sub">Las técnicas de estudio más investigadas, explicadas paso a paso y con su nivel de respaldo en la evidencia. Elija la que mejor se adapte a su situación.</p>
       </header>
-      <Catalogo metodos={cargar()} />
+      <Catalogo metodos={cargar()}>
       <div className="src" style={{ paddingBottom: '2rem' }}>
         <h2 className="t">Sobre los niveles de respaldo</h2>
         <p>Los niveles son orientativos y resumen cuánta investigación sostiene que el método mejora la retención o el rendimiento, no si "le sirve" a una persona en particular. Que un método tenga poco respaldo no significa que no funcione, sino que se estudió poco o que los resultados no son claros.</p>
@@ -36,8 +39,9 @@ export default function Metodos() {
           <li><a href="https://pubmed.ncbi.nlm.nih.gov/21252317/">Karpicke y Blunt (2011). Retrieval practice produces more learning than elaborative studying with concept mapping</a>. Science.</li>
           <li>Nesbit y Adesope (2006), metaanálisis sobre mapas conceptuales. Monteiro et al. (2017), Perspectives on Medical Education, sobre práctica intercalada en electrocardiografía. Brierley et al. (2022), Medical Education, metaanálisis sobre aprendizaje entre pares (doi 10.1111/medu.14672).</li>
         </ul>
-        <p className="mut">Contenido en revisión. Las correcciones y sugerencias son bienvenidas.</p>
+        <p className="mut">Contenido en revisión. Las correcciones y sugerencias son bienvenidas: <Link href="/contacto">envíelas aquí</Link>.</p>
       </div>
-    </>
+      </Catalogo>
+    </div>
   );
 }
