@@ -56,7 +56,7 @@ export default function Formulario() {
         </div>
       </fieldset>
 
-      <div className="campo">
+      <div className="campo mensaje">
         <label htmlFor="mensaje">Mensaje</label>
         <textarea id="mensaje" name="mensaje" rows={7} maxLength={MAX} required value={mensaje} onChange={(e) => setMensaje(e.target.value)}
           placeholder={tipo === 'error' ? 'Cuéntenos qué ocurrió y en qué página, para poder repetirlo.' : 'Escriba aquí su mensaje.'} />
@@ -73,8 +73,10 @@ export default function Formulario() {
         <label>No completar<input type="text" name="web" tabIndex={-1} autoComplete="off" value={web} onChange={(e) => setWeb(e.target.value)} /></label>
       </div>
 
-      <p className="form-error" role="alert" hidden={!error}>{error}</p>
-      <button className="btn enviar" type="submit" disabled={estado === 'enviando'}>{estado === 'enviando' ? 'Enviando…' : 'Enviar mensaje'}</button>
+      <div className="acciones">
+        <p className="form-error" role="alert" hidden={!error}>{error}</p>
+        <button className="btn enviar" type="submit" disabled={estado === 'enviando'}>{estado === 'enviando' ? 'Enviando…' : 'Enviar mensaje'}</button>
+      </div>
     </form>
   );
 }
