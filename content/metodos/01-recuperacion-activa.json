@@ -1,37 +1,42 @@
 {
-  "n": "Recuperación activa",
-  "q": "Intentar recordar sin mirar el material.",
+  "n": "Recuperación activa y práctica con preguntas",
+  "q": "Intentar recordar sin mirar, ya sea libremente o resolviendo preguntas y casos.",
   "l": 3,
   "t": [
     "memorizar",
     "comprender"
   ],
   "e": "Media",
-  "u": "Datos, mecanismos y clasificaciones",
+  "u": "Datos, mecanismos y clasificaciones; preparar parciales y finales",
   "p": [
-    "Leer una sección.",
-    "Cerrar el apunte.",
-    "Escribir o decir todo lo que se recuerde.",
-    "Comparar con el material y marcar lo que faltó."
+    "Lea una sección o estudie el tema una primera vez.",
+    "Cierre el material.",
+    "Escriba o diga todo lo que recuerde, o resuelva preguntas y casos del tema sin ayuda.",
+    "Corrija con el material y anote por qué falló cada error.",
+    "Vuelva a lo fallado unos días después."
   ],
-  "f": "Resulta incómodo al principio. Sin corregir contra el material, se pueden consolidar errores.",
+  "f": "Resulta incómodo al principio. Sin corregir contra el material se pueden consolidar errores, y hacer muchas preguntas sin analizar los errores rinde poco. La calidad de las preguntas importa.",
   "r": "Utilidad alta como práctica con pruebas (Dunlosky et al., 2013). En educación médica, recordar activamente rinde más que reestudiar de forma pasiva (Augustin).",
-  "x": "Después de leer la circulación coronaria, cierre el apunte y escriba en una hoja el recorrido de cada arteria y su territorio. Luego compare con el atlas y marque lo que olvidó.",
+  "x": "Después de leer la circulación coronaria, cierre el apunte y escriba en una hoja el recorrido de cada arteria y su territorio. Luego compare con el atlas y marque lo que olvidó. Para practicar con preguntas: tras estudiar insuficiencia cardíaca, resuelva diez preguntas de su cátedra y, por cada error, anote qué concepto confundió.",
   "c": [
     "Intente recordar antes de mirar: aunque no salga completo, el intento ya cuenta.",
     "Corrija siempre con el material. En los metaanálisis el efecto fue mayor cuando hubo retroalimentación.",
     "Hágalo después de una primera lectura: sin haber estudiado, no hay nada que recuperar.",
-    "Repita el ejercicio en otro día. Un solo intento rinde menos que varios espaciados."
+    "Repita el ejercicio en otro día. Un solo intento rinde menos que varios espaciados.",
+    "Responda sin mirar el material y consúltelo recién al corregir.",
+    "Anote la causa de cada error: no sabía el dato, confundió dos cuadros o leyó mal el enunciado. Eso decide qué repasar.",
+    "Vuelva a las preguntas falladas unos días después.",
+    "Use preguntas de calidad: las de su cátedra, exámenes anteriores o bancos de preguntas revisados."
   ],
   "d": [
     "Rowland (2014): promedio de g = 0,50 a favor de la práctica de recuperación frente a reestudiar. El efecto crecía con el tiempo transcurrido hasta la prueba y con la retroalimentación.",
     "Adesope et al. (2017): g = 0,61 a favor de los exámenes de práctica frente a otras condiciones de estudio (118 artículos).",
     "Karpicke y Blunt (2011, Science): la práctica de recuperación superó a elaborar mapas conceptuales en una prueba una semana después.",
-    "Dunlosky et al. (2013) la clasifican como técnica de utilidad alta, por la variedad de materiales, edades y plazos en que funciona."
+    "Dunlosky et al. (2013) la clasifican como técnica de utilidad alta, por la variedad de materiales, edades y plazos en que funciona.",
+    "Deng et al. (2015): en 72 estudiantes de medicina, todos usaron preguntas de práctica (promedio de unas 3.870) y el uso de bancos de preguntas y de tarjetas espaciadas se asoció con mejor puntaje en el USMLE Step 1, controlando por antecedentes académicos y factores psicológicos. Es un estudio observacional: no demuestra causalidad."
   ],
   "m": [
     "repeticion-espaciada",
-    "practica-con-preguntas",
     "tarjetas-y-anki"
   ],
   "s": [
@@ -49,6 +54,10 @@
     {
       "t": "Karpicke y Blunt (2011). Retrieval practice produces more learning than elaborative studying with concept mapping. Science.",
       "u": "https://pubmed.ncbi.nlm.nih.gov/21252317/"
+    },
+    {
+      "t": "Deng, Gluckstein y Larsen (2015). Student-directed retrieval practice is a predictor of medical licensing examination performance. Perspectives on Medical Education, 4(6), 308-313.",
+      "u": "https://doi.org/10.1007/s40037-015-0220-x"
     }
   ]
 }

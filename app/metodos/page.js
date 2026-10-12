@@ -1,7 +1,6 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import Link from 'next/link';
 import Catalogo from './Catalogo';
+import { cargar } from './datos';
 
 export const viewport = { themeColor: '#6d28d9' };
 
@@ -9,14 +8,6 @@ export const metadata = {
   title: 'Métodos de estudio',
   description: 'Catálogo de métodos de estudio: cómo se aplica cada uno, dónde falla y qué respaldo tiene en la evidencia.',
 };
-
-function cargar() {
-  const dir = path.join(process.cwd(), 'content', 'metodos');
-  return fs.readdirSync(dir).filter((f) => f.endsWith('.json')).sort().map((f) => ({
-    ...JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')),
-    id: f.replace(/^\d+-|\.json$/g, ''),
-  }));
-}
 
 export default function Metodos() {
   return (

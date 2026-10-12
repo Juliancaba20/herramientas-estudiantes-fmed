@@ -1,35 +1,40 @@
 {
-  "n": "Estudio en grupo y aprendizaje entre pares",
-  "q": "Explicarse y preguntarse entre compañeros.",
-  "l": 0,
+  "n": "Estudio en grupo y enseñar a otros",
+  "q": "Prepararse para explicar un tema y explicárselo a compañeros que preguntan.",
+  "l": 2,
   "t": [
     "grupo",
     "comprender"
   ],
-  "e": "Variable",
-  "u": "Aclarar dudas y practicar la explicación oral",
+  "e": "Media a alta",
+  "u": "Aclarar dudas, entender y consolidar un tema, practicar la exposición oral",
   "p": [
-    "Formar un grupo de dos a cuatro personas.",
-    "Cada uno prepara un tema antes.",
-    "Se explican y se hacen preguntas entre sí."
+    "Forme un grupo de dos a cuatro personas.",
+    "Cada uno prepara un tema antes, sabiendo que tendrá que explicarlo.",
+    "Cada uno lo explica sin leer apuntes y los demás hacen preguntas.",
+    "Anoten las lagunas, vuelvan al material y alternen los roles."
   ],
-  "f": "Puede derivar en charla. Depende de la preparación individual.",
-  "r": "Un metaanálisis de ensayos aleatorizados halló mejor rendimiento con programas estructurados de enseñanza entre pares, más marcado en etapa clínica y en habilidades prácticas que en teoría. No evalúa grupos de estudio informales, donde los resultados dependen de cómo se organicen.",
-  "x": "Dos veces por semana, tres compañeros se reúnen una hora. Cada uno trae preguntas del tema que preparó, las plantea al resto y corrigen juntos.",
+  "f": "Puede derivar en charla y depende de la preparación individual. Si la explicación es unidireccional y nadie pregunta, el beneficio es menor. La mayoría de los estudios se hizo fuera de medicina.",
+  "r": "Moderado cuando es estructurado. Un metaanálisis de 28 estudios halló g = 0,35 al prepararse para enseñar y g = 0,56 al preparar y luego enseñar, con más beneficio si la enseñanza era interactiva (Kobayashi). En educación médica, un metaanálisis de ensayos aleatorizados halló mejor rendimiento con programas estructurados de enseñanza entre pares, más marcado en etapa clínica y en habilidades prácticas que en teoría (Brierley et al., 2022). No evalúa grupos informales, donde los resultados dependen de cómo se organicen.",
+  "x": "Dos veces por semana, tres compañeros se reúnen una hora. Cada uno trae preguntas del tema que preparó, las plantea al resto y corrigen juntos. Antes de un práctico de anatomía, cada uno puede explicar un territorio vascular distinto y el otro hacer al menos tres preguntas.",
   "c": [
     "Cada persona prepara su tema antes: sin estudio individual previo, el grupo rinde poco.",
     "Fije agenda y tiempo, y deje la charla libre para el final.",
     "Prefieran explicar y preguntar por turnos a leer en voz alta.",
-    "Cierren anotando las dudas que quedaron y quién las resuelve."
+    "Cierren anotando las dudas que quedaron y quién las resuelve.",
+    "Estudie pensando en que va a explicar: la sola expectativa de enseñar ya mejoró el aprendizaje (g = 0,35).",
+    "Pida que le hagan preguntas: la interacción aumentó el beneficio.",
+    "Alternen roles con un compañero para que ambos preparen."
   ],
   "d": [
     "Brierley et al. (2022): metaanálisis de ensayos aleatorizados con mejor rendimiento en programas estructurados de enseñanza entre pares, más marcado en etapa clínica y en habilidades prácticas que en teoría. No evalúa grupos de estudio informales.",
-    "Los metaanálisis sobre aprender enseñando muestran mayor beneficio cuando la explicación es interactiva (Kobayashi)."
+    "Los metaanálisis sobre aprender enseñando muestran mayor beneficio cuando la explicación es interactiva (Kobayashi).",
+    "Kobayashi: 28 estudios; g = 0,35 para prepararse para enseñar y g = 0,56 para enseñar tras prepararse. Los efectos se vieron tanto en aprendizaje profundo como superficial, incluso con demora entre el estudio y la prueba.",
+    "En educación médica, un metaanálisis de ensayos aleatorizados halló mejor rendimiento con programas estructurados de enseñanza entre pares (Brierley et al., 2022)."
   ],
   "m": [
-    "ensenar-a-otros",
-    "practica-con-preguntas",
-    "autoexplicacion-tecnica-feynman"
+    "autoexplicacion-tecnica-feynman",
+    "recuperacion-activa"
   ],
   "s": [
     {

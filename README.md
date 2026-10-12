@@ -3,7 +3,8 @@
 Sitio gratuito y sin fines de lucro con herramientas para estudiantes, en especial de medicina. Hecho con Next.js (App Router).
 
 - `/` portada con las herramientas
-- `/metodos` catálogo de métodos de estudio con nivel de respaldo
+- `/metodos` catálogo de métodos de estudio con nivel de respaldo (lo básico de cada uno)
+- `/metodos/<método>` página de cada método con la información completa (se genera sola desde `content/metodos/`)
 - `/teclado` página del Teclado Científico, con las descargas para Windows, Mac y Linux
 - `/contacto` formulario para informar errores o enviar sugerencias (llega por mail)
 

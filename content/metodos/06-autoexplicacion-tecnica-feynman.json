@@ -1,6 +1,6 @@
 {
-  "n": "Autoexplicación (técnica Feynman)",
-  "q": "Explicar un tema con palabras simples.",
+  "n": "Autoexplicación y preguntas elaborativas (técnica Feynman)",
+  "q": "Explicar un tema, y por qué cada dato es cierto, con palabras simples.",
   "l": 2,
   "t": [
     "comprender"
@@ -8,28 +8,32 @@
   "e": "Media a alta",
   "u": "Entender procesos y mecanismos",
   "p": [
-    "Elegir un tema.",
-    "Explicarlo en voz alta o por escrito, sin apuntes.",
-    "Notar dónde se traba.",
-    "Volver al material y explicarlo de nuevo."
+    "Elija un tema y tome un hecho o mecanismo concreto.",
+    "Explíquelo en voz alta o por escrito, sin apuntes, preguntándose «¿por qué?» y «¿cómo lo sé?» en cada paso.",
+    "Note dónde se traba.",
+    "Vuelva al material, corrija y explíquelo de nuevo, conectándolo con el hecho anterior."
   ],
-  "f": "Sirve poco para datos sueltos. Es fácil conformarse con explicaciones vagas.",
-  "r": "El respaldo es para la autoexplicación, de utilidad moderada (Dunlosky et al., 2013). La técnica con nombre propio casi no tiene investigación directa.",
-  "x": "Explique en voz alta, como a un compañero que no sabe del tema, cómo la hipoventilación produce acidosis respiratoria. Donde se trabe (¿por qué sube el CO₂?, ¿qué hace el bicarbonato?), anote la laguna y vuelva al texto.",
+  "f": "Sirve poco para datos sueltos y no reemplaza a la recuperación para fijarlos. Es fácil conformarse con explicaciones vagas, y rinde menos cuando se sabe poco del tema.",
+  "r": "Tanto la autoexplicación como las preguntas elaborativas son de utilidad moderada (Dunlosky et al., 2013): hay menos estudios fuera del laboratorio que para las técnicas de utilidad alta. La técnica con el nombre de Feynman casi no tiene investigación directa.",
+  "x": "Explique en voz alta, como a un compañero que no sabe del tema, cómo la hipoventilación produce acidosis respiratoria. Donde se trabe (¿por qué sube el CO₂?, ¿qué hace el bicarbonato?), anote la laguna y vuelva al texto. Con un hecho concreto: «la levotiroxina se toma en ayunas». ¿Por qué? Porque los alimentos y algunos suplementos reducen su absorción intestinal.",
   "c": [
     "Pregúntese «¿por qué?» y «¿cómo lo sé?» en cada paso.",
     "Use sus palabras. Si repite el texto de memoria, todavía no lo comprendió.",
     "Guarde las lagunas como lista de repaso.",
-    "Termine con una versión sin apuntes del tema completo."
+    "Termine con una versión sin apuntes del tema completo.",
+    "Formule el «¿por qué?» sobre hechos concretos, no sobre temas enteros.",
+    "Primero lea y entienda: la técnica sirve para profundizar, no para aprender desde cero.",
+    "Guarde las respuestas equivocadas: muestran qué relaciones aún no comprende."
   ],
   "d": [
     "Dunlosky et al. (2013) la clasifican como autoexplicación de utilidad moderada, junto con las preguntas elaborativas y la práctica intercalada.",
-    "La técnica con el nombre de Feynman, como tal, no fue evaluada en esa revisión."
+    "La técnica con el nombre de Feynman, como tal, no fue evaluada en esa revisión.",
+    "Dunlosky et al. (2013) definen la técnica como generar una explicación de por qué es cierto un hecho o concepto enunciado de forma explícita, y la clasifican como de utilidad moderada, junto con la autoexplicación y la práctica intercalada."
   ],
   "m": [
-    "preguntas-elaborativas",
-    "ensenar-a-otros",
-    "recuperacion-activa"
+    "recuperacion-activa",
+    "estudio-en-grupo",
+    "casos-clinicos-y-guiones-de-enfermedad"
   ],
   "s": [
     {
