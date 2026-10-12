@@ -49,7 +49,7 @@ export default async function Metodo({ params }) {
         </section>
 
         <div className="ficha-cols">
-        <section>
+        <section className="sec-ap">
           <h2>Cómo se aplica</h2>
           <ol className="pasos">{m.p.map((x) => <li key={x}>{x}</li>)}</ol>
           {m.x && <p className="ej"><b>Ejemplo en medicina.</b> {m.x}</p>}
@@ -62,14 +62,14 @@ export default async function Metodo({ params }) {
           </section>
         )}
 
-        <section>
+        <section className="sec-ev">
           <h2>Qué dice la evidencia</h2>
           <p>{m.r}</p>
           {m.d && <ul>{m.d.map((x) => <li key={x}>{x}</li>)}</ul>}
         </section>
 
         {m.m && (
-          <section>
+          <section className="sec-comb">
             <h2>Combina bien con</h2>
             <div className="comb-lista">
               {m.m.filter((x) => nombres[x]).map((x) => <Link key={x} href={`/metodos/${x}`}>{nombres[x]}</Link>)}
@@ -78,14 +78,14 @@ export default async function Metodo({ params }) {
         )}
 
         {m.s && (
-          <section>
+          <section className="sec-fuentes">
             <h2>Fuentes</h2>
             <ul className="fuentes">{m.s.map((x) => <li key={x.t}>{x.u ? <a href={x.u} target="_blank" rel="noopener noreferrer">{x.t}</a> : x.t}</li>)}</ul>
           </section>
         )}
         </div>
 
-        <p className="mut">Los niveles de respaldo son orientativos. ¿Encontró un error o tiene una sugerencia? <Link href="/contacto">Infórmelo aquí</Link>.</p>
+        <p className="mut ficha-pie">Los niveles de respaldo son orientativos.</p>
       </article>
 
       <nav className="ficha-nav" aria-label="Otros métodos">
