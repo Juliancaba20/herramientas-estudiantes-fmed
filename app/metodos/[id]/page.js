@@ -37,8 +37,10 @@ export default async function Metodo({ params }) {
 
       <article className="ficha" data-l={m.l}>
         <section className="resumen">
-          <span className="pill">Respaldo: {niveles[m.l]}</span>
-          <p className="mut">{marca[m.l]} {significado[m.l]}</p>
+          <div className="resumen-respaldo">
+            <span className="pill">Respaldo: {niveles[m.l]}</span>
+            <p className="mut">{marca[m.l]} {significado[m.l]}</p>
+          </div>
           <dl>
             <div><dt>Esfuerzo</dt><dd>{m.e}</dd></div>
             <div><dt>Útil para</dt><dd>{m.u}</dd></div>
@@ -46,6 +48,7 @@ export default async function Metodo({ params }) {
           </dl>
         </section>
 
+        <div className="ficha-cols">
         <section>
           <h2>Cómo se aplica</h2>
           <ol className="pasos">{m.p.map((x) => <li key={x}>{x}</li>)}</ol>
@@ -80,6 +83,7 @@ export default async function Metodo({ params }) {
             <ul className="fuentes">{m.s.map((x) => <li key={x.t}>{x.u ? <a href={x.u} target="_blank" rel="noopener noreferrer">{x.t}</a> : x.t}</li>)}</ul>
           </section>
         )}
+        </div>
 
         <p className="mut">Los niveles de respaldo son orientativos. ¿Encontró un error o tiene una sugerencia? <Link href="/contacto">Infórmelo aquí</Link>.</p>
       </article>
