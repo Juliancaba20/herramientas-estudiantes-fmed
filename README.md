@@ -6,6 +6,7 @@ Sitio gratuito y sin fines de lucro con herramientas para estudiantes, en especi
 - `/metodos` catálogo de métodos de estudio con nivel de respaldo (lo básico de cada uno)
 - `/metodos/<método>` página de cada método con la información completa (se genera sola desde `content/metodos/`)
 - `/teclado` página del Teclado Científico, con las descargas para Windows, Mac y Linux
+- `/notas` página de presentación de Anotomía, la app de notas (en desarrollo; la app en sí se desarrolla aparte y se integrará aquí)
 - `/contacto` formulario para informar errores o enviar sugerencias (llega por mail)
 
 ## Estructura del repositorio
@@ -14,7 +15,7 @@ Todo el proyecto vive en este único repositorio:
 
 | Carpeta | Contenido |
 |---------|-----------|
-| `app/` | El sitio (Next.js, App Router): portada, `metodos/`, `teclado/`, `contacto/` y `api/contacto/` |
+| `app/` | El sitio (Next.js, App Router): portada, `metodos/`, `teclado/`, `notas/`, `contacto/` y `api/contacto/` |
 | `content/metodos/` | Un archivo JSON por método de estudio |
 | `public/teclado/` | Imágenes de la página del teclado |
 | `apps/teclado/` | Código y íconos del programa de escritorio (Python) |
@@ -56,6 +57,10 @@ Para corregir o agregar un método, edite o cree un archivo en esa carpeta y abr
 ## Teclado Científico
 
 La página está en `app/teclado/`: `page.js` (contenido), `Descargas.js` (enlaces de descarga y número de versión) y `config.js` (repositorio y nombres de los archivos). La página enlaza siempre a la última versión publicada en *Releases*, sea cual sea el nombre de su etiqueta. El programa está en `apps/teclado/`; allí se explica cómo publicar una versión nueva (`apps/teclado/LEEME.md`).
+
+## Anotomía (app de notas)
+
+`/notas` (`app/notas/page.js`) es por ahora una página de presentación con el tema azul (`data-tema="notas"` en `app/globals.css`). La app se desarrolla en un proyecto aparte y, cuando esté terminada, se integrará en esta ruta como componente de cliente.
 
 ## Formulario de contacto
 
