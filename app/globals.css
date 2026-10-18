@@ -184,6 +184,11 @@ footer{margin-top:1rem;padding:2rem 0 3rem;color:var(--mut);text-align:center;bo
 .dos-col ol li::before{content:counter(n);position:absolute;left:0;top:.1rem;display:grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--brand);color:#fff;font:700 .85rem var(--hd)}
 code{background:var(--brand-l);border-radius:6px;padding:0 .35em;font-size:.9em}
 
+/* ---------- Anotomía (/notas): usa todo el ancho de la web, sin los topes de lectura de .src y .note ---------- */
+[data-tema="notas"] .src,[data-tema="notas"] .note{max-width:none}
+.nt-cols{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr))}
+.nt-cols .card{animation:rise .55s var(--ease) both;animation-delay:calc(var(--i,0)*80ms + .2s)}
+
 /* ---- Reducción de movimiento: sin animaciones ni transiciones ---- */
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 

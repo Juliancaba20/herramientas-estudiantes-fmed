@@ -51,7 +51,7 @@ export default function Notas() {
 
       <section className="src">
         <h2 className="t">Tres formatos, a elegir al crear cada documento</h2>
-        <div className="cards">
+        <div className="nt-cols">
           {FORMATOS.map((f, i) => (
             <div className="card" style={{ '--i': i }} key={f.t}>
               <h3>{f.t}</h3>
@@ -63,7 +63,7 @@ export default function Notas() {
 
       <section className="src">
         <h2 className="t">Escriba como prefiera</h2>
-        <div className="cards">
+        <div className="nt-cols">
           {ESCRITURA.map((f, i) => (
             <div className="card" style={{ '--i': i }} key={f.t}>
               <h3>{f.t}</h3>
