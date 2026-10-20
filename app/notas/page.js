@@ -7,6 +7,11 @@ export const metadata = {
   description: 'La app definitiva para tomar notas en clase y hacer resúmenes: pizarrón infinito, páginas A4 y tarjetas, a mano o con teclado.',
 };
 
+// La app ya está publicada en /notas/app/index.html (carpeta public/notas/app). Mientras esta constante
+// sea false, la página sigue mostrando el aviso de «en desarrollo» y no enlaza a la app, para poder
+// probarla en PC, Android e iPad sin que nadie llegue desde la web. Cambiar a true para habilitarla.
+const DISPONIBLE = false;
+
 const FORMATOS = [
   {
     t: 'Pizarrón infinito',
@@ -45,9 +50,16 @@ export default function Notas() {
         <p className="sub">La app definitiva para tomar notas en clase y hacer resúmenes.</p>
       </header>
 
-      <div className="note" role="note">
-        <p><b>En desarrollo.</b> Anotomía todavía no está disponible. Esta página se irá completando a medida que avance la app y, cuando esté lista, podrá usarla desde aquí mismo.</p>
-      </div>
+      {DISPONIBLE ? (
+        <section className="src" style={{ paddingTop: '1.25rem' }}>
+          {/* Enlace común (no Link): la app es un archivo estático, no una página de Next */}
+          <a className="btn" href="/notas/app/index.html">Abrir Anotomía</a>
+        </section>
+      ) : (
+        <div className="note" role="note">
+          <p><b>En desarrollo.</b> Anotomía todavía no está disponible. Esta página se irá completando a medida que avance la app y, cuando esté lista, podrá usarla desde aquí mismo.</p>
+        </div>
+      )}
 
       <section className="src">
         <h2 className="t">Tres formatos, a elegir al crear cada documento</h2>

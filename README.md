@@ -6,7 +6,7 @@ Sitio gratuito y sin fines de lucro con herramientas para estudiantes, en especi
 - `/metodos` catálogo de métodos de estudio con nivel de respaldo (lo básico de cada uno)
 - `/metodos/<método>` página de cada método con la información completa (se genera sola desde `content/metodos/`)
 - `/teclado` página del Teclado Científico, con las descargas para Windows, Mac y Linux
-- `/notas` página de presentación de Anotomía, la app de notas (en desarrollo; la app en sí se desarrolla aparte y se integrará aquí)
+- `/notas` página de presentación de Anotomía, la app de notas; la app está en `/notas/app/index.html`
 - `/contacto` formulario para informar errores o enviar sugerencias (llega por mail)
 
 ## Estructura del repositorio
@@ -16,6 +16,9 @@ Todo el proyecto vive en este único repositorio:
 | Carpeta | Contenido |
 |---------|-----------|
 | `app/` | El sitio (Next.js, App Router): portada, `metodos/`, `teclado/`, `notas/`, `contacto/` y `api/contacto/` |
+| `apps/notas/` | Código de Anotomía (Vite + React) |
+| `public/notas/app/` | Anotomía ya compilada (se genera con `npm run publicar:notas`) |
+| `scripts/` | `publicar-notas.mjs`, que compila Anotomía y la copia a `public/` |
 | `content/metodos/` | Un archivo JSON por método de estudio |
 | `public/teclado/` | Imágenes de la página del teclado |
 | `apps/teclado/` | Código y íconos del programa de escritorio (Python) |
@@ -60,7 +63,18 @@ La página está en `app/teclado/`: `page.js` (contenido), `Descargas.js` (enlac
 
 ## Anotomía (app de notas)
 
-`/notas` (`app/notas/page.js`) es por ahora una página de presentación con el tema azul (`data-tema="notas"` en `app/globals.css`). La app se desarrolla en un proyecto aparte y, cuando esté terminada, se integrará en esta ruta como componente de cliente.
+Son dos cosas separadas:
+
+- `/notas` (`app/notas/page.js`): página de presentación, con el tema azul (`data-tema="notas"` en `app/globals.css`). La constante `DISPONIBLE` de ese archivo decide si muestra el aviso «en desarrollo» (`false`) o el botón «Abrir Anotomía» (`true`).
+- `/notas/app/index.html`: la app en sí, un sitio estático independiente (Vite + React) que no comparte estilos ni diseño con el resto de la web. Su código está en `apps/notas/` (ver `apps/notas/ESTADO.md`) y lo que se publica es la carpeta compilada `public/notas/app/`. La dirección `/notas/app` redirige a `/notas/app/index.html` (`next.config.mjs`).
+
+Para publicar una versión nueva de la app, después de cambiar algo en `apps/notas/`:
+
+```bash
+npm run publicar:notas   # compila apps/notas y reemplaza public/notas/app
+```
+
+Luego se sube el repositorio como siempre. La carpeta `public/notas/app/` se sube a GitHub (es lo que Vercel sirve); `apps/notas/node_modules` y `apps/notas/dist` no.
 
 ## Formulario de contacto
 

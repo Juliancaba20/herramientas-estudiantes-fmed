@@ -1,0 +1,198 @@
+/* Estilos de impresión (Etapa 9: tarjetas, Etapa 10: páginas A4) */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  body { background: #fff !important; margin: 0; padding: 0; }
+  .nt-editor > header,
+  .nt-editor > .nt-ed-trabajo > .nt-riel,
+  .nt-zoom,
+  .nt-props,
+  .nt-menu-formas,
+  .nt-barra-tarjetas,
+  .nt-barra-paginas,
+  .nt-seleccion,
+  .nt-volver,
+  .nt-capa-texto,
+  .nt-cabecera,
+  .nt-modal,
+  .nt-modal-fondo,
+  .nt-tira,
+  .nt-panel-tamano,
+  .nt-panel-cuadricula,
+  .nt-fondo,
+  .nt-estudio,
+  .nt-lienzo__aviso,
+  .nt-lienzo canvas,
+  .nt-lienzo canvas.nt-minimapa {
+    display: none !important;
+  }
+
+  .nt-editor, .nt-ed-trabajo, .nt-lienzo {
+    position: static !important;
+    overflow: visible !important;
+    width: 100% !important;
+    height: auto !important;
+    background: transparent !important;
+  }
+
+  .nt-area-impresion-tarjetas,
+  .nt-impresion-paginas,
+  .nt-area-impresion-pizarron {
+    display: block !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nt-hoja-tarjetas {
+    width: 210mm;
+    height: 297mm;
+    display: grid;
+    box-sizing: border-box;
+    page-break-after: always;
+    break-after: page;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .nt-hoja-tarjetas:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .nt-celda-tarjeta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .nt-tarjeta-impresa {
+    position: relative;
+    box-sizing: border-box;
+    background: #fff;
+  }
+
+  .nt-tarjeta-impresa:not(.nt-tarjeta-impresa--marcas) {
+    border: 1px solid #c5ceea;
+  }
+
+  .nt-tarjeta-impresa--marcas {
+    border: none;
+  }
+
+  .nt-tarjeta-impresa canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .nt-tarjeta-impresa__rotulo {
+    font-size: 7pt;
+    color: #868e96;
+    text-align: center;
+    font-family: var(--nt-fuente-base, system-ui, sans-serif);
+    margin-top: 1.5mm;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nt-marca {
+    position: absolute;
+    width: 4mm;
+    height: 4mm;
+    box-sizing: border-box;
+    pointer-events: none;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .nt-marca--tl {
+    top: -5mm;
+    left: -5mm;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+  }
+
+  .nt-marca--tr {
+    top: -5mm;
+    right: -5mm;
+    border-left: 1px solid #333;
+    border-bottom: 1px solid #333;
+  }
+
+  .nt-marca--bl {
+    bottom: -5mm;
+    left: -5mm;
+    border-right: 1px solid #333;
+    border-top: 1px solid #333;
+  }
+
+  .nt-marca--br {
+    bottom: -5mm;
+    right: -5mm;
+    border-left: 1px solid #333;
+    border-top: 1px solid #333;
+  }
+
+  .nt-pagina-impresa {
+    page-break-after: always;
+    break-after: page;
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nt-pagina-impresa:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .nt-pagina-impresa canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .nt-pagina-impresa__rotulo {
+    position: absolute;
+    top: 5mm;
+    left: 10mm;
+    right: 10mm;
+    font-size: 8pt;
+    color: #868e96;
+    font-family: var(--nt-fuente-base, system-ui, sans-serif);
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .nt-pagina-impresa__pie {
+    position: absolute;
+    bottom: 5mm;
+    left: 10mm;
+    right: 10mm;
+    font-size: 8pt;
+    color: #868e96;
+    font-family: var(--nt-fuente-base, system-ui, sans-serif);
+    text-align: center;
+    pointer-events: none;
+  }
+}
+
+.nt-area-impresion-tarjetas,
+.nt-impresion-paginas,
+.nt-area-impresion-pizarron {
+  display: none;
+}

@@ -1,0 +1,27 @@
+/* Variables de la app de notas. Prefijo --nt- para no chocar con la web al copiarla. */
+:root {
+  color-scheme: light;
+  --nt-azul: #2350d8;
+  --nt-azul-oscuro: #17348f;
+  --nt-azul-claro: #e8eefc;
+  --nt-tinta: #14192b;
+  --nt-suave: #5b6580;
+  --nt-papel: #f6f8fd;
+  --nt-blanco: #ffffff;
+  --nt-linea: #d6deef;
+  --nt-resaltador: #ffd84d;
+  --nt-error: #b3261e;
+  --nt-ok: #1f7a45;
+
+  --nt-fuente: 'Figtree', system-ui, sans-serif;
+  --nt-fuente-titulo: 'Newsreader', Georgia, serif;
+  --nt-fuente-mano: 'Caveat', cursive;
+
+  --nt-esp-1: 4px;
+  --nt-esp-2: 8px;
+  --nt-esp-3: 12px;
+  --nt-esp-4: 20px;
+  --nt-esp-5: 28px;
+  --nt-radio: 12px;
+  --nt-toque: 44px; /* tamaño mínimo cómodo para dedos */
+}
