@@ -66,6 +66,7 @@ export class Lienzo {
     this.texto = null; // { id, base, original, nuevo } de la sesión de edición
     this.ocultoId = null;
     this._ultimoToque = null;
+    this._ultimoToqueVacio = null;
     this.cursorTexto = null;
     this.herramienta = 'seleccionar'; // seleccionar | mano | lapiz | resaltador | borrador | rectangulo | elipse
     this.dedoDibuja = true; // pasa a false al detectar un lápiz: entonces el dedo mueve el lienzo
@@ -182,7 +183,6 @@ export class Lienzo {
       lista: this.escena.lista(), escena: this.escena, seleccion: this.seleccion, ocultoId: this.ocultoId, renglones: this._fondoRenglones(),
       guiaTexto: this.renglones,
       alImagenLista: () => this.pedirDibujo(),
-      cursorTexto: this.puedeHerramienta('texto') && !HERRAMIENTAS_DE_MANO.includes(this.herramienta) && !this.editor ? this._cursorTextoPosicion() : null,
       marco: g && (g.tipo === 'marco' || g.tipo === 'texto') ? normalizarRect(g.inicio.x, g.inicio.y, g.actual.x, g.actual.y) : null,
       mostrarManijas: unico && this.herramienta === 'seleccionar' && (!g || g.tipo === 'redimensionar') ? unico : null,
       marcoDocumento: this.marco,
@@ -277,21 +277,13 @@ export class Lienzo {
     return null;
   }
 
+  // Escribir sin abrir el texto: solo vale cuando hay un único texto seleccionado (se abre y recibe la tecla).
+  // Para crear un texto nuevo se hace doble clic en un lugar vacío o se usa la herramienta Texto.
   _escribirDirectoDesdeTeclado(caracter) {
     if (this.editor || this.gesto || !this.puedeHerramienta('texto')) return false;
     const unico = this._unicoTexto();
-    if (unico) {
-      this.editarTexto(unico.id);
-      this.editor?.insertarTextoDirecto(caracter);
-      return true;
-    }
-    const p = this._cursorTextoPosicion();
-    const pantalla = mundoAPantalla(this.camara, p.x, p.y);
-    const rect = this.canvas.getBoundingClientRect();
-    const punto = { x: rect.left + pantalla.x, y: rect.top + pantalla.y };
-    const existente = this._textoEnOCerca(p, 8 / this.camara.zoom);
-    if (existente?.tipo === 'texto') this._abrirEditor(existente, false, punto, true);
-    else this._crearTextoDirecto(p.x, p.y);
+    if (!unico) return false;
+    this.editarTexto(unico.id);
     this.editor?.insertarTextoDirecto(caracter);
     return true;
   }
@@ -399,7 +391,11 @@ export class Lienzo {
       }
     } else {
       if (!e.shiftKey) this.seleccion = new Set();
-      this.gesto = { tipo: 'marco', inicio: mundo, actual: mundo, base: new Set(this.seleccion) };
+      // Segundo toque seguido en un lugar vacío: al soltar se crea un texto ahí (doble clic o doble toque)
+      const u = this._ultimoToqueVacio, ahora = Date.now();
+      const doble = !e.shiftKey && u && ahora - u.t < 450 && Math.hypot(p.x - u.x, p.y - u.y) < 14 && this.puedeHerramienta('texto');
+      this._ultimoToqueVacio = doble ? null : { t: ahora, x: p.x, y: p.y };
+      this.gesto = { tipo: 'marco', inicio: mundo, actual: mundo, base: new Set(this.seleccion), dobleVacio: !!doble, inicioPantalla: p };
     }
     this._notificar(); this.pedirDibujo();
   }
@@ -594,6 +590,9 @@ export class Lienzo {
       this.escena.registrar(g.cambios, 'borrar');
     } else if (g.tipo === 'texto') {
       this._soltarTexto(g, e);
+    } else if (g.tipo === 'marco' && g.dobleVacio && Math.hypot(this._pos(e).x - g.inicioPantalla.x, this._pos(e).y - g.inicioPantalla.y) < 6) {
+      // el texto nuevo nace con su primer renglón donde se hizo doble clic (y guiado por los renglones, si están activos)
+      this._crearTextoDirecto(g.inicio.x, g.inicio.y - Math.round(this.ajustes.texto.tamano) * 0.7);
     } else if (g.tipo === 'mover' && !g.movido && g.sobreTexto) {
       this._toqueSobreTexto(g.sobreTexto, e);
     } else if (g.tipo === 'mover' && g.movido) {
@@ -680,7 +679,7 @@ export class Lienzo {
     const ctrl = e.ctrlKey || e.metaKey;
     const k = (e.key || '').toLowerCase();
     if (!ctrl && !e.altKey && !e.isComposing && e.key?.length === 1 && e.key !== ' ' && this.puedeHerramienta('texto') && t?.tagName !== 'BUTTON') {
-      e.preventDefault(); this._escribirDirectoDesdeTeclado(e.key); return;
+      if (this._escribirDirectoDesdeTeclado(e.key)) { e.preventDefault(); return; }
     }
     if (ctrl && k === 'z') { e.preventDefault(); if (e.shiftKey) this.rehacer(); else this.deshacer(); }
     else if (ctrl && k === 'y') { e.preventDefault(); this.rehacer(); }
@@ -689,9 +688,7 @@ export class Lienzo {
     else if (k === 'escape') { this._cancelarGesto(); this.seleccion = new Set(); this._notificar(); this.pedirDibujo(); }
     else if (e.code === 'Space' && t?.tagName !== 'BUTTON') {
       if (!ctrl && !e.altKey && this.puedeHerramienta('texto') && (this.herramienta === 'texto' || this._unicoTexto() || this.escritura === 'teclado')) {
-        e.preventDefault();
-        this._escribirDirectoDesdeTeclado(' ');
-        return;
+        if (this._escribirDirectoDesdeTeclado(' ')) { e.preventDefault(); return; }
       }
       e.preventDefault();
       if (!this.espacio) { this.espacio = true; this._cursor(); }

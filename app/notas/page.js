@@ -8,9 +8,9 @@ export const metadata = {
 };
 
 // La app ya está publicada en /notas/app/index.html (carpeta public/notas/app). Mientras esta constante
-// sea false, la página sigue mostrando el aviso de «en desarrollo» y no enlaza a la app, para poder
-// probarla en PC, Android e iPad sin que nadie llegue desde la web. Cambiar a true para habilitarla.
-const DISPONIBLE = false;
+// sea false, la página muestra el aviso de «en desarrollo» y no enlaza a la app (sirve para probarla en
+// PC, Android e iPad sin que nadie llegue desde la web). Con true muestra el botón «Abrir Anotomía».
+const DISPONIBLE = true;
 
 const FORMATOS = [
   {
@@ -51,10 +51,10 @@ export default function Notas() {
       </header>
 
       {DISPONIBLE ? (
-        <section className="src" style={{ paddingTop: '1.25rem' }}>
+        <div className="nt-abrir">
           {/* Enlace común (no Link): la app es un archivo estático, no una página de Next */}
           <a className="btn" href="/notas/app/index.html">Abrir Anotomía</a>
-        </section>
+        </div>
       ) : (
         <div className="note" role="note">
           <p><b>En desarrollo.</b> Anotomía todavía no está disponible. Esta página se irá completando a medida que avance la app y, cuando esté lista, podrá usarla desde aquí mismo.</p>

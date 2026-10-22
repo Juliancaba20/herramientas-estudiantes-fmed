@@ -19,6 +19,7 @@
 - [x] Etapa 13 · Modo instalable y uso sin conexión (aprobada: PWA con precarga en Service Worker, fuentes autoalojadas y actualización con guardado previo)
 - [x] Etapa 14 · Pulido, accesibilidad, rendimiento y materias/etiquetas (implementada y verificada: 194 pruebas)
 - [~] Etapa 15 · Publicación en la web (en curso: la app está integrada en la web en `/notas/app/index.html`; falta probar la instalación en PC, Android e iPad por HTTPS y habilitar el botón en `/notas`)
+  - Correcciones tras la primera prueba en la web (21 oct 2026): (1) el pizarrón no abría («Can't find variable: herr»): faltaban en `EditorLienzo.jsx` las definiciones de `m`, `sel`, `herr`, `modo`, `conMano` y `conTeclado`; ahora `npm run lint` detecta variables sin definir (`no-undef`). (2) El pizarrón mostraba «No se pudo guardar» al abrirse (el estado inicial vacío caía en el texto de error): ahora se usa `??` en los tres editores. (3) En A4 y tarjetas la barra de páginas/tarjetas tapaba la barra de zoom: ahora van por encima (`bottom: 72px`). (4) El panel de símbolos quedaba recortado por la barra de texto: ahora se dibuja fuera de ella (portal), es más ancho y las categorías se ven todas. (5) Se quitó el cursor de texto azul que flotaba en el lienzo: ya no se escribe «en cualquier parte»; se crea un texto con doble clic (o doble toque) en un lugar vacío, con la herramienta Texto, o se escribe sobre un texto seleccionado. (6) Botón «Abrir Anotomía» de la web: centrado y más grande; `DISPONIBLE = true`.
 - [ ] Etapa 16 (opcional)
 
 ## Decisiones tomadas
@@ -28,7 +29,7 @@
 - Clases CSS con prefijo `nt-` y variables con prefijo `--nt-` (para copiar a la web sin conflictos).
 - Los identificadores no usan `crypto.randomUUID()` porque no existe por http en red local (la tablet en desarrollo).
 - Los elementos (texto, trazo, imagen, símbolo) se guardan en un almacén aparte, indexados por documento.
-- Las tipografías (Figtree, Newsreader, Caveat) son provisorias; se reemplazan por las de la web.
+- Tipografías (Etapa 15): las de la web, autoalojadas en `src/estilos/tipografias.css`. Bricolage Grotesque para la interfaz y los títulos; Source Serif 4 (con cursiva real y griego) para el texto de las notas y los símbolos, tanto en el campo editable como en el lienzo (`FUENTE_TEXTO`). Se reemplazaron antes de que existieran notas de otras personas porque cambiar la letra reacomoda las líneas de las notas ya escritas.
 
 - La papelera es temporal: lo que lleva más de 30 días se elimina solo al abrir la app.
 - Duplicar copia el documento y todos sus elementos en una sola operación.

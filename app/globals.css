@@ -186,6 +186,9 @@ code{background:var(--brand-l);border-radius:6px;padding:0 .35em;font-size:.9em}
 
 /* ---------- Anotomía (/notas): usa todo el ancho de la web, sin los topes de lectura de .src y .note ---------- */
 [data-tema="notas"] .src,[data-tema="notas"] .note{max-width:none}
+/* Botón principal «Abrir Anotomía»: centrado y bien visible */
+[data-tema="notas"] .nt-abrir{display:flex;justify-content:center;padding:1.75rem 0 .75rem}
+[data-tema="notas"] .nt-abrir .btn{margin:0;padding:1.05rem 3rem;font-size:clamp(1.2rem,2.6vw,1.6rem);box-shadow:var(--sh2)}
 .nt-cols{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr))}
 .nt-cols .card{animation:rise .55s var(--ease) both;animation-delay:calc(var(--i,0)*80ms + .2s)}
 

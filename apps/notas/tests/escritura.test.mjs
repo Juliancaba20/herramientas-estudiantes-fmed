@@ -174,14 +174,13 @@ test('finalizarGestoEnCurso guarda el trazo que se estaba dibujando sin esperar 
   assert.equal(motor.gesto, null);
 });
 
-test('espacio en modo teclado directo empieza a escribir texto', () => {
+test('espacio sin ningún texto seleccionado no abre un texto escondido', () => {
   nuevo();
   motor.escritura = 'teclado';
   motor.setHerramienta('seleccionar');
   const ev = new dom.window.KeyboardEvent('keydown', { code: 'Space', bubbles: true, cancelable: true });
   dom.window.dispatchEvent(ev);
-  assert.ok(motor.editor); // abrió el editor de texto
-  motor.cerrarTexto();
+  assert.equal(motor.editor, null); // los textos se crean con doble clic o con la herramienta Texto
 });
 
 test.after(() => { motor?.destruir(); dom.window.close(); });

@@ -55,21 +55,22 @@
 .nt-tam { min-width: 30px; text-align: center; font-weight: 600; font-size: 14px; }
 .nt-color--chico { width: 26px; height: 26px; margin: 0 2px; }
 .nt-selector-simbolos { display: inline-flex; }
-.nt-simbolos-panel { position: fixed; z-index: 60; width: min(380px, calc(100vw - 16px)); max-height: min(480px, 75vh); display: flex; flex-direction: column; gap: 10px; padding: 12px; overflow: hidden; background: #fff; border: 1px solid var(--nt-linea); border-radius: 12px; box-shadow: 0 8px 28px rgba(20,25,43,.25); }
+.nt-simbolos-panel { position: fixed; z-index: 60; width: min(480px, calc(100vw - 16px)); max-height: min(560px, 80vh); display: flex; flex-direction: column; gap: 10px; padding: 12px; overflow: hidden; background: #fff; border: 1px solid var(--nt-linea); border-radius: 12px; box-shadow: 0 8px 28px rgba(20,25,43,.25); }
 .nt-simbolos-cab { display: flex; align-items: center; gap: 8px; }
 .nt-simbolos-busqueda { flex: 1; display: flex; align-items: center; gap: 8px; padding: 0 10px; border: 1.5px solid var(--nt-linea); border-radius: 10px; }
 .nt-simbolos-busqueda:focus-within { border-color: var(--nt-azul); }
+.nt-simbolos-busqueda input:focus-visible { outline: none; }
 .nt-simbolos-busqueda input { width: 100%; min-width: 0; height: 40px; border: 0; outline: 0; font: inherit; font-size: 14px; background: transparent; }
 .nt-simbolos-lupa { color: var(--nt-suave); font-size: 18px; }
 .nt-simbolos-cerrar { width: var(--nt-toque); height: var(--nt-toque); border-radius: 10px; font-size: 16px; color: var(--nt-suave); }
 .nt-simbolos-cerrar:hover { background: var(--nt-azul-claro); color: var(--nt-azul); }
-.nt-simbolos-pestanas { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.nt-simbolos-pestanas { display: flex; flex-wrap: wrap; gap: 6px; }
 .nt-simbolos-pestana { min-height: 36px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--nt-linea); background: #f8f9fa; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; flex: none; color: var(--nt-suave); }
 .nt-simbolos-pestana:hover { background: var(--nt-azul-claro); color: var(--nt-azul); }
 .nt-simbolos-pestana--activa { background: var(--nt-azul); color: #fff; border-color: var(--nt-azul); }
 .nt-simbolos-pestana--activa:hover { background: var(--nt-azul-oscuro); color: #fff; }
 .nt-simbolos-seccion h3 { margin: 0 0 6px; color: var(--nt-suave); font-size: 12px; font-weight: 600; }
-.nt-simbolos-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 6px; overflow-y: auto; padding: 2px; }
+.nt-simbolos-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 6px; overflow-y: auto; padding: 2px; min-height: 120px; }
 .nt-simbolos-rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 6px; padding: 2px; }
 .nt-simbolos-lista button, .nt-simbolos-rejilla button { min-width: 44px; min-height: 44px; border: 1px solid transparent; border-radius: 8px; background: #f4f6f7; color: var(--nt-texto); cursor: pointer; font: 22px/1 Georgia, serif; display: grid; place-items: center; transition: background .12s, border-color .12s; }
 .nt-simbolos-lista button:hover, .nt-simbolos-rejilla button:hover { border-color: var(--nt-azul); background: var(--nt-azul-claro); }
@@ -101,7 +102,7 @@
 .nt-tarjeta-badge { font-size: 13px; font-weight: 500; color: var(--nt-azul); background: var(--nt-azul-claro); padding: 4px 10px; border-radius: 99px; white-space: nowrap; }
 .nt-btn--tamano { font-size: 13px; font-weight: 500; white-space: nowrap; }
 .nt-panel-tamano { position: fixed; z-index: 40; width: 290px; max-width: calc(100vw - 16px); padding: 14px; background: #fff; border-radius: 12px; box-shadow: 0 6px 24px rgba(20,25,43,.25); border: 1px solid var(--nt-linea); font-size: 14px; }
-.nt-barra-tarjetas { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); z-index: 5; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,.96); padding: 6px 12px; border-radius: 14px; box-shadow: 0 4px 18px rgba(20,25,43,.22); max-width: calc(100% - 24px); }
+.nt-barra-tarjetas { position: absolute; left: 50%; bottom: 72px; transform: translateX(-50%); z-index: 5; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,.96); padding: 6px 12px; border-radius: 14px; box-shadow: 0 4px 18px rgba(20,25,43,.22); max-width: calc(100% - 24px); }
 .nt-tarjetas-nav { display: flex; align-items: center; gap: 6px; }
 .nt-tarjeta-indicador { font-weight: 600; font-size: 14px; color: var(--nt-texto); white-space: nowrap; }
 .nt-tarjeta-titulo-input { border: 1px solid var(--nt-linea); border-radius: 8px; padding: 4px 8px; font-size: 14px; font-family: inherit; width: 180px; max-width: 240px; background: #fff; }
@@ -112,7 +113,7 @@
 .nt-tarjeta-chip--activa { background: var(--nt-azul); color: #fff; border-color: var(--nt-azul); }
 .nt-separador-v { width: 1px; height: 24px; background: var(--nt-linea); margin: 0 4px; }
 @media (max-width: 768px) {
-  .nt-barra-tarjetas { bottom: 64px; flex-wrap: wrap; justify-content: center; max-width: 95%; }
+  .nt-barra-tarjetas { bottom: 72px; flex-wrap: wrap; justify-content: center; max-width: 95%; }
   .nt-tarjeta-titulo-input { width: 130px; }
   .nt-tarjetas-chips { max-width: 140px; }
 }
@@ -146,17 +147,17 @@
 
 /* ---------- Formato Páginas A4 (Etapa 10) ---------- */
 .nt-pagina-badge { font-size: 13px; font-weight: 500; color: #1f7a45; background: #eaf8f0; padding: 4px 10px; border-radius: 99px; white-space: nowrap; }
-.nt-barra-paginas { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); z-index: 5; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,.96); padding: 6px 12px; border-radius: 14px; box-shadow: 0 4px 18px rgba(20,25,43,.22); max-width: calc(100% - 24px); }
+.nt-barra-paginas { position: absolute; left: 50%; bottom: 72px; transform: translateX(-50%); z-index: 5; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,.96); padding: 6px 12px; border-radius: 14px; box-shadow: 0 4px 18px rgba(20,25,43,.22); max-width: calc(100% - 24px); }
 .nt-paginas-nav { display: flex; align-items: center; gap: 6px; }
 .nt-pagina-indicador { font-weight: 600; font-size: 14px; color: var(--nt-texto); white-space: nowrap; }
 .nt-pagina-chip { min-width: 28px; height: 28px; padding: 0 6px; border-radius: 8px; border: 1px solid var(--nt-linea); background: #fff; font-size: 13px; font-weight: 600; cursor: pointer; display: grid; place-items: center; }
 .nt-pagina-chip:hover { background: var(--nt-azul-claro); }
 .nt-pagina-chip--activa { background: var(--nt-azul); color: #fff; border-color: var(--nt-azul); }
-.nt-desborde-texto { position: absolute; left: 50%; bottom: 90px; transform: translateX(-50%); z-index: 6; display: flex; align-items: center; gap: 10px; max-width: calc(100% - 24px); padding: 8px 12px; background: #fff; border: 1px solid #d3a64b; border-radius: 8px; box-shadow: 0 4px 14px rgba(20,25,43,.18); }
+.nt-desborde-texto { position: absolute; left: 50%; bottom: 134px; transform: translateX(-50%); z-index: 6; display: flex; align-items: center; gap: 10px; max-width: calc(100% - 24px); padding: 8px 12px; background: #fff; border: 1px solid #d3a64b; border-radius: 8px; box-shadow: 0 4px 14px rgba(20,25,43,.18); }
 .nt-desborde-texto span { font-size: 13px; }
 @media (max-width: 768px) {
-  .nt-barra-paginas { bottom: 64px; flex-wrap: wrap; justify-content: center; max-width: 95%; }
-  .nt-desborde-texto { bottom: 132px; flex-wrap: wrap; justify-content: center; }
+  .nt-barra-paginas { bottom: 72px; flex-wrap: wrap; justify-content: center; max-width: 95%; }
+  .nt-desborde-texto { bottom: 190px; flex-wrap: wrap; justify-content: center; }
 }
 
 

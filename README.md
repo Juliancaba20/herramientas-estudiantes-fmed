@@ -17,7 +17,7 @@ Todo el proyecto vive en este único repositorio:
 |---------|-----------|
 | `app/` | El sitio (Next.js, App Router): portada, `metodos/`, `teclado/`, `notas/`, `contacto/` y `api/contacto/` |
 | `apps/notas/` | Código de Anotomía (Vite + React) |
-| `public/notas/app/` | Anotomía ya compilada (se genera con `npm run publicar:notas`) |
+| `public/notas/app/` | Anotomía ya compilada (se genera sola en cada `npm run build`; no se sube) |
 | `scripts/` | `publicar-notas.mjs`, que compila Anotomía y la copia a `public/` |
 | `content/metodos/` | Un archivo JSON por método de estudio |
 | `public/teclado/` | Imágenes de la página del teclado |
@@ -66,15 +66,9 @@ La página está en `app/teclado/`: `page.js` (contenido), `Descargas.js` (enlac
 Son dos cosas separadas:
 
 - `/notas` (`app/notas/page.js`): página de presentación, con el tema azul (`data-tema="notas"` en `app/globals.css`). La constante `DISPONIBLE` de ese archivo decide si muestra el aviso «en desarrollo» (`false`) o el botón «Abrir Anotomía» (`true`).
-- `/notas/app/index.html`: la app en sí, un sitio estático independiente (Vite + React) que no comparte estilos ni diseño con el resto de la web. Su código está en `apps/notas/` (ver `apps/notas/ESTADO.md`) y lo que se publica es la carpeta compilada `public/notas/app/`. La dirección `/notas/app` redirige a `/notas/app/index.html` (`next.config.mjs`).
+- `/notas/app/index.html`: la app en sí, un sitio estático independiente (Vite + React) que no comparte estilos ni diseño con el resto de la web. Su código está en `apps/notas/` (ver `apps/notas/ESTADO.md`) y lo que se publica es su compilación, `public/notas/app/`. La dirección `/notas/app` redirige a `/notas/app/index.html` (`next.config.mjs`).
 
-Para publicar una versión nueva de la app, después de cambiar algo en `apps/notas/`:
-
-```bash
-npm run publicar:notas   # compila apps/notas y reemplaza public/notas/app
-```
-
-Luego se sube el repositorio como siempre. La carpeta `public/notas/app/` se sube a GitHub (es lo que Vercel sirve); `apps/notas/node_modules` y `apps/notas/dist` no.
+Para publicar una versión nueva de la app basta con subir los archivos modificados de `apps/notas/` al repositorio, como cualquier otro cambio de la web: en cada despliegue, `npm run build` compila Anotomía (`scripts/publicar-notas.mjs`) y después el sitio, así que Vercel siempre publica la última versión de la app. `public/notas/app/` se genera solo y no se sube a GitHub. Para probar el resultado en su PC: `npm run build` y luego `npm start`. Para recompilar solo la app: `npm run publicar:notas`.
 
 ## Formulario de contacto
 

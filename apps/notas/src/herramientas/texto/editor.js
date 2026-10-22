@@ -152,7 +152,7 @@ export class EditorTexto {
   _alPerderFoco(e) {
     if (this.cerrado) return;
     const r = e.relatedTarget;
-    if (r && r.closest && r.closest('[data-nt-barra]')) return;
+    if (r && r.closest && r.closest('[data-nt-barra],[data-nt-barra-panel]')) return;
     DIFERIDO(() => { if (!this.cerrado && this.doc.activeElement !== this.raiz) this.alTerminar('blur'); });
   }
 

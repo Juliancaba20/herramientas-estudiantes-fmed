@@ -7,3 +7,6 @@ build/
 dist/
 *.spec
 !.env.example
+
+# Anotomía compilada: la genera `npm run build` (scripts/publicar-notas.mjs); no se sube
+public/notas/app/

@@ -696,7 +696,7 @@ export default function EditorTarjetas({ doc, volver }) {
           Cuadrícula
         </button>
         <span className={`nt-estado ${estado === 'guardado' ? 'nt-estado--ok' : ''} ${estado.startsWith('error') ? 'nt-estado--error' : ''}`} aria-live="polite">
-          {TEXTO_ESTADO[estado] || TEXTO_ESTADO.error}
+          {TEXTO_ESTADO[estado] ?? TEXTO_ESTADO.error}
         </span>
         <Boton icono="imprimir" nombre="Imprimir o exportar tarjetas" alPulsar={() => setModalImprimir(true)} />
         <Boton icono="exportar" nombre="Exportar nota (.nota)" deshabilitado={exportando} alPulsar={ejecutarExportar} />

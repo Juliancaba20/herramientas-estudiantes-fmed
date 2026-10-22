@@ -2,7 +2,7 @@
 // y el CSS del editor se genera desde estas mismas constantes: así lo que se ve al escribir
 // y lo que queda dibujado en el lienzo no pueden desalinearse.
 
-export const FUENTE_TEXTO = "Figtree, system-ui, sans-serif";
+export const FUENTE_TEXTO = "'Source Serif 4 Variable', Georgia, serif";
 export const TAMANO_TEXTO = 20; // tamaño base por defecto, en unidades del mundo
 export const COLOR_TEXTO = '#14192b';
 export const TAMANOS_TEXTO = [10, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48, 64, 80, 96, 128];

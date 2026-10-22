@@ -13,8 +13,9 @@
   --nt-error: #b3261e;
   --nt-ok: #1f7a45;
 
-  --nt-fuente: 'Figtree', system-ui, sans-serif;
-  --nt-fuente-titulo: 'Newsreader', Georgia, serif;
+  --nt-fuente: 'Bricolage Grotesque Variable', system-ui, sans-serif;
+  --nt-fuente-titulo: 'Bricolage Grotesque Variable', system-ui, sans-serif;
+  --nt-fuente-notas: 'Source Serif 4 Variable', Georgia, serif; /* texto de las notas y símbolos */
   --nt-fuente-mano: 'Caveat', cursive;
 
   --nt-esp-1: 4px;

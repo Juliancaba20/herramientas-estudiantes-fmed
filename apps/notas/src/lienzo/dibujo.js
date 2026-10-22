@@ -1,5 +1,6 @@
 import { visibleEnMundo } from './camara.js';
 import { pintarTexto } from '../herramientas/texto/pintar.js';
+import { FUENTE_TEXTO } from '../herramientas/texto/estilo.js';
 import { esLinea, extremosLinea, manijas, puntosForma, rectsSeCruzan } from './geometria.js';
 import { dibujarRenglones } from './renglones.js';
 import { imagenEnCache } from '../herramientas/imagenes/recursos.js';
@@ -105,7 +106,7 @@ function dibujarElemento(ctx, el, zoom = 1, guiaTexto = null, alImagenLista = nu
   } else if (el.tipo === 'texto' || el.tipo === 'simbolo') {
     const tam = d.tamano || 18;
     ctx.fillStyle = d.color || '#14192b';
-    ctx.font = `${tam}px ${el.tipo === 'simbolo' ? 'Newsreader, Georgia, serif' : 'Figtree, system-ui, sans-serif'}`;
+    ctx.font = `${tam}px ${FUENTE_TEXTO}`;
     ctx.textBaseline = 'top';
     (el.tipo === 'simbolo' ? [d.caracter] : String(d.contenido || '').split('\n')).forEach((linea, i) => ctx.fillText(linea, el.x, el.y + i * tam * 1.3));
   } else if (el.tipo === 'imagen') {
@@ -115,7 +116,7 @@ function dibujarElemento(ctx, el, zoom = 1, guiaTexto = null, alImagenLista = nu
 
 // Dibuja un cuadro completo. Solo se dibujan los elementos que cruzan la parte visible.
 export function dibujar(ctx, opciones) {
-  const { camara, ancho: an, alto: al, dpr, lista, escena, seleccion, marco, mostrarManijas, trazoActivo, fondoCache, borrador, ocultoId = null, renglones = null, guiaTexto = null, marcoDocumento = null, dibujadosPrevio = 0, cursorTexto = null, alImagenLista = null } = opciones;
+  const { camara, ancho: an, alto: al, dpr, lista, escena, seleccion, marco, mostrarManijas, trazoActivo, fondoCache, borrador, ocultoId = null, renglones = null, guiaTexto = null, marcoDocumento = null, dibujadosPrevio = 0, alImagenLista = null } = opciones;
   const ancho = an, alto = al;
   if (fondoCache) {
     // Mientras se escribe: la escena ya dibujada se reutiliza y solo se redibuja el trazo en curso.
@@ -226,28 +227,6 @@ export function dibujar(ctx, opciones) {
     ctx.beginPath(); ctx.arc(borrador.x, borrador.y, borrador.r, 0, Math.PI * 2);
     ctx.fillStyle = 'rgba(20,25,43,0.05)'; ctx.fill();
     ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(20,25,43,0.55)'; ctx.stroke();
-  }
-  if (cursorTexto) {
-    const x = (cursorTexto.x - camara.x) * camara.zoom;
-    const y = (cursorTexto.y - camara.y) * camara.zoom;
-    const altoCursor = Math.max(14, Math.min(36, camara.zoom * (guiaTexto?.interlineado || 22)));
-    ctx.save();
-    ctx.strokeStyle = AZUL;
-    ctx.lineWidth = Math.max(2, 2 * Math.min(1.5, camara.zoom));
-    ctx.lineCap = 'round';
-    ctx.beginPath();
-    ctx.moveTo(Math.round(x) + 0.5, y);
-    ctx.lineTo(Math.round(x) + 0.5, y + altoCursor);
-    ctx.stroke();
-    const guiaW = Math.max(3, 3 * Math.min(1.5, camara.zoom));
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.moveTo(Math.round(x) + 0.5 - guiaW, y);
-    ctx.lineTo(Math.round(x) + 0.5 + guiaW, y);
-    ctx.moveTo(Math.round(x) + 0.5 - guiaW, y + altoCursor);
-    ctx.lineTo(Math.round(x) + 0.5 + guiaW, y + altoCursor);
-    ctx.stroke();
-    ctx.restore();
   }
   return { dibujados };
 }

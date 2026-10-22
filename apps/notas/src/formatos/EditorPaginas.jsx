@@ -473,7 +473,7 @@ export default function EditorPaginas({ doc, volver }) {
         <input className="nt-ed-titulo" aria-label="Título del documento" value={titulo} onChange={(e) => cambiarTituloDoc(e.target.value)} />
         <span className="nt-pagina-badge" title="Formato">Páginas A4 (210 × 297 mm)</span>
         <span className={`nt-estado ${estado === 'guardado' ? 'nt-estado--ok' : ''} ${estado.startsWith('error') ? 'nt-estado--error' : ''}`} aria-live="polite">
-          {TEXTO_ESTADO[estado] || TEXTO_ESTADO.error}
+          {TEXTO_ESTADO[estado] ?? TEXTO_ESTADO.error}
         </span>
         <Boton icono="imprimir" nombre="Imprimir documento en A4" alPulsar={() => setModalImprimir(true)} />
         <Boton icono="exportar" nombre="Exportar nota (.nota)" deshabilitado={exportando} alPulsar={ejecutarExportar} />

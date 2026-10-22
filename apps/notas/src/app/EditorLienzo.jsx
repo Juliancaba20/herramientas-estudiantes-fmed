@@ -145,12 +145,19 @@ export default function EditorLienzo({ doc, volver }) {
     imprimirContenedor(cont);
   }
 
+  const m = () => motorRef.current;
+  const sel = (ui?.seleccionados || 0) > 0;
+  const herr = ui?.herramienta;
+  const modo = doc.escritura || 'ambos';
+  const conMano = modo !== 'teclado';
+  const conTeclado = modo !== 'mano';
+
   return (
     <div className="nt-editor">
       <header className="nt-ed-cab">
         <button className="nt-btn" onClick={salir}>← Biblioteca</button>
         <input className="nt-ed-titulo" aria-label="Título" value={titulo} onChange={(e) => cambiarTitulo(e.target.value)} />
-        <span className={`nt-estado ${estado === 'guardado' ? 'nt-estado--ok' : ''} ${estado.startsWith('error') ? 'nt-estado--error' : ''}`} aria-live="polite">{TEXTO_ESTADO[estado] || TEXTO_ESTADO.error}</span>
+        <span className={`nt-estado ${estado === 'guardado' ? 'nt-estado--ok' : ''} ${estado.startsWith('error') ? 'nt-estado--error' : ''}`} aria-live="polite">{TEXTO_ESTADO[estado] ?? TEXTO_ESTADO.error}</span>
         <Boton icono="deshacer" nombre="Deshacer (Ctrl+Z)" conservarFoco deshabilitado={!ui?.puedeDeshacer} alPulsar={() => m().deshacer()} />
         <Boton icono="rehacer" nombre="Rehacer (Ctrl+Y)" conservarFoco deshabilitado={!ui?.puedeRehacer} alPulsar={() => m().rehacer()} />
         <Boton icono="exportar" nombre="Exportar nota (.nota)" deshabilitado={exportando} alPulsar={ejecutarExportar} />

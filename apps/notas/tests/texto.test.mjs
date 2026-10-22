@@ -351,20 +351,26 @@ test('tocar el lienzo con otra herramienta termina la edición y los atajos no s
   assert.equal(textos().length, 1);
 });
 
-test('escribir empieza sin elegir Texto, inserta la primera tecla y convive con trazos', () => {
+test('sin texto seleccionado, teclear no escribe; el doble clic en un lugar vacío crea el texto y convive con trazos', () => {
   nuevo({ estilo: 'rayado', interlineado: 32, activos: true });
   motor.setHerramienta('lapiz');
   ptr('pointerdown', 120, 140, { pointerType: 'pen' });
   ptr('pointermove', 160, 165, { pointerType: 'pen' });
   ptr('pointerup', 160, 165, { pointerType: 'pen' });
-  assert.deepEqual(motor.cursorTexto, { x: 160, y: 165 });
   const tecla = new dom.window.KeyboardEvent('keydown', { key: 'g', bubbles: true, cancelable: true });
   window.dispatchEvent(tecla);
-  assert.equal(tecla.defaultPrevented, true);
-  assert.equal(motor.herramienta, 'lapiz');
-  assert.equal(motor.renglones.activos, true);
+  assert.equal(tecla.defaultPrevented, false);
+  assert.equal(motor.editor, null); // no hay ningún cursor «listo para escribir» en el lienzo
+  motor.setHerramienta('seleccionar');
+  clic(300, 300); // un solo clic en un lugar vacío no crea nada
+  assert.equal(motor.editor, null);
+  motor.cerrarTexto();
+  clic(400, 260); clic(400, 260); // doble clic en un lugar vacío
+  assert.ok(motor.editor);
+  escribir('<p>g</p>');
   assert.equal(M.modeloATexto(motor.editor.leer()), 'g');
   assert.equal(motor.texto.base.datos.composicion, 'guiada');
+  assert.equal(motor.renglones.activos, true);
   motor.cerrarTexto();
   assert.equal(textos().length, 1);
   assert.equal(textos()[0].datos.composicion, 'guiada');
@@ -376,9 +382,22 @@ test('escribir empieza sin elegir Texto, inserta la primera tecla y convive con 
   assert.equal(elGuiado.alto % 40, 0);
   assert.equal(escena.lista().filter((e) => e.tipo === 'trazo').length, 1);
   motor.configurarRenglones({ activos: false });
-  motor.cursorTexto = { x: 400, y: 500 };
-  window.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'a', bubbles: true, cancelable: true }));
+  clic(500, 520); clic(500, 520);
+  assert.ok(motor.editor);
   assert.equal(motor.texto.base.datos.composicion, undefined);
+  motor.cerrarTexto();
+});
+
+test('con un único texto seleccionado, teclear lo abre y escribe', () => {
+  nuevo(); motor.setHerramienta('texto');
+  clic(100, 100); escribir('<p>x</p>'); motor.cerrarTexto();
+  motor.setHerramienta('seleccionar');
+  motor.seleccion = new Set([textos()[0].id]);
+  const tecla = new dom.window.KeyboardEvent('keydown', { key: 'y', bubbles: true, cancelable: true });
+  window.dispatchEvent(tecla);
+  assert.equal(tecla.defaultPrevented, true);
+  assert.ok(motor.editor);
+  assert.equal(M.modeloATexto(motor.editor.leer()).includes('y'), true);
   motor.cerrarTexto();
 });
 

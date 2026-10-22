@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { obtenerAjuste, guardarAjuste } from '../almacen/index.js';
 import { buscarSimbolos, registrarSimbolo, CATEGORIAS } from '../herramientas/simbolos/catalogo.js';
 
@@ -8,6 +9,7 @@ const sinFoco = (e) => e.preventDefault();
 export default function SelectorSimbolos({ motorRef }) {
   const raiz = useRef(null);
   const boton = useRef(null);
+  const panel = useRef(null);
   const [abierto, setAbierto] = useState(false);
   const [consulta, setConsulta] = useState('');
   const [categoria, setCategoria] = useState('todas');
@@ -27,8 +29,8 @@ export default function SelectorSimbolos({ motorRef }) {
     }
     const r = boton.current?.getBoundingClientRect();
     if (r) {
-      const anchoPanel = Math.min(380, window.innerWidth - 16);
-      const altoPanel = Math.min(480, window.innerHeight - 80);
+      const anchoPanel = Math.min(480, window.innerWidth - 16);
+      const altoPanel = Math.min(560, window.innerHeight * 0.8);
       setPosicion({
         left: Math.max(8, Math.min(r.left, window.innerWidth - anchoPanel - 8)),
         top: Math.max(8, Math.min(r.bottom + 8, window.innerHeight - altoPanel - 8)),
@@ -52,7 +54,8 @@ export default function SelectorSimbolos({ motorRef }) {
   useEffect(() => {
     if (!abierto) return undefined;
     const fuera = (e) => {
-      if (!raiz.current?.contains(e.target)) setAbierto(false);
+      // el panel se dibuja fuera de la barra de texto (si no, la barra lo recortaría), por eso se revisa aparte
+      if (!raiz.current?.contains(e.target) && !panel.current?.contains(e.target)) setAbierto(false);
     };
     const tecla = (e) => {
       if (e.key === 'Escape') {
@@ -96,8 +99,8 @@ export default function SelectorSimbolos({ motorRef }) {
         Σ
       </button>
 
-      {abierto && (
-        <div className="nt-simbolos-panel" role="dialog" aria-label="Símbolos científicos" style={posicion}>
+      {abierto && createPortal(
+        <div ref={panel} data-nt-barra-panel className="nt-simbolos-panel" role="dialog" aria-label="Símbolos científicos" style={posicion}>
           <div className="nt-simbolos-cab">
             <label className="nt-simbolos-busqueda">
               <span className="nt-simbolos-lupa" aria-hidden="true">⌕</span>
@@ -176,7 +179,8 @@ export default function SelectorSimbolos({ motorRef }) {
               <span className="nt-simbolos-vacio">No se encontraron símbolos para esa búsqueda.</span>
             )}
           </div>
-        </div>
+        </div>,
+        document.querySelector('.nt-raiz') || document.body,
       )}
     </div>
   );
