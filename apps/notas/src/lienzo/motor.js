@@ -364,6 +364,8 @@ export class Lienzo {
     const dedoMueve = tactil && e.pointerType === 'touch' && manoLibre && !this.dedoDibuja;
     if ((e.pointerType === 'mouse' && e.button === 1) || this.herramienta === 'mano' || this.espacio || dedoMueve) {
       this.gesto = { tipo: 'paneo', ultimo: p, pointerId: e.pointerId, pointerType: e.pointerType };
+      // Con «Mover el lienzo», el doble clic (o doble toque) también escribe: en un lugar vacío crea un texto y sobre un texto lo edita
+      if (this.herramienta === 'mano' && !this.espacio && !(e.pointerType === 'mouse' && e.button !== 0)) this._prepararDobleClicMano(p, mundo, tactil, this.gesto);
       this._cursor();
       return;
     }
@@ -372,6 +374,23 @@ export class Lienzo {
     else if (this.herramienta === 'texto') this.gesto = { tipo: 'texto', pointerId: e.pointerId, pointerType: e.pointerType, inicio: mundo, actual: mundo, inicioPantalla: p };
     else if (manoLibre) this._iniciarTrazo(e, p, mundo);
     else this._iniciarCrear(this._snapPunto(mundo), p);
+  }
+
+  // Marca el gesto de paneo de la mano para que, si resulta ser un doble clic quieto, al soltar escriba (ver _arriba).
+  _prepararDobleClicMano(p, mundo, tactil, gesto) {
+    gesto.inicioPantalla = p;
+    gesto.inicio = mundo;
+    const el = this._elementoEn(mundo, (tactil ? 8 : 3) / this.camara.zoom);
+    if (el) {
+      this._ultimoToqueVacio = null;
+      if (el.tipo === 'texto') gesto.sobreTexto = el.id;
+      return;
+    }
+    this._ultimoToque = null;
+    const u = this._ultimoToqueVacio, ahora = Date.now();
+    const doble = u && ahora - u.t < 450 && Math.hypot(p.x - u.x, p.y - u.y) < 14 && this.puedeHerramienta('texto');
+    this._ultimoToqueVacio = doble ? null : { t: ahora, x: p.x, y: p.y };
+    gesto.dobleVacio = !!doble;
   }
 
   _abajoSeleccion(e, p, mundo, tactil) {
@@ -590,6 +609,8 @@ export class Lienzo {
       this.escena.registrar(g.cambios, 'borrar');
     } else if (g.tipo === 'texto') {
       this._soltarTexto(g, e);
+    } else if (g.tipo === 'paneo' && g.inicioPantalla) {
+      this._soltarPaneoMano(g, e);
     } else if (g.tipo === 'marco' && g.dobleVacio && Math.hypot(this._pos(e).x - g.inicioPantalla.x, this._pos(e).y - g.inicioPantalla.y) < 6) {
       // el texto nuevo nace con su primer renglón donde se hizo doble clic (y guiado por los renglones, si están activos)
       this._crearTextoDirecto(g.inicio.x, g.inicio.y - Math.round(this.ajustes.texto.tamano) * 0.7);
@@ -923,6 +944,14 @@ export class Lienzo {
   }
 
   // Doble clic (o doble toque) sobre un texto con la herramienta Seleccionar.
+  // Fin de un paneo con la mano: si se movió, no cuenta como clic; si quedó quieto, puede ser el 2.º clic de un doble clic.
+  _soltarPaneoMano(g, e) {
+    const q = this._pos(e);
+    if (Math.hypot(q.x - g.inicioPantalla.x, q.y - g.inicioPantalla.y) >= 6) { this._ultimoToqueVacio = null; this._ultimoToque = null; return; }
+    if (g.dobleVacio) this._crearTextoDirecto(g.inicio.x, g.inicio.y - Math.round(this.ajustes.texto.tamano) * 0.7);
+    else if (g.sobreTexto) this._toqueSobreTexto(g.sobreTexto, e);
+  }
+
   _toqueSobreTexto(id, e) {
     const p = this._pos(e), ahora = Date.now(), u = this._ultimoToque;
     if (u && u.id === id && ahora - u.t < 450 && Math.hypot(p.x - u.x, p.y - u.y) < 14) { this._ultimoToque = null; this.editarTexto(id, { x: e.clientX, y: e.clientY }); }

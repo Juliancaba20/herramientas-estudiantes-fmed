@@ -42,7 +42,7 @@
 /* ---------- Texto con teclado (Etapa 6) ----------
    La estructura del texto (títulos, listas, tablas) la genera herramientas/texto/estilo.js. */
 .nt-capa-texto { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 3; }
-.nt-texto-ed { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: auto; min-height: 1.4em; padding: 0; margin: 0; background: rgba(255,255,255,.92); caret-color: var(--nt-azul); outline: 1.5px dashed var(--nt-azul); outline-offset: 4px; cursor: text; -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; touch-action: manipulation; }
+.nt-texto-ed { position: absolute; left: 0; top: 0; transform-origin: 0 0; pointer-events: auto; min-height: 1.4em; padding: 0; margin: 0; background: transparent; caret-color: var(--nt-azul); outline: 1.5px dashed var(--nt-azul); outline-offset: 4px; cursor: text; -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; touch-action: manipulation; }
 .nt-texto-ed ::selection { background: rgba(35,80,216,.25); }
 .nt-barra-texto { z-index: 5; gap: 8px 12px; max-height: 45vh; overflow: auto; }
 .nt-grupo { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; }
@@ -80,9 +80,9 @@
 /* ---------- Pizarrón completo (Etapa 7) ---------- */
 .nt-menu-formas { position: fixed; z-index: 30; display: grid; grid-template-columns: repeat(3, auto); gap: 4px; background: #fff; padding: 6px; border-radius: 14px; box-shadow: 0 6px 20px rgba(20,25,43,.28); }
 .nt-color--vacio { display: grid; place-items: center; background: #fff; color: var(--nt-suave); font-size: 16px; line-height: 1; }
-.nt-lienzo canvas.nt-minimapa { inset: auto 12px 64px auto; width: 168px; height: 112px; z-index: 2; background: rgba(255,255,255,.94); border: 1.5px solid var(--nt-linea); border-radius: 12px; box-shadow: 0 4px 14px rgba(20,25,43,.2); touch-action: none; cursor: crosshair; }
-.nt-volver { position: absolute; left: 50%; bottom: 72px; transform: translateX(-50%); z-index: 4; box-shadow: 0 4px 14px rgba(20,25,43,.28); background: var(--nt-azul); color: #fff; border-color: var(--nt-azul); }
-@media (max-width: 640px) { .nt-lienzo canvas.nt-minimapa { width: 120px; height: 80px; bottom: 60px; } .nt-volver { bottom: 64px; } }
+.nt-lienzo canvas.nt-minimapa { inset: auto 12px 72px auto; width: 168px; height: 112px; z-index: 2; background: rgba(255,255,255,.94); border: 1.5px solid var(--nt-linea); border-radius: 12px; box-shadow: 0 4px 14px rgba(20,25,43,.2); touch-action: none; cursor: crosshair; }
+.nt-volver { position: absolute; left: 12px; bottom: 72px; z-index: 4; box-shadow: 0 4px 14px rgba(20,25,43,.28); background: var(--nt-azul); color: #fff; border-color: var(--nt-azul); }
+@media (max-width: 640px) { .nt-lienzo canvas.nt-minimapa { width: 120px; height: 80px; } }
 
 .nt-ib--chico { width: 32px; min-width: 32px; height: var(--nt-toque); min-height: var(--nt-toque); margin: 0 4px 0 -6px; border-radius: 8px; }
 .nt-panel-renglones { position: fixed; z-index: 30; width: 320px; max-width: calc(100vw - 16px); max-height: 70vh; overflow: auto; display: grid; gap: 12px; padding: 14px; background: #fff; border-radius: 14px; box-shadow: 0 6px 24px rgba(20,25,43,.3); font-size: 14px; }
@@ -153,11 +153,11 @@
 .nt-pagina-chip { min-width: 28px; height: 28px; padding: 0 6px; border-radius: 8px; border: 1px solid var(--nt-linea); background: #fff; font-size: 13px; font-weight: 600; cursor: pointer; display: grid; place-items: center; }
 .nt-pagina-chip:hover { background: var(--nt-azul-claro); }
 .nt-pagina-chip--activa { background: var(--nt-azul); color: #fff; border-color: var(--nt-azul); }
-.nt-desborde-texto { position: absolute; left: 50%; bottom: 134px; transform: translateX(-50%); z-index: 6; display: flex; align-items: center; gap: 10px; max-width: calc(100% - 24px); padding: 8px 12px; background: #fff; border: 1px solid #d3a64b; border-radius: 8px; box-shadow: 0 4px 14px rgba(20,25,43,.18); }
+.nt-desborde-texto { position: absolute; left: 12px; bottom: 140px; z-index: 6; display: flex; align-items: center; gap: 10px; max-width: calc(100% - 24px); padding: 8px 12px; background: #fff; border: 1px solid #d3a64b; border-radius: 8px; box-shadow: 0 4px 14px rgba(20,25,43,.18); }
 .nt-desborde-texto span { font-size: 13px; }
 @media (max-width: 768px) {
   .nt-barra-paginas { bottom: 72px; flex-wrap: wrap; justify-content: center; max-width: 95%; }
-  .nt-desborde-texto { bottom: 190px; flex-wrap: wrap; justify-content: center; }
+  .nt-desborde-texto { flex-wrap: wrap; justify-content: center; }
 }
 
 
@@ -173,3 +173,24 @@
 .nt-estudio__flecha--izq { left: 12px; }
 .nt-estudio__flecha--der { right: 12px; }
 @media (max-width: 640px) { .nt-estudio__flecha { width: 44px; height: 44px; font-size: 22px; } }
+
+/* ---------- Dock inferior unificado ----------
+   Zoom, «N seleccionados» y la barra de navegación (tarjetas o páginas) viven en un mismo contenedor:
+   misma altura (52 px), mismo estilo y mismo borde izquierdo. Si no caben en una fila, la barra pasa
+   a la fila de arriba (el zoom queda siempre abajo a la izquierda). */
+:root { --nt-hud-alto: 52px; }
+.nt-hud-pie { position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 5; display: flex; flex-wrap: wrap-reverse; align-items: flex-end; gap: 8px; pointer-events: none; }
+.nt-hud-pie > * { pointer-events: auto; }
+.nt-hud-pie .nt-zoom, .nt-hud-pie .nt-barra-tarjetas, .nt-hud-pie .nt-barra-paginas {
+  position: static; left: auto; bottom: auto; transform: none; box-sizing: border-box; min-height: var(--nt-hud-alto); max-width: 100%;
+  display: flex; flex-wrap: nowrap; align-items: center; justify-content: flex-start; gap: 6px; padding: 4px 8px;
+  background: rgba(255,255,255,.97); border-radius: 14px; box-shadow: 0 4px 14px rgba(20,25,43,.2);
+}
+.nt-hud-pie .nt-barra-tarjetas, .nt-hud-pie .nt-barra-paginas { overflow-x: auto; scrollbar-width: thin; }
+.nt-hud-pie .nt-btn { white-space: nowrap; flex: none; }
+.nt-hud-pie .nt-tarjetas-nav, .nt-hud-pie .nt-paginas-nav, .nt-hud-pie .nt-separador-v { flex: none; }
+.nt-hud-pie .nt-tarjetas-chips { flex: 0 1 auto; min-width: 36px; max-width: 220px; }
+.nt-hud-pie .nt-tarjeta-chip, .nt-hud-pie .nt-pagina-chip { flex: none; }
+.nt-hud-pie .nt-tarjeta-titulo-input { flex: 0 1 160px; min-width: 90px; min-height: 36px; box-sizing: border-box; }
+.nt-hud-pie .nt-zoom .nt-ib { font-size: 24px; font-weight: 500; }
+.nt-hud-pie .nt-seleccion { position: static; transform: none; align-self: center; pointer-events: none; white-space: nowrap; }

@@ -98,7 +98,7 @@ export default function ModalAyuda({ alCerrar }) {
             <div>
               <strong>Doble toque o doble clic:</strong>
               <p style={{ margin: '4px 0 0 0', color: '#4a5568' }}>
-                Con la herramienta Seleccionar activa, toque dos veces cualquier texto para abrir su editor.
+                Con la herramienta Seleccionar o con Mover el lienzo, toque dos veces un lugar vacío para escribir un texto nuevo, o dos veces un texto para abrir su editor.
               </p>
             </div>
           </div>

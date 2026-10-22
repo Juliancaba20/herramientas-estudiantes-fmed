@@ -192,6 +192,7 @@ export default function EditorLienzo({ doc, volver }) {
           {ui?.texto && <BarraTexto estado={ui.texto} motorRef={motorRef} />}
           {!ui && !error && <p className="nt-lienzo__aviso">Cargando…</p>}
           {error && <p className="nt-aviso nt-lienzo__aviso" role="alert">{error}</p>}
+          <div className="nt-hud-pie">
           <div className="nt-zoom" role="group" aria-label="Zoom">
             <button className="nt-ib" aria-label="Alejar" onClick={() => m().zoomPaso(1 / 1.25)}>−</button>
             <button className="nt-zoom__valor" onClick={() => m().zoomReal()} title="Volver al 100 %">{ui?.zoom ?? 100} %</button>
@@ -201,6 +202,7 @@ export default function EditorLienzo({ doc, volver }) {
             <Boton icono="mapa" nombre="Mostrar u ocultar el minimapa" activo={!!ui?.ajustes.vista.minimapa} alPulsar={() => m().configurar('vista', { minimapa: !ui.ajustes.vista.minimapa })} />
           </div>
           {sel && <div className="nt-seleccion">{ui.seleccionados} seleccionado{ui.seleccionados > 1 ? 's' : ''}</div>}
+          </div>
         </div>
       </div>
       {modalImprimir && (

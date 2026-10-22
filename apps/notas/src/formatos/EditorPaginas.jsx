@@ -522,6 +522,8 @@ export default function EditorPaginas({ doc, volver }) {
 
           {error && <p className="nt-aviso nt-lienzo__aviso" role="alert">{error}</p>}
 
+          {/* Dock inferior: zoom, selección y navegación comparten fila, altura y estilo */}
+          <div className="nt-hud-pie">
           <div className="nt-zoom" role="group" aria-label="Zoom">
             <button className="nt-ib" aria-label="Alejar" onClick={() => m()?.zoomPaso(1 / 1.25)}>−</button>
             <button className="nt-zoom__valor" onClick={() => ajustarAncho()} title="Ajustar al ancho">{ui?.zoom ?? 100} %</button>
@@ -602,6 +604,7 @@ export default function EditorPaginas({ doc, volver }) {
             >
               Encabezado y pie
             </button>
+          </div>
           </div>
         </div>
       </div>

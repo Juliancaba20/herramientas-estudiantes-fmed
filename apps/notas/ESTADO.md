@@ -313,3 +313,11 @@
 - **Limpieza:** se eliminó `public/icons.svg` (sobrante que figuraba como eliminado en la Etapa 13).
 - **Pruebas:** 200 (6 nuevas en `tests/persistencia.test.mjs`).
 - **Pendiente de decidir (no se tocó):** copia automática al cerrar la app; paquete de 505 KB (150 KB comprimido), aceptable gracias al service worker; 7 advertencias de lint menores.
+
+## Ajustes de uso (22 de octubre de 2026)
+- **Texto en edición:** el cuadro de texto tiene fondo transparente (se ven los renglones y lo que haya detrás). El texto que se edita no se dibuja dos veces porque el lienzo lo oculta mientras tanto.
+- **Doble clic con «Mover el lienzo»:** en un lugar vacío crea un texto; sobre un texto lo edita. Un clic simple o un arrastre siguen moviendo el lienzo. Implementado en `lienzo/motor.js` (`_prepararDobleClicMano` y `_soltarPaneoMano`).
+- **Dock inferior unificado:** zoom, «N seleccionados» y la barra de navegación (tarjetas o páginas) van dentro de `.nt-hud-pie`: misma altura (52 px), mismo estilo y mismo borde izquierdo. Si no caben en una fila, la barra pasa arriba del zoom. En pantallas angostas la barra se desplaza en horizontal en vez de partirse en varias líneas. El minimapa, «Volver al contenido» y el aviso de desborde del A4 se alinearon a esa misma línea.
+- **Aclaración de botones:** las tres rayitas (≡) del zoom son «Renglones: encender o apagar» (Alt+G); la flecha ^ de al lado abre sus opciones. Las flechas a la izquierda, habilitadas al seleccionar algo, cambian el orden de capas (frente, subir, bajar, fondo): no mueven el elemento por el lienzo.
+- Pruebas: `tests/hud-y-texto.test.mjs`. Comprobado con navegador automatizado en PC, tablet y celular; **sin comprobar** con lápiz en una tablet real.
+

@@ -833,6 +833,8 @@ export default function EditorTarjetas({ doc, volver }) {
           {!cargado && !error && <p className="nt-lienzo__aviso">Cargando tarjeta…</p>}
           {error && <p className="nt-aviso nt-lienzo__aviso" role="alert">{error}</p>}
 
+          {/* Dock inferior: zoom, selección y navegación comparten fila, altura y estilo */}
+          <div className="nt-hud-pie">
           <div className="nt-zoom" role="group" aria-label="Zoom">
             <button className="nt-ib" aria-label="Alejar" onClick={() => m()?.zoomPaso(1 / 1.25)}>−</button>
             <button className="nt-zoom__valor" onClick={() => encuadrarTarjeta()} title="Encuadrar tarjeta">{ui?.zoom ?? 100} %</button>
@@ -903,6 +905,7 @@ export default function EditorTarjetas({ doc, volver }) {
             >
               Eliminar
             </button>
+          </div>
           </div>
         </div>
       </div>
