@@ -10,7 +10,9 @@ const origen = join(raiz, 'apps', 'notas');
 const destino = join(raiz, 'public', 'notas', 'app');
 const ejecutar = (orden) => execSync(orden, { cwd: origen, stdio: 'inherit' });
 
-if (!existsSync(join(origen, 'node_modules'))) ejecutar(existsSync(join(origen, 'package-lock.json')) ? 'npm ci' : 'npm install');
+// Vite y las pruebas están en devDependencies. Vercel compila con NODE_ENV=production, y en ese modo npm omite
+// las devDependencies: sin `--include=dev` falla con «vite: not found» (código 127). Por eso se piden de forma explícita.
+if (!existsSync(join(origen, 'node_modules', '.bin', 'vite'))) ejecutar(existsSync(join(origen, 'package-lock.json')) ? 'npm ci --include=dev' : 'npm install --include=dev');
 ejecutar('npm run build');
 
 rmSync(destino, { recursive: true, force: true });

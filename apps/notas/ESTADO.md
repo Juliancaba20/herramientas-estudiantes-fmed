@@ -21,6 +21,15 @@
 - [~] Etapa 15 · Publicación en la web (en curso: la app está integrada en la web en `/notas/app/index.html`; falta probar la instalación en PC, Android e iPad por HTTPS y habilitar el botón en `/notas`)
   - Correcciones tras la primera prueba en la web (21 oct 2026): (1) el pizarrón no abría («Can't find variable: herr»): faltaban en `EditorLienzo.jsx` las definiciones de `m`, `sel`, `herr`, `modo`, `conMano` y `conTeclado`; ahora `npm run lint` detecta variables sin definir (`no-undef`). (2) El pizarrón mostraba «No se pudo guardar» al abrirse (el estado inicial vacío caía en el texto de error): ahora se usa `??` en los tres editores. (3) En A4 y tarjetas la barra de páginas/tarjetas tapaba la barra de zoom: ahora van por encima (`bottom: 72px`). (4) El panel de símbolos quedaba recortado por la barra de texto: ahora se dibuja fuera de ella (portal), es más ancho y las categorías se ven todas. (5) Se quitó el cursor de texto azul que flotaba en el lienzo: ya no se escribe «en cualquier parte»; se crea un texto con doble clic (o doble toque) en un lugar vacío, con la herramienta Texto, o se escribe sobre un texto seleccionado. (6) Botón «Abrir Anotomía» de la web: centrado y más grande; `DISPONIBLE = true`.
 - [ ] Etapa 16 (opcional)
+- [ ] Etapa 17 · Edición esencial del lienzo (copiar/pegar, estirar, lazo, agrupar, alinear, imán) — ver docs/PLAN_ETAPAS_17_A_25.md
+- [ ] Etapa 18 · Búsqueda global y exportación (imagen y PDF)
+- [ ] Etapa 19 · PDF: importar y anotar (empieza con prototipo)
+- [ ] Etapa 20 · Texto y páginas A4 al nivel de Word
+- [ ] Etapa 21 · Diseño visual y plantillas (nivel Canva y PowerPoint)
+- [ ] Etapa 22 · Estudio de medicina (oclusión de imagen, texto oculto, repetición espaciada)
+- [ ] Etapa 23 · Conexiones y organización (enlaces entre notas, mapas conceptuales, calendario de exámenes)
+- [ ] Etapa 24 · Herramientas de precisión (regla, transportador, corrección de formas)
+- [ ] Etapa 25 · Audio sincronizado (empieza con prototipo)
 
 ## Decisiones tomadas
 - Nombre de la app: **Anotomía** (anotar + anatomía). Pendiente: comprobar que no choque con otra marca o app.
@@ -128,6 +137,8 @@
 - `tests/`: pruebas automáticas (`npm test`): almacenamiento, lienzo, escritura, texto, pizarrón, renglones, tarjetas y páginas A4
 
 ## Ideas para después
+(21 oct 2026) Las ideas de funciones tomadas de Word, Canva, PowerPoint, GoodNotes, Notability y Anki se convirtieron en las etapas 17 a 25. Detalle en `docs/PLAN_ETAPAS_17_A_25.md`; prompts en `docs/PROMPTS_POR_ETAPA.md`. Condición: cerrar antes la Etapa 15. Ya cubiertas por esas etapas: búsqueda global (18), plantillas (21), exportación a imagen (18), audio (25), copiar/pegar/duplicar y estirar trazos (17). Siguen pendientes: sincronización entre dispositivos y reconocimiento de escritura a mano.
+
 - Búsqueda de texto dentro de todos los documentos
 - Sincronización opcional entre dispositivos
 - Plantillas de documentos
