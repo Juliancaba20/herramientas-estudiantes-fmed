@@ -122,28 +122,36 @@ jobs:
         run: |
           mkdir -p salida
           carpeta=src-tauri/target/release/bundle
-          [ "${{ matrix.sistema }}" = "Mac" ] && carpeta=src-tauri/target/universal-apple-darwin/release/bundle
-          ls -R "$carpeta" | head -40
-          poner() { # poner <patrón del archivo generado> <nombre final>
-            origen=$(ls $1 2>/dev/null | head -1)
-            if [ -z "$origen" ]; then echo "::error::No se generó $2 (se buscó $1)."; exit 1; fi
+          if [ "${{ matrix.sistema }}" = "Mac" ]; then carpeta=src-tauri/target/universal-apple-darwin/release/bundle; fi
+          echo "Archivos generados:"
+          find "$carpeta" -maxdepth 2 || true
+          # poner <patrón del archivo generado> <nombre final> <firmado: si | no>
+          # Solo llevan firma los archivos que usa el actualizador (instalador de Windows, .app de Mac y AppImage de Linux);
+          # el .dmg de Mac es solo para la descarga y no la tiene.
+          poner() {
+            origen=""
+            for candidato in $1; do origen="$candidato"; break; done
+            if [ -z "$origen" ] || [ ! -e "$origen" ]; then echo "::error::No se generó $2 (se buscó $1)."; exit 1; fi
             cp "$origen" "salida/$2"
-            if [ -f "$origen.sig" ]; then cp "$origen.sig" "salida/$2.sig"
-            elif [ "${{ steps.clave.outputs.sin }}" != "1" ]; then echo "::error::Falta la firma de $2."; exit 1; fi
+            if [ "$3" = "si" ]; then
+              if [ -f "$origen.sig" ]; then cp "$origen.sig" "salida/$2.sig"
+              elif [ "${{ steps.clave.outputs.sin }}" != "1" ]; then echo "::error::Falta la firma de $2."; exit 1; fi
+            fi
             tamano=$(stat -c %s "salida/$2" 2>/dev/null || stat -f %z "salida/$2")
             echo "$2: $tamano bytes"
             if [ "$tamano" -lt 1000000 ]; then echo "::error::$2 es demasiado chico: la compilación falló."; exit 1; fi
           }
           case "${{ matrix.sistema }}" in
             Windows)
-              poner "$carpeta/nsis/*-setup.exe" Anotomia-Windows.exe
+              poner "$carpeta/nsis/*-setup.exe" Anotomia-Windows.exe si
               if [ "$(head -c 2 salida/Anotomia-Windows.exe)" != "MZ" ]; then echo "::error::El archivo no es un ejecutable de Windows."; exit 1; fi ;;
             Mac)
-              poner "$carpeta/dmg/*.dmg" Anotomia-Mac.dmg
-              poner "$carpeta/macos/*.app.tar.gz" Anotomia-Mac.app.tar.gz ;;
+              poner "$carpeta/dmg/*.dmg" Anotomia-Mac.dmg no
+              poner "$carpeta/macos/*.app.tar.gz" Anotomia-Mac.app.tar.gz si ;;
             Linux)
-              poner "$carpeta/appimage/*.AppImage" Anotomia-Linux.AppImage ;;
+              poner "$carpeta/appimage/*.AppImage" Anotomia-Linux.AppImage si ;;
           esac
+          ls -l salida
 
       - uses: actions/upload-artifact@v4
         with:
