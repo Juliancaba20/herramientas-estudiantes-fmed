@@ -186,13 +186,28 @@ code{background:var(--brand-l);border-radius:6px;padding:0 .35em;font-size:.9em}
 
 /* ---------- Anotomía (/notas): usa todo el ancho de la web, sin los topes de lectura de .src y .note ---------- */
 [data-tema="notas"] .src,[data-tema="notas"] .note{max-width:none}
-/* Descarga de Anotomía (Descargas.js): una sola tarjeta centrada y bien visible */
-[data-tema="notas"] .nt-descarga{width:100%;max-width:40rem;margin:0 auto;padding:1.75rem 0 .75rem;text-align:center}
-[data-tema="notas"] .nt-descarga .descargas{grid-template-columns:1fr;text-align:left}
-[data-tema="notas"] .nt-descarga .descarga b{font-size:clamp(1.35rem,3vw,1.7rem)}
-[data-tema="notas"] .nt-descarga .descarga .boton{padding:.8rem 1.8rem;font-size:clamp(1.05rem,2.4vw,1.3rem)}
-[data-tema="notas"] .nt-descarga details{text-align:left;margin-top:.9rem}
-[data-tema="notas"] .nt-descarga .note{text-align:left}
+/* Descargas de Anotomía (Descargas.js): cinco tarjetas a todo el ancho de la web, como las del Teclado.
+   Seis columnas: arriba tres tarjetas (Windows, Mac, Linux) y abajo dos más anchas (Android, versión online).
+   minmax(0,1fr) evita que el texto largo empuje la grilla fuera de la pantalla. */
+.nt-descargas{grid-template-columns:repeat(6,minmax(0,1fr))}
+.nt-descargas>*{grid-column:span 2;min-width:0}
+.nt-descargas>:nth-child(n+4){grid-column:span 3}
+.nt-descargas .descarga{overflow-wrap:anywhere}
+.nt-descargas .boton{overflow-wrap:normal}
+.descarga.no-disponible{border-top-color:var(--line);opacity:.75;cursor:default}
+.descarga.no-disponible:hover{transform:none;box-shadow:var(--sh1)}
+.descarga.no-disponible .boton,.descarga.no-disponible:hover .boton{background:var(--mut)}
+@media(max-width:56rem){
+  .nt-descargas{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nt-descargas>*,.nt-descargas>:nth-child(n+4){grid-column:span 1}
+  .nt-descargas>:last-child{grid-column:1/-1}
+}
+@media(max-width:34rem){
+  .nt-descargas{grid-template-columns:minmax(0,1fr)}
+  .nt-descargas>*,.nt-descargas>:nth-child(n+4),.nt-descargas>:last-child{grid-column:1/-1}
+}
+.nt-ayuda{padding-top:2rem}
+.nt-ayuda details{margin-top:.6rem}
 .nt-cols{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,18rem),1fr))}
 .nt-cols .card{animation:rise .55s var(--ease) both;animation-delay:calc(var(--i,0)*80ms + .2s)}
 

@@ -6,7 +6,7 @@ Sitio gratuito y sin fines de lucro con herramientas para estudiantes, en especi
 - `/metodos` catálogo de métodos de estudio con nivel de respaldo (lo básico de cada uno)
 - `/metodos/<método>` página de cada método con la información completa (se genera sola desde `content/metodos/`)
 - `/teclado` página del Teclado Científico, con las descargas para Windows, Mac y Linux
-- `/notas` página de Anotomía, la app de notas: cada sistema recibe como única descarga su programa (Windows .exe, Mac .dmg, Linux .AppImage, Android .apk) y el resto (iPad, iPhone…) la instalación de la versión web; la app está en `/notas/app/index.html`
+- `/notas` página de Anotomía, la app de notas: muestra todas las versiones a la vista, como el Teclado (Windows .exe, Mac .dmg, Linux .AppImage, Android .apk y la versión online) con la de su dispositivo resaltada; la app está en `/notas/app/index.html`
 - `/contacto` formulario para informar errores o enviar sugerencias (llega por mail)
 
 ## Estructura del repositorio
@@ -73,7 +73,7 @@ Son dos cosas separadas:
 
 ### Programas de Anotomía (Windows, Mac, Linux y Android)
 
-Qué se ofrece a cada dispositivo (regla en `apps/notas/src/pwa/escritorio.js`, la misma en la página `/notas` y en el modal «Instalar» de la app):
+Qué se ofrece a cada dispositivo (regla en `apps/notas/src/pwa/escritorio.js`). La página `/notas` muestra todas las versiones y resalta la del dispositivo («Recomendado para su equipo»); el modal «Instalar» de la app, que se abre desde la propia app, ofrece solo la que corresponde:
 
 | Dispositivo | Única descarga |
 |---|---|

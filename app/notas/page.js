@@ -52,7 +52,7 @@ export default function Notas() {
       </header>
 
       {DISPONIBLE ? (
-        // Windows, Mac, Linux y Android reciben solo su programa; el resto de los sistemas, la versión web.
+        // Todas las descargas a la vista (Windows, Mac, Linux, Android y la versión online), con la de su equipo resaltada.
         <Descargas />
       ) : (
         <div className="note" role="note">
@@ -86,12 +86,12 @@ export default function Notas() {
 
       <div className="dos-col" style={{ paddingTop: '2rem' }}>
         <section className="rv">
-          <h2 className="t" style={{ marginTop: 0 }}>Para PC, tablet y iPad</h2>
-          <p>Se descarga como programa en Windows (.exe), Mac (.dmg), Linux (.AppImage) y Android (.apk); en iPad y iPhone se instala desde el navegador. En todos los casos se adapta a cada pantalla: botones grandes y herramientas al alcance del pulgar en tablets, y todo el espacio disponible en computadoras.</p>
+          <h2 className="t" style={{ marginTop: 0 }}>Para PC, tablet y celular</h2>
+          <p>Se adapta a cada pantalla: botones grandes y herramientas al alcance del pulgar en tablets y celulares, y todo el espacio disponible en computadoras.</p>
         </section>
         <section className="rv">
           <h2 className="t" style={{ marginTop: 0 }}>Sus notas, en su dispositivo</h2>
-          <p>Los documentos se guardan en el propio dispositivo y la app está pensada para funcionar sin conexión. Para pasar notas de un equipo a otro se usan archivos propios (<code>.nota</code>) que se exportan e importan, e incluyen todo el contenido.</p>
+          <p>En Windows, Mac y Linux las notas son archivos <code>.nota</code> que usted guarda donde quiera, como en Word, y se guardan solos mientras escribe. En los demás dispositivos se guardan dentro de la aplicación y se pasan de uno a otro con esos mismos archivos. La app funciona sin conexión.</p>
         </section>
       </div>
 
