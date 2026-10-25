@@ -1,0 +1,36 @@
+[package]
+name = "anotomia"
+version = "0.1.0"
+description = "Anotomía: app de notas para estudiantes (programa de escritorio y Android)"
+edition = "2021"
+publish = false
+
+[lib]
+name = "anotomia_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.7", features = [] }
+
+[dependencies]
+tauri = { version = "2.12", features = [] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri-plugin-dialog = "2.8"
+tauri-plugin-fs = "2.7"
+
+# Solo en computadoras (Windows, Mac, Linux): actualización automática, reinicio, una sola ventana
+# y recuerdo de los archivos elegidos entre sesiones
+[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
+tauri-plugin-updater = "2.14"
+tauri-plugin-process = "2.4"
+tauri-plugin-single-instance = "2.5"
+tauri-plugin-persisted-scope = "2.4"
+
+# Programa final más chico y rápido de abrir
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

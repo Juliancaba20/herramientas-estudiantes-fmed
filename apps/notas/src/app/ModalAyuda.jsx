@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Modal } from './Modal.jsx';
+import { esProgramaDeComputadora } from '../pwa/escritorio.js';
 
 export default function ModalAyuda({ alCerrar }) {
   const [seccion, setSeccion] = useState('atajos');
@@ -66,6 +67,11 @@ export default function ModalAyuda({ alCerrar }) {
             <div style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: '8px', padding: '4px 0', borderBottom: '1px solid #edf2f7' }}>
               <strong>Ctrl + Z / Y</strong><span>Deshacer y rehacer sin límite</span>
             </div>
+            {esProgramaDeComputadora() && (
+              <div style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: '8px', padding: '4px 0', borderBottom: '1px solid #edf2f7' }}>
+                <strong>Ctrl + S</strong><span>Guardar en el archivo del documento (también se guarda solo mientras escribe)</span>
+              </div>
+            )}
             <div style={{ display: 'grid', gridTemplateColumns: '140px 1fr', gap: '8px', padding: '4px 0', borderBottom: '1px solid #edf2f7' }}>
               <strong>Escape</strong><span>Terminar edición de texto (mantiene la selección)</span>
             </div>

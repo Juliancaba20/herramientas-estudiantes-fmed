@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Descargas from './Descargas';
 
 export const viewport = { themeColor: '#1d4ed8' };
 
@@ -9,7 +10,7 @@ export const metadata = {
 
 // La app ya está publicada en /notas/app/index.html (carpeta public/notas/app). Mientras esta constante
 // sea false, la página muestra el aviso de «en desarrollo» y no enlaza a la app (sirve para probarla en
-// PC, Android e iPad sin que nadie llegue desde la web). Con true muestra el botón «Abrir Anotomía».
+// PC, Android e iPad sin que nadie llegue desde la web). Con true muestra las descargas (ver Descargas.js).
 const DISPONIBLE = true;
 
 const FORMATOS = [
@@ -51,10 +52,8 @@ export default function Notas() {
       </header>
 
       {DISPONIBLE ? (
-        <div className="nt-abrir">
-          {/* Enlace común (no Link): la app es un archivo estático, no una página de Next */}
-          <a className="btn" href="/notas/app/index.html">Abrir Anotomía</a>
-        </div>
+        // Windows, Mac, Linux y Android reciben solo su programa; el resto de los sistemas, la versión web.
+        <Descargas />
       ) : (
         <div className="note" role="note">
           <p><b>En desarrollo.</b> Anotomía todavía no está disponible. Esta página se irá completando a medida que avance la app y, cuando esté lista, podrá usarla desde aquí mismo.</p>
@@ -88,7 +87,7 @@ export default function Notas() {
       <div className="dos-col" style={{ paddingTop: '2rem' }}>
         <section className="rv">
           <h2 className="t" style={{ marginTop: 0 }}>Para PC, tablet y iPad</h2>
-          <p>Una sola app que se instala desde el navegador y se adapta a cada pantalla: botones grandes y herramientas al alcance del pulgar en tablets, y todo el espacio disponible en computadoras.</p>
+          <p>Se descarga como programa en Windows (.exe), Mac (.dmg), Linux (.AppImage) y Android (.apk); en iPad y iPhone se instala desde el navegador. En todos los casos se adapta a cada pantalla: botones grandes y herramientas al alcance del pulgar en tablets, y todo el espacio disponible en computadoras.</p>
         </section>
         <section className="rv">
           <h2 className="t" style={{ marginTop: 0 }}>Sus notas, en su dispositivo</h2>

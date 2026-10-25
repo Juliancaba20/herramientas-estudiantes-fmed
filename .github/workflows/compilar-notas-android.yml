@@ -1,0 +1,153 @@
+name: Compilar Anotomía para Android (.apk)
+
+# Se publica junto con el resto de los programas: git tag notas-v1.1  y  git push origin notas-v1.1
+# (el flujo de Windows, Mac y Linux y este corren a la vez, cada uno con lo suyo).
+# Probar sin publicar: pestaña Actions > «Compilar Anotomía para Android (.apk)» > Run workflow.
+# La primera vez hay que crear la clave de firma del .apk (ver README, «Anotomía para Android»).
+on:
+  push:
+    tags:
+      - "notas-v*"
+      - "Notas-v*"
+      - "anotomia-v*"
+      - "Anotomia-v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  # Deben coincidir con apps/notas/src/pwa/escritorio.js (una prueba lo controla).
+  ETIQUETA_ULTIMA: notas-ultima
+  ARCHIVO: Anotomia-Android.apk
+  TAURI_CLI: "2.12.4"
+  NDK: "27.0.12077973"
+
+jobs:
+  compilar:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        shell: bash
+        working-directory: apps/notas
+    env:
+      CLAVE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      CLAVE_CONTRASENA: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+      CLAVE_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+      CLAVE_ALIAS_CONTRASENA: ${{ secrets.ANDROID_KEY_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: apps/notas/package-lock.json
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: apps/notas/src-tauri
+
+      - name: Instalar el NDK de Android
+        run: |
+          sdkmanager --install "ndk;${NDK}" "platforms;android-35"
+          echo "NDK_HOME=$ANDROID_HOME/ndk/${NDK}" >> "$GITHUB_ENV"
+
+      - name: Bibliotecas de Linux
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev libxdo-dev libssl-dev patchelf
+
+      - name: Número de versión
+        id: version
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            visible=$(echo "$GITHUB_REF_NAME" | grep -oE '[0-9]+(\.[0-9]+)*' | head -1)
+          else
+            visible="0.0.$GITHUB_RUN_NUMBER"
+          fi
+          if [ -z "$visible" ]; then echo "::error::La etiqueta '$GITHUB_REF_NAME' no tiene un número de versión (por ejemplo notas-v1.1)."; exit 1; fi
+          IFS=. read -r a b c <<< "$visible"
+          echo "completa=${a}.${b:-0}.${c:-0}" >> "$GITHUB_OUTPUT"
+
+      - name: Comprobar la clave de firma del .apk
+        id: clave
+        run: |
+          # Android solo instala un .apk firmado, y solo lo actualiza si lo firma siempre la misma clave.
+          if [ -z "$CLAVE_BASE64" ] || [ -z "$CLAVE_CONTRASENA" ] || [ -z "$CLAVE_ALIAS" ] || [ -z "$CLAVE_ALIAS_CONTRASENA" ]; then
+            if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+              echo "::error::Faltan los secretos de la clave de firma (ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD, ANDROID_KEY_ALIAS, ANDROID_KEY_PASSWORD). Siga los pasos de «Anotomía para Android» del README."
+              exit 1
+            fi
+            echo "::warning::Sin clave de firma: esta compilación de prueba queda sin firmar y no se puede instalar."
+            echo "sin=1" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar la app web
+        run: npm run build
+
+      - name: Preparar el proyecto de Android
+        run: npx --yes @tauri-apps/cli@${TAURI_CLI} android init --ci
+
+      - name: Compilar el .apk
+        run: |
+          # El actualizador automático no existe en Android: se desactiva solo para este programa.
+          npx --yes @tauri-apps/cli@${TAURI_CLI} android build --apk --target aarch64 --ci \
+            --config "{\"version\":\"${{ steps.version.outputs.completa }}\",\"bundle\":{\"createUpdaterArtifacts\":false}}"
+
+      - name: Alinear y firmar el .apk
+        run: |
+          mkdir -p salida
+          sin_firmar=$(find src-tauri/gen/android -name "*-unsigned.apk" | head -1)
+          if [ -z "$sin_firmar" ]; then
+            sin_firmar=$(find src-tauri/gen/android -path "*outputs/apk*" -name "*.apk" | head -1)
+          fi
+          if [ -z "$sin_firmar" ]; then echo "::error::No se generó ningún .apk."; find src-tauri/gen/android -name "*.apk"; exit 1; fi
+          echo "Se generó: $sin_firmar"
+          herramientas="$ANDROID_HOME/build-tools/$(ls "$ANDROID_HOME/build-tools" | sort -V | tail -1)"
+          if [ "${{ steps.clave.outputs.sin }}" = "1" ]; then
+            cp "$sin_firmar" "salida/$ARCHIVO"
+          else
+            echo "$CLAVE_BASE64" | base64 -d > "$RUNNER_TEMP/anotomia.jks"
+            "$herramientas/zipalign" -p -f 4 "$sin_firmar" "$RUNNER_TEMP/alineado.apk"
+            "$herramientas/apksigner" sign --ks "$RUNNER_TEMP/anotomia.jks" --ks-pass env:CLAVE_CONTRASENA \
+              --ks-key-alias "$CLAVE_ALIAS" --key-pass env:CLAVE_ALIAS_CONTRASENA \
+              --out "salida/$ARCHIVO" "$RUNNER_TEMP/alineado.apk"
+            "$herramientas/apksigner" verify --verbose "salida/$ARCHIVO"
+            rm -f "$RUNNER_TEMP/anotomia.jks"
+          fi
+          tamano=$(stat -c %s "salida/$ARCHIVO")
+          echo "$ARCHIVO: $tamano bytes"
+          if [ "$tamano" -lt 1000000 ]; then echo "::error::El .apk es demasiado chico: la compilación falló."; exit 1; fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ARCHIVO }}
+          path: apps/notas/salida/${{ env.ARCHIVO }}
+
+      - name: Publicar en «notas-ultima» (solo con etiqueta)
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          # Misma publicación fija que usa el flujo de escritorio. Si todavía no existe, se crea aquí; si los dos
+          # flujos la crean a la vez, uno de los dos avisa que ya existía y sigue.
+          titulo="Anotomía - versión $(echo "$GITHUB_REF_NAME" | grep -oE '[0-9]+(\.[0-9]+)*' | head -1)"
+          notas="Programas de Anotomía y archivo de actualizaciones. Esta publicación se actualiza con cada versión nueva."
+          gh release create "$ETIQUETA_ULTIMA" --target "$GITHUB_SHA" --latest=false --title "$titulo" --notes "$notas" || echo "La publicación ya existía."
+          gh release upload "$ETIQUETA_ULTIMA" "salida/$ARCHIVO" --clobber

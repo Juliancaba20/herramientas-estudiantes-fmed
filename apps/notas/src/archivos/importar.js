@@ -123,7 +123,9 @@ export async function persistirDocumentoImportado(item, decision = 'reemplazar')
 
 // Procesa una lista de archivos File provenientes de input[type=file] o Drag & Drop
 // solicitarDecision: async ({ docExistente, docNuevo, nombreArchivo }) => 'reemplazar' | 'conservar-ambos' | 'omitir'
-export async function importarArchivos(archivos, { solicitarDecision } = {}) {
+// alImportar({ documento, accion, archivo, coleccion }): se llama por cada documento que entró a la biblioteca
+// (el programa de computadora lo usa para vincular el documento al archivo del que salió).
+export async function importarArchivos(archivos, { solicitarDecision, alImportar } = {}) {
   const lista = Array.from(archivos);
   const resultados = {
     importados: 0,
@@ -131,6 +133,7 @@ export async function importarArchivos(archivos, { solicitarDecision } = {}) {
     conservados: 0,
     omitidos: 0,
     imagenesOmitidas: 0,
+    documentos: [],
     errores: [],
   };
 
@@ -179,7 +182,11 @@ export async function importarArchivos(archivos, { solicitarDecision } = {}) {
         else if (res.accion === 'conservar-ambos') resultados.conservados++;
         else if (res.accion === 'omitido') resultados.omitidos++;
 
-        if (res.accion !== 'omitido') resultados.importados++;
+        if (res.accion !== 'omitido') {
+          resultados.importados++;
+          resultados.documentos.push({ id: res.documento.id, accion: res.accion });
+          try { await alImportar?.({ documento: res.documento, accion: res.accion, archivo, coleccion: desempaquetado.tipo === 'coleccion' }); } catch { /* el aviso no debe impedir la importación */ }
+        }
         resultados.imagenesOmitidas += res.imagenesOmitidas || 0;
       }
 

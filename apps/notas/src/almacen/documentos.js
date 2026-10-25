@@ -2,9 +2,18 @@ import { pedido, transaccion } from './db.js';
 import { nuevoId } from './modelo.js';
 
 // tocarFecha: false guarda sin cambiar la fecha de modificación (por ejemplo, al mover solo la cámara).
+// Cuando se guardó con cambios avisa con el evento «anotomia:documento-guardado»: el programa de computadora lo usa
+// para escribir también el archivo real del documento (src/archivos/disco.js). El almacén no sabe nada de archivos.
+export const EVENTO_DOCUMENTO_GUARDADO = 'anotomia:documento-guardado';
+
 export function guardarDocumento(doc, { tocarFecha = true } = {}) {
   const actualizado = tocarFecha ? { ...doc, modificado: Date.now() } : { ...doc };
-  return transaccion(['documentos'], 'readwrite', (tx) => pedido(tx.objectStore('documentos').put(actualizado))).then(() => actualizado);
+  return transaccion(['documentos'], 'readwrite', (tx) => pedido(tx.objectStore('documentos').put(actualizado))).then(() => {
+    if (tocarFecha && typeof window !== 'undefined' && typeof window.CustomEvent === 'function') {
+      window.dispatchEvent(new window.CustomEvent(EVENTO_DOCUMENTO_GUARDADO, { detail: { id: actualizado.id } }));
+    }
+    return actualizado;
+  });
 }
 
 export function obtenerDocumento(id) {

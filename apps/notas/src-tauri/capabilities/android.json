@@ -1,0 +1,14 @@
+{
+  "identifier": "android",
+  "description": "Android: guardar y abrir los archivos que la persona elige (sin actualizador, que solo existe en computadoras)",
+  "windows": ["main"],
+  "platforms": ["android"],
+  "permissions": [
+    "core:default",
+    "dialog:allow-open",
+    "dialog:allow-save",
+    "fs:allow-read-file",
+    "fs:allow-write-file",
+    "fs:allow-exists"
+  ]
+}

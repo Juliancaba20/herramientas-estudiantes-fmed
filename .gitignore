@@ -10,3 +10,9 @@ dist/
 
 # Anotomía compilada: la genera `npm run build` (scripts/publicar-notas.mjs); no se sube
 public/notas/app/
+
+# Claves de firma de Anotomía (NUNCA se suben al repositorio)
+*.key
+*.jks
+*.keystore
+anotomia-actualizaciones.key*

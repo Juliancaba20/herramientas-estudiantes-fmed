@@ -3,6 +3,7 @@
 
 import { listarElementos, obtenerBlob, listarDocumentos, listarCarpetas } from '../almacen/index.js';
 import { MIME_TIPO_NOTA, arrayBufferABase64, empaquetarDocumento, empaquetarColeccion } from './formato.js';
+import { esProgramaEscritorio, esProgramaDeComputadora } from '../pwa/escritorio.js';
 
 // Limpia un nombre para que sea seguro como nombre de archivo en cualquier sistema operativo
 export function nombreArchivoSeguro(titulo, extension = 'nota') {
@@ -35,6 +36,8 @@ export function descargarBlob(blob, nombreArchivo) {
 // Intenta compartir un archivo mediante navigator.share (hoja nativa en iOS/iPad y Android).
 // Devuelve 'compartido', 'cancelado' (la persona cerró la hoja sin guardar nada) o false (no disponible: usar descarga).
 export async function intentarCompartirArchivo(blob, nombreArchivo, titulo) {
+  // En el programa de escritorio (Windows) no hay hoja de compartir: se descarga el archivo directamente.
+  if (esProgramaEscritorio()) return false;
   if (typeof navigator !== 'undefined' && navigator.canShare && typeof File !== 'undefined') {
     try {
       const archivo = new File([blob], nombreArchivo, { type: MIME_TIPO_NOTA });
@@ -86,8 +89,8 @@ export async function prepararRecursosDeElementos(elementos) {
   return recursos;
 }
 
-// Exporta un único documento en formato .nota
-export async function exportarDocumento(doc, { elementos: elementosProvistos = null, compartir = true } = {}) {
+// Arma los bytes del archivo .nota de un documento leyendo todo desde el almacén (o con los elementos que se le den)
+export async function empaquetarDesdeAlmacen(doc, { elementos: elementosProvistos = null } = {}) {
   let elementos = elementosProvistos;
   if (!elementos) {
     try {
@@ -97,10 +100,25 @@ export async function exportarDocumento(doc, { elementos: elementosProvistos = n
     }
   }
   const recursos = await prepararRecursosDeElementos(elementos);
-  const bytes = await empaquetarDocumento(doc, elementos, recursos);
-  const blob = new Blob([bytes], { type: MIME_TIPO_NOTA });
+  return empaquetarDocumento(doc, elementos, recursos);
+}
+
+// Exporta un único documento en formato .nota.
+// En el programa de computadora es «Guardar como»: se elige dónde guardar el archivo y el documento queda
+// vinculado a él (desde ese momento cada cambio se escribe también en ese archivo). En Android se elige dónde
+// guardar una copia. En un navegador se descarga o se comparte.
+export async function exportarDocumento(doc, { elementos: elementosProvistos = null, compartir = true } = {}) {
+  const bytes = await empaquetarDesdeAlmacen(doc, { elementos: elementosProvistos });
   const nombreArchivo = nombreArchivoSeguro(doc.titulo, 'nota');
 
+  if (esProgramaEscritorio()) {
+    const { discoDelPrograma } = await import('./disco.js');
+    const r = await discoDelPrograma().guardarComo(doc, bytes, { vincular: esProgramaDeComputadora() });
+    if (!r) return { metodo: 'cancelado', nombreArchivo };
+    return { metodo: 'guardado-en-archivo', nombreArchivo: r.nombre, ruta: r.ruta };
+  }
+
+  const blob = new Blob([bytes], { type: MIME_TIPO_NOTA });
   if (compartir) {
     const compartido = await intentarCompartirArchivo(blob, nombreArchivo, doc.titulo);
     if (compartido) return { metodo: compartido, nombreArchivo };
@@ -123,9 +141,17 @@ export async function exportarTodasLasNotas({ compartir = false } = {}) {
 
   const carpetas = await listarCarpetas();
   const bytes = await empaquetarColeccion(items, carpetas);
-  const blob = new Blob([bytes], { type: MIME_TIPO_NOTA });
   const fechaStr = new Date().toISOString().slice(0, 10);
   const nombreArchivo = `Anotomia_Copia_Completa_${fechaStr}.anotomia-respaldo`;
+
+  if (esProgramaEscritorio()) {
+    const { discoDelPrograma } = await import('./disco.js');
+    const r = await discoDelPrograma().guardarCopia(bytes, nombreArchivo);
+    if (!r) return { metodo: 'cancelado', nombreArchivo, cantidad: items.length };
+    return { metodo: 'guardado-en-archivo', nombreArchivo: r.nombre, ruta: r.ruta, cantidad: items.length };
+  }
+
+  const blob = new Blob([bytes], { type: MIME_TIPO_NOTA });
 
   if (compartir) {
     const compartido = await intentarCompartirArchivo(blob, nombreArchivo, 'Copia de seguridad de Anotomía');

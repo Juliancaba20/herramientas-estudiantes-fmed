@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   listarDocumentos, purgarBlobsSinReferencia, purgarPapeleraVieja,
-  obtenerAjuste, guardarAjuste, EVENTO_ESPACIO_LLENO,
+  obtenerAjuste, guardarAjuste, obtenerDocumento, EVENTO_ESPACIO_LLENO,
 } from '../almacen/index.js';
 import Biblioteca from './Biblioteca.jsx';
 import Papelera from './Papelera.jsx';
@@ -13,6 +13,12 @@ import ErrorBoundary from './ErrorBoundary.jsx';
 import ModalBienvenida from './ModalBienvenida.jsx';
 import ModalAyuda from './ModalAyuda.jsx';
 import { Modal } from './Modal.jsx';
+import GuardadoEnArchivos from './GuardadoEnArchivos.jsx';
+import AvisoProgramaNuevo from './AvisoProgramaNuevo.jsx';
+import ModalGuardarComoArchivo from './ModalGuardarComoArchivo.jsx';
+import { esProgramaDeComputadora } from '../pwa/escritorio.js';
+import { discoDelPrograma } from '../archivos/disco.js';
+import { guardarTodoAntesDeActualizar } from '../pwa/actualizador.js';
 
 export default function App() {
   const [pantalla, setPantalla] = useState('biblioteca');
@@ -21,6 +27,11 @@ export default function App() {
   const [bienvenidaVisible, setBienvenidaVisible] = useState(false);
   const [ayudaVisible, setAyudaVisible] = useState(false);
   const [espacioLlenoAviso, setEspacioLlenoAviso] = useState(false);
+  const enComputadora = esProgramaDeComputadora(); // programa de Windows, Mac o Linux: archivos reales en el disco
+  const [archivosParaAbrir, setArchivosParaAbrir] = useState([]); // archivos .nota que llegan desde fuera (doble clic)
+  const [preguntarArchivo, setPreguntarArchivo] = useState(null); // documento recién cerrado que aún no es un archivo
+  const pantallaRef = useRef(pantalla);
+  useEffect(() => { pantallaRef.current = pantalla; });
 
   const contarPapelera = useCallback(async () => {
     try { setEnPapelera((await listarDocumentos({ papelera: true })).length); } catch { /* se informa en cada pantalla */ }
@@ -49,6 +60,28 @@ export default function App() {
     return () => window.removeEventListener(EVENTO_ESPACIO_LLENO, alLleno);
   }, []);
 
+  // Cierre de un documento. En el programa de computadora, si todavía no es un archivo del equipo se ofrece guardarlo
+  // (solo si se llegó a escribir algo: un documento recién creado y vacío no molesta).
+  const volverALaBiblioteca = useCallback(async () => {
+    const cerrado = doc;
+    setPantalla('biblioteca');
+    if (!enComputadora || !cerrado) return;
+    try {
+      const actual = await obtenerDocumento(cerrado.id);
+      if (actual && !actual.papelera && actual.modificado > actual.creado && await discoDelPrograma().debePreguntar(actual.id)) setPreguntarArchivo(actual);
+    } catch { /* si no se puede consultar, no se pregunta */ }
+  }, [doc, enComputadora]);
+
+  // Un .nota que se abre desde fuera: se guarda lo que haya en el editor y se entra por la biblioteca
+  const abrirArchivosExternos = useCallback(async (archivos) => {
+    if (pantallaRef.current !== 'biblioteca') {
+      await guardarTodoAntesDeActualizar(window, () => discoDelPrograma().vaciar()).catch(() => {});
+      setPantalla('biblioteca');
+    }
+    setArchivosParaAbrir(archivos);
+  }, []);
+  const consumirArchivosParaAbrir = useCallback(() => setArchivosParaAbrir([]), []);
+
   const cerrarBienvenida = async () => {
     setBienvenidaVisible(false);
     try {
@@ -68,15 +101,20 @@ export default function App() {
             cantidadPapelera={enPapelera}
             avisarCambio={contarPapelera}
             abrirAyuda={() => setAyudaVisible(true)}
+            archivosParaAbrir={archivosParaAbrir}
+            consumirArchivosParaAbrir={consumirArchivosParaAbrir}
           />
         )}
         {pantalla === 'papelera' && <Papelera volver={() => setPantalla('biblioteca')} avisarCambio={contarPapelera} />}
         {pantalla === 'editor' && doc && (doc.formato === 'paginas'
-          ? <EditorPaginas key={doc.id} doc={doc} volver={() => setPantalla('biblioteca')} />
+          ? <EditorPaginas key={doc.id} doc={doc} volver={volverALaBiblioteca} />
           : doc.formato === 'tarjetas'
-            ? <EditorTarjetas key={doc.id} doc={doc} volver={() => setPantalla('biblioteca')} />
-            : <EditorLienzo key={doc.id} doc={doc} volver={() => setPantalla('biblioteca')} />)}
+            ? <EditorTarjetas key={doc.id} doc={doc} volver={volverALaBiblioteca} />
+            : <EditorLienzo key={doc.id} doc={doc} volver={volverALaBiblioteca} />)}
         <AvisoPWA />
+        {enComputadora && <AvisoProgramaNuevo />}
+        {enComputadora && <GuardadoEnArchivos pantalla={pantalla} doc={doc} alAbrirArchivos={abrirArchivosExternos} />}
+        {preguntarArchivo && <ModalGuardarComoArchivo doc={preguntarArchivo} alCerrar={() => setPreguntarArchivo(null)} />}
 
         {bienvenidaVisible && <ModalBienvenida alComenzar={cerrarBienvenida} />}
         {ayudaVisible && <ModalAyuda alCerrar={() => setAyudaVisible(false)} />}

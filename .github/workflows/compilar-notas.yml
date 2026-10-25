@@ -1,0 +1,190 @@
+name: Compilar Anotomía (Windows, Mac y Linux)
+
+# Publicar una versión nueva:  git tag notas-v1.1  y  git push origin notas-v1.1
+# Probar la compilación sin publicar nada:  pestaña Actions > «Compilar Anotomía (Windows, Mac y Linux)» > Run workflow
+# La primera vez hay que preparar la clave de actualizaciones (ver README, «Actualizaciones automáticas»).
+on:
+  push:
+    tags:
+      - "notas-v*"
+      - "Notas-v*"
+      - "anotomia-v*"
+      - "Anotomia-v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  # Debe coincidir con apps/notas/src/pwa/escritorio.js (una prueba lo controla).
+  ETIQUETA_ULTIMA: notas-ultima
+  TAURI_CLI: "2.12.4"
+
+jobs:
+  compilar:
+    name: Compilar para ${{ matrix.sistema }}
+    strategy:
+      fail-fast: false # si un sistema falla, los demás igual se publican
+      matrix:
+        include:
+          - sistema: Windows
+            runner: windows-latest
+            bundles: nsis
+            objetivo: ""
+          - sistema: Mac
+            runner: macos-latest
+            bundles: app,dmg
+            objetivo: --target universal-apple-darwin
+          - sistema: Linux
+            runner: ubuntu-22.04
+            bundles: appimage
+            objetivo: ""
+    runs-on: ${{ matrix.runner }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: apps/notas
+    env:
+      TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+      TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+      APPIMAGE_EXTRACT_AND_RUN: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: apps/notas/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.sistema == 'Mac' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: apps/notas/src-tauri
+
+      - name: Bibliotecas de Linux
+        if: matrix.sistema == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev librsvg2-dev libxdo-dev libssl-dev patchelf libfuse2
+
+      - name: Número de versión
+        id: version
+        run: |
+          # De la etiqueta «notas-v1.2» sale 1.2 (se muestra en la web) y 1.2.0 (lo que exige el instalador).
+          # Sin etiqueta (ejecución manual) se usa 0.0.<número de ejecución>.
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            visible=$(echo "$GITHUB_REF_NAME" | grep -oE '[0-9]+(\.[0-9]+)*' | head -1)
+          else
+            visible="0.0.$GITHUB_RUN_NUMBER"
+          fi
+          if [ -z "$visible" ]; then echo "::error::La etiqueta '$GITHUB_REF_NAME' no tiene un número de versión (por ejemplo notas-v1.1)."; exit 1; fi
+          IFS=. read -r a b c <<< "$visible"
+          echo "completa=${a}.${b:-0}.${c:-0}" >> "$GITHUB_OUTPUT"
+          echo "Versión: $visible"
+
+      - name: Comprobar la clave de actualizaciones
+        id: clave
+        run: |
+          # Un programa publicado sin la clave correcta nunca podría actualizarse solo: con etiqueta es obligatoria.
+          falta=""
+          if [ -z "$TAURI_SIGNING_PRIVATE_KEY" ]; then falta="Falta el secreto TAURI_SIGNING_PRIVATE_KEY en GitHub."; fi
+          if grep -q "REEMPLAZAR_CON_LA_CLAVE_PUBLICA" src-tauri/tauri.conf.json; then falta="$falta Falta pegar la clave pública en apps/notas/src-tauri/tauri.conf.json (plugins > updater > pubkey)."; fi
+          if [ -n "$falta" ]; then
+            if [[ "$GITHUB_REF" == refs/tags/* ]]; then echo "::error::$falta Siga los pasos de «Actualizaciones automáticas» del README."; exit 1; fi
+            echo "::warning::$falta Esta compilación de prueba se hace sin actualizador."
+            echo "sin=1" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Correr las pruebas de la app
+        if: matrix.sistema == 'Linux'
+        run: npm test
+
+      - name: Compilar la app web
+        run: npm run build
+
+      - name: Compilar el programa
+        run: |
+          configuracion="{\"version\":\"${{ steps.version.outputs.completa }}\""
+          if [ "${{ steps.clave.outputs.sin }}" = "1" ]; then configuracion="$configuracion,\"bundle\":{\"createUpdaterArtifacts\":false}"; fi
+          configuracion="$configuracion}"
+          # La herramienta de Tauri se descarga en este paso (no forma parte de las dependencias de la app,
+          # para no alargar las publicaciones de la web).
+          npx --yes @tauri-apps/cli@${TAURI_CLI} build --ci --bundles ${{ matrix.bundles }} ${{ matrix.objetivo }} --config "$configuracion"
+
+      - name: Dejar los archivos con su nombre final
+        run: |
+          mkdir -p salida
+          carpeta=src-tauri/target/release/bundle
+          [ "${{ matrix.sistema }}" = "Mac" ] && carpeta=src-tauri/target/universal-apple-darwin/release/bundle
+          ls -R "$carpeta" | head -40
+          poner() { # poner <patrón del archivo generado> <nombre final>
+            origen=$(ls $1 2>/dev/null | head -1)
+            if [ -z "$origen" ]; then echo "::error::No se generó $2 (se buscó $1)."; exit 1; fi
+            cp "$origen" "salida/$2"
+            if [ -f "$origen.sig" ]; then cp "$origen.sig" "salida/$2.sig"
+            elif [ "${{ steps.clave.outputs.sin }}" != "1" ]; then echo "::error::Falta la firma de $2."; exit 1; fi
+            tamano=$(stat -c %s "salida/$2" 2>/dev/null || stat -f %z "salida/$2")
+            echo "$2: $tamano bytes"
+            if [ "$tamano" -lt 1000000 ]; then echo "::error::$2 es demasiado chico: la compilación falló."; exit 1; fi
+          }
+          case "${{ matrix.sistema }}" in
+            Windows)
+              poner "$carpeta/nsis/*-setup.exe" Anotomia-Windows.exe
+              if [ "$(head -c 2 salida/Anotomia-Windows.exe)" != "MZ" ]; then echo "::error::El archivo no es un ejecutable de Windows."; exit 1; fi ;;
+            Mac)
+              poner "$carpeta/dmg/*.dmg" Anotomia-Mac.dmg
+              poner "$carpeta/macos/*.app.tar.gz" Anotomia-Mac.app.tar.gz ;;
+            Linux)
+              poner "$carpeta/appimage/*.AppImage" Anotomia-Linux.AppImage ;;
+          esac
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: anotomia-${{ matrix.sistema }}
+          path: apps/notas/salida/*
+          if-no-files-found: error
+
+  publicar:
+    name: Publicar en «notas-ultima»
+    needs: compilar
+    # Se publica lo que se haya podido compilar, aunque un sistema haya fallado
+    if: ${{ !cancelled() && startsWith(github.ref, 'refs/tags/') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: anotomia-*
+          merge-multiple: true
+          path: salida
+
+      - name: Armar latest.json y publicar
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if ! ls salida/* > /dev/null 2>&1; then echo "::error::No hay ningún programa compilado para publicar."; exit 1; fi
+          visible=$(echo "$GITHUB_REF_NAME" | grep -oE '[0-9]+(\.[0-9]+)*' | head -1)
+          IFS=. read -r a b c <<< "$visible"
+          completa="${a}.${b:-0}.${c:-0}"
+          urlbase="https://github.com/${GITHUB_REPOSITORY}/releases/download/${ETIQUETA_ULTIMA}"
+          # latest.json es lo que consulta el actualizador de los programas ya instalados
+          node scripts/generar-latest-notas.mjs salida "$completa" "$urlbase"
+          ls -l salida
+
+          # Una única publicación fija («notas-ultima») cuyos archivos se reemplazan en cada versión. Así los enlaces
+          # de descarga de la web no cambian nunca y no se cruzan con las publicaciones del Teclado Científico
+          # (--latest=false evita que esta publicación pase a ser la «última» del repositorio).
+          titulo="Anotomía - versión $visible"
+          notas="Programas de escritorio de Anotomía (Windows, Mac y Linux) y archivo de actualizaciones. Esta publicación se actualiza con cada versión nueva; los programas ya instalados se actualizan solos."
+          gh release create "$ETIQUETA_ULTIMA" --target "$GITHUB_SHA" --latest=false --title "$titulo" --notes "$notas" || echo "La publicación ya existía."
+          gh release upload "$ETIQUETA_ULTIMA" salida/* --clobber
+          gh release edit "$ETIQUETA_ULTIMA" --latest=false --title "$titulo" --notes "$notas"

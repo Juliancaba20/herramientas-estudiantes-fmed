@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
-  guardarDocumento, listarDocumentos, borrarDocumentoDefinitivo,
+  guardarDocumento, obtenerDocumento, listarDocumentos, borrarDocumentoDefinitivo,
   duplicarDocumento, enviarAPapelera, obtenerAjuste, guardarAjuste,
   estadoAlmacenamiento, pedirPersistencia, asegurarPersistencia,
   listarCarpetas, guardarCarpeta, eliminarCarpeta, moverDocumentoACarpeta,
@@ -16,6 +16,8 @@ import {
 } from '../archivos/index.js';
 import { Modal } from './Modal.jsx';
 import ModalInstalar from './ModalInstalar.jsx';
+import { ofertaDeInstalacion, esProgramaDeComputadora, PROGRAMAS } from '../pwa/escritorio.js';
+import { discoDelPrograma, archivoDesdeDisco } from '../archivos/disco.js';
 import { Miniatura, SelectorFormato } from './SelectorFormato.jsx';
 import { NOMBRE_FORMATO, fechaRelativa, mb, normalizar } from './utiles.js';
 
@@ -382,7 +384,7 @@ function ModalCopias({ alCerrar, almac, alActualizar }) {
   );
 }
 
-function Elemento({ doc, abrir, menuAbierto, setMenu, accion, carpetasMap }) {
+function Elemento({ doc, abrir, menuAbierto, setMenu, accion, carpetasMap, rutaArchivo, enComputadora }) {
   if (doc._danado) {
     return (
       <li className="nt-item nt-item--danado" style={{ border: '1px dashed #ef4444', background: '#fef2f2' }}>
@@ -415,6 +417,7 @@ function Elemento({ doc, abrir, menuAbierto, setMenu, accion, carpetasMap }) {
         <span className="nt-item__datos">
           <strong>{doc.titulo}</strong>
           <span>{NOMBRE_FORMATO[doc.formato]} · {fechaRelativa(doc.modificado)}</span>
+          {rutaArchivo && <span className="nt-badge-etiqueta" title={`Guardado en: ${rutaArchivo}`}>📄 En archivo</span>}
           {carpeta && (
             <span
               className="nt-badge-carpeta"
@@ -441,7 +444,8 @@ function Elemento({ doc, abrir, menuAbierto, setMenu, accion, carpetasMap }) {
           <button role="menuitem" onClick={() => accion('mover', doc)}>Mover a materia...</button>
           <button role="menuitem" onClick={() => accion('etiquetas', doc)}>Etiquetas...</button>
           <button role="menuitem" onClick={() => accion('duplicar', doc)}>Duplicar</button>
-          <button role="menuitem" onClick={() => accion('exportar', doc)}>Exportar (.nota)</button>
+          <button role="menuitem" onClick={() => accion('exportar', doc)}>{enComputadora ? 'Guardar como archivo…' : 'Exportar (.nota)'}</button>
+          {rutaArchivo && <button role="menuitem" onClick={() => accion('desvincular', doc)}>Dejar de guardar en el archivo</button>}
           <button role="menuitem" onClick={() => accion('papelera', doc)}>Enviar a la papelera</button>
         </div>
       )}
@@ -449,7 +453,7 @@ function Elemento({ doc, abrir, menuAbierto, setMenu, accion, carpetasMap }) {
   );
 }
 
-export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapelera, avisarCambio, abrirAyuda }) {
+export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapelera, avisarCambio, abrirAyuda, archivosParaAbrir, consumirArchivosParaAbrir }) {
   const [docs, setDocs] = useState(null);
   const [carpetas, setCarpetas] = useState([]);
   const [carpetaActiva, setCarpetaActiva] = useState('todas');
@@ -470,7 +474,11 @@ export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapele
 
   // Estados de Etapa 12: Importación, arrastre y copias
   const [modalCopias, setModalCopias] = useState(false);
-  const [modalInstalar, setModalInstalar] = useState(false);
+  // Se abre solo cuando se llega desde la web con la dirección terminada en #instalar (ver app/notas/Descargas.js)
+  const oferta = ofertaDeInstalacion(); // { tipo: 'programa', plataforma } | { tipo: 'web' } | { tipo: 'instalado' } (ya es el programa)
+  const enComputadora = esProgramaDeComputadora(); // programa de Windows, Mac o Linux: archivos reales en el disco
+  const [rutasDisco, setRutasDisco] = useState({}); // documento → archivo vinculado (solo en el programa de computadora)
+  const [modalInstalar, setModalInstalar] = useState(() => oferta.tipo !== 'instalado' && typeof window !== 'undefined' && window.location.hash === '#instalar');
   const [consultaDuplicado, setConsultaDuplicado] = useState(null);
   const [arrastrando, setArrastrando] = useState(false);
   const [recordatorioVisible, setRecordatorioVisible] = useState(false);
@@ -495,6 +503,7 @@ export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapele
         listarCarpetas(),
       ]);
       setDocs(lista);
+      if (enComputadora) discoDelPrograma().todas().then(setRutasDisco).catch(() => {});
       setCarpetas(listaCarpetas);
       await asegurarPersistencia({ hayNotas: lista.length > 0 });
       const est = await estadoAlmacenamiento();
@@ -502,7 +511,7 @@ export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapele
       verificarRecordatorio(lista);
       avisarCambio();
     } catch (e) { setError(e.message); setDocs([]); }
-  }, [avisarCambio, verificarRecordatorio]);
+  }, [avisarCambio, verificarRecordatorio, enComputadora]);
 
   useEffect(() => {
     (async () => {
@@ -598,7 +607,14 @@ export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapele
       if (tipo === 'duplicar') { await duplicarDocumento(doc.id); setAviso('Documento duplicado.'); await recargar(); }
       if (tipo === 'exportar') {
         const res = await exportarDocumento(doc, { compartir: true });
-        setAviso(res.metodo === 'cancelado' ? 'Exportación cancelada: no se guardó ningún archivo.' : `«${doc.titulo}» exportado como ${res.nombreArchivo}.`);
+        if (res.metodo === 'cancelado') setAviso('Exportación cancelada: no se guardó ningún archivo.');
+        else if (res.ruta) { setAviso(`«${doc.titulo}» guardado en ${res.ruta}.`); await recargar(); }
+        else setAviso(`«${doc.titulo}» exportado como ${res.nombreArchivo}.`);
+      }
+      if (tipo === 'desvincular') {
+        await discoDelPrograma().desvincular(doc.id);
+        setAviso(`«${doc.titulo}» ya no se guarda en un archivo; el archivo que había creado queda como está.`);
+        await recargar();
       }
       if (tipo === 'papelera') { await enviarAPapelera(doc); setAviso(`«${doc.titulo}» está en la papelera.`); await recargar(); }
       if (tipo === 'borrar-directo') { await borrarDocumentoDefinitivo(doc.id); setAviso('Registro eliminado.'); await recargar(); }
@@ -658,7 +674,27 @@ export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapele
     }
   }
 
-  async function procesarImportacion(archivos) {
+  // «Abrir…» (programa de computadora): ventana de Windows/Mac/Linux para elegir archivos .nota
+  async function abrirDelDisco() {
+    try {
+      const elegidos = await discoDelPrograma().abrirDialogo();
+      if (elegidos.length === 0) return;
+      await procesarImportacion(elegidos.map(archivoDesdeDisco), { abrir: true });
+    } catch (e) { setError('No se pudo abrir el archivo: ' + e.message); }
+  }
+
+  // Archivos que llegan desde fuera de la biblioteca (doble clic en un .nota con el programa abierto o al abrirlo)
+  const procesarRef = useRef(null);
+  useEffect(() => { procesarRef.current = procesarImportacion; });
+  useEffect(() => {
+    if (!archivosParaAbrir || archivosParaAbrir.length === 0) return;
+    const lista = archivosParaAbrir;
+    consumirArchivosParaAbrir?.();
+    procesarRef.current(lista, { abrir: true });
+  }, [archivosParaAbrir, consumirArchivosParaAbrir]);
+
+  // abrir: true → si entró un solo documento, se abre en el editor (es lo que se espera de «Abrir…» y del doble clic)
+  async function procesarImportacion(archivos, { abrir = false } = {}) {
     if (!archivos || archivos.length === 0) return;
     setError('');
     setAviso('');
@@ -668,6 +704,11 @@ export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapele
         solicitarDecision: (datosConsulta) => new Promise((resolver) => {
           setConsultaDuplicado({ ...datosConsulta, resolver });
         }),
+        // Un documento que salió de un archivo del disco queda vinculado a él: desde ahí se guarda en ese mismo archivo.
+        // Las copias completas y las copias «conservadas como nuevas» no se vinculan.
+        alImportar: async ({ documento, accion, archivo, coleccion }) => {
+          if (archivo.rutaDisco && !coleccion && accion !== 'conservar-ambos') await discoDelPrograma().vincular(documento.id, archivo.rutaDisco);
+        },
       });
 
       let texto = `Se importaron ${res.importados} nota${res.importados === 1 ? '' : 's'}`;
@@ -691,6 +732,10 @@ export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapele
       if (res.importados > 0) {
         setAviso(texto);
         await recargar();
+        if (abrir && res.documentos.length === 1) {
+          const abierto = await obtenerDocumento(res.documentos[0].id);
+          if (abierto) abrirDocumento(abierto);
+        }
       }
     } catch (err) {
       setError('Error general al importar: ' + err.message);
@@ -731,7 +776,9 @@ export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapele
       <header className="nt-cabecera">
         <div className="nt-logo">Anotomía</div>
         <button className="nt-btn" onClick={irAPapelera}>Papelera{cantidadPapelera > 0 ? ` (${cantidadPapelera})` : ''}</button>
-        <button className="nt-btn" onClick={() => inputArchivoRef.current?.click()} title="Importar archivos .nota o respaldos">Importar</button>
+        {enComputadora
+          ? <button className="nt-btn" onClick={abrirDelDisco} title="Abrir un documento guardado en su equipo (.nota)">Abrir…</button>
+          : <button className="nt-btn" onClick={() => inputArchivoRef.current?.click()} title="Importar archivos .nota o respaldos">Importar</button>}
         <button className="nt-btn" onClick={() => setModalCopias(true)} title="Copias de seguridad y almacenamiento">Copias de seguridad</button>
         {abrirAyuda && <button className="nt-btn" onClick={abrirAyuda} title="Ayuda de atajos y gestos" aria-label="Ayuda">Ayuda (?)</button>}
         <button className="nt-btn nt-btn--primario" onClick={() => setNuevo(true)}>Nueva nota</button>
@@ -895,6 +942,8 @@ export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapele
             <ul className={`nt-items nt-items--${vista}`}>
               {mostrados.map((d) => (
                 <Elemento
+                  rutaArchivo={rutasDisco[d.id]?.ruta}
+                  enComputadora={enComputadora}
                   key={d.id}
                   doc={d}
                   abrir={abrirDocumento}
@@ -911,7 +960,9 @@ export default function Biblioteca({ abrirDocumento, irAPapelera, cantidadPapele
         <span>
           Sus notas se guardan en este dispositivo. Para pasarlas a otro, exporte un archivo .nota.
           <button className="nt-enlace" onClick={() => setModalCopias(true)}>Copias y espacio</button>
-          <button className="nt-enlace" onClick={() => setModalInstalar(true)}>Instalar la app</button>
+          {oferta.tipo !== 'instalado' && (
+            <button className="nt-enlace" onClick={() => setModalInstalar(true)}>{oferta.tipo === 'programa' ? `Descargar para ${PROGRAMAS[oferta.plataforma].nombre}` : 'Instalar la app'}</button>
+          )}
         </span>
         <span>
           {almac?.disponible ? `Espacio usado: ${mb(almac.usado)}` : ''}
