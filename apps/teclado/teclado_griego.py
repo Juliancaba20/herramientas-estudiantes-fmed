@@ -19,15 +19,22 @@ Windows: no requiere nada adicional.
 macOS / Linux: requiere "pynput" (pip install pynput).
 """
 
+import hashlib
 import json
 import os
 import queue
 import re
+import subprocess
 import sys
+import tarfile
+import tempfile
 import threading
+import time
 import tkinter as tk
+import urllib.request
+import webbrowser
 
-VERSION = "1.4"
+VERSION = "1.5"
 NOMBRE_APP = "TecladoCientifico"
 NOMBRE_APP_ANTERIOR = "TecladoGriego"  # nombre de la carpeta de configuración hasta la v1.3
 SISTEMA = sys.platform  # "win32", "darwin" o "linux"
@@ -131,6 +138,16 @@ if SISTEMA == "win32":
         except Exception:
             return True  # si no se puede comprobar, se deja abrir
 
+    def liberar_instancia():
+        """Suelta el bloqueo de instancia única (se usa justo antes de relanzar el programa)."""
+        global _mutex
+        try:
+            if _mutex:
+                ctypes.WinDLL("kernel32").CloseHandle(wintypes.HANDLE(_mutex))
+        except Exception:
+            pass
+        _mutex = None
+
     def avisar_ya_abierto():
         user32.MessageBoxW(None, "El Teclado Científico ya está abierto.\n\n"
                            "Si no lo ve, puede estar oculto: use su atajo "
@@ -168,6 +185,9 @@ if SISTEMA == "win32":
 
 else:
     _teclado = None
+
+    def liberar_instancia():
+        pass  # solo Windows usa bloqueo de instancia única
 
     def escribir(texto):
         global _teclado
@@ -415,6 +435,182 @@ def crear_boton(padre, texto, comando, ancho=3, tamano=12, negrita=False,
 
 
 # ---------------------------------------------------------------------------
+# Actualización automática (Windows y Linux; en Mac solo se avisa)
+# ---------------------------------------------------------------------------
+REPO = "Juliancaba20/hipocampus"
+URL_VERSIONES = f"https://api.github.com/repos/{REPO}/releases?per_page=30"
+PREFIJO_DESCARGA = f"https://github.com/{REPO}/releases/download/"
+# Si algún día se renombra el repositorio, GitHub redirige las consultas y las descargas pasan a
+# llevar el nombre nuevo: por eso se acepta cualquier dirección de descarga de github.com.
+DESCARGA_VALIDA = re.compile(r"^https://github\.com/[\w.-]+/[\w.-]+/releases/download/")
+ARCHIVOS_ACTUALIZACION = {"win32": "TecladoCientifico-Windows.exe",
+                          "darwin": "TecladoCientifico-Mac.zip",
+                          "linux": "TecladoCientifico-Linux.tar.gz"}
+# Etiquetas de las versiones del teclado (el repositorio también publica otras cosas, como Anotomía).
+ETIQUETA_TECLADO = re.compile(r"^teclado(?:-cient[ií]fico)?-v(\d+(?:\.\d+)*)$", re.IGNORECASE)
+ESPERA_RED = 15                      # segundos máximos para cada pedido a internet
+LIMITE_DESCARGA = 150 * 1024 * 1024  # el programa pesa unos 15 MB: más que esto no es el programa
+
+
+def version_a_tupla(texto):
+    try:
+        return tuple(int(parte) for parte in str(texto).split("."))
+    except ValueError:
+        return None
+
+
+def elegir_version(publicaciones, archivo, actual=None):
+    """Devuelve los datos de la versión del teclado más nueva que la actual, o None."""
+    actual = version_a_tupla(actual or VERSION)
+    mejor = None
+    if not isinstance(publicaciones, list):
+        return None
+    for pub in publicaciones:
+        if not isinstance(pub, dict) or pub.get("draft") or pub.get("prerelease"):
+            continue
+        coincide = ETIQUETA_TECLADO.match(str(pub.get("tag_name", "")))
+        tupla = version_a_tupla(coincide.group(1)) if coincide else None
+        if tupla is None or actual is None or tupla <= actual:
+            continue
+        if mejor is not None and tupla <= mejor["tupla"]:
+            continue
+        for activo in pub.get("assets") or []:
+            url = str(activo.get("browser_download_url", ""))
+            if (activo.get("name") == archivo and activo.get("state", "uploaded") == "uploaded"
+                    and DESCARGA_VALIDA.match(url)):
+                digest = str(activo.get("digest") or "")
+                mejor = {"tupla": tupla, "version": coincide.group(1), "url": url,
+                         "tamano": activo.get("size") if isinstance(activo.get("size"), int) else None,
+                         "sha256": digest[7:].lower() if digest.startswith("sha256:") else None,
+                         "pagina": str(pub.get("html_url") or f"https://github.com/{REPO}/releases")}
+                break
+    return mejor
+
+
+def consultar_actualizacion(abrir=None):
+    """Pregunta a GitHub si hay una versión nueva. Devuelve sus datos o None."""
+    archivo = ARCHIVOS_ACTUALIZACION.get(SISTEMA)
+    if not archivo:
+        return None
+    pedido = urllib.request.Request(URL_VERSIONES, headers={
+        "User-Agent": f"TecladoCientifico/{VERSION}", "Accept": "application/vnd.github+json"})
+    with (abrir or urllib.request.urlopen)(pedido, timeout=ESPERA_RED) as respuesta:
+        publicaciones = json.loads(respuesta.read(4 * 1024 * 1024).decode("utf-8"))
+    return elegir_version(publicaciones, archivo)
+
+
+def ruta_ejecutable():
+    """Ruta del programa instalado, o None si se ejecuta como script (no compilado)."""
+    if getattr(sys, "frozen", False):
+        return os.path.abspath(sys.executable)
+    return None
+
+
+def puede_autoactualizar():
+    """Windows y Linux, programa compilado y carpeta con permiso de escritura."""
+    ruta = ruta_ejecutable()
+    return bool(ruta and SISTEMA in ("win32", "linux") and os.path.isfile(ruta)
+                and os.access(os.path.dirname(ruta), os.W_OK))
+
+
+def descargar_actualizacion(info, carpeta, abrir=None):
+    """Descarga y comprueba la versión nueva; devuelve la ruta del ejecutable listo para usar."""
+    pedido = urllib.request.Request(info["url"], headers={"User-Agent": f"TecladoCientifico/{VERSION}"})
+    descarga = None
+    listo = None
+    try:
+        gestor, descarga = tempfile.mkstemp(prefix="TecladoCientifico-", suffix=".descarga", dir=carpeta)
+        huella, total = hashlib.sha256(), 0
+        with os.fdopen(gestor, "wb") as salida, \
+                (abrir or urllib.request.urlopen)(pedido, timeout=ESPERA_RED) as entrada:
+            while True:
+                trozo = entrada.read(256 * 1024)
+                if not trozo:
+                    break
+                total += len(trozo)
+                if total > LIMITE_DESCARGA:
+                    raise ValueError("el archivo descargado es demasiado grande")
+                huella.update(trozo)
+                salida.write(trozo)
+        if info.get("tamano") is not None and total != info["tamano"]:
+            raise ValueError("la descarga quedó incompleta")
+        if info.get("sha256") and huella.hexdigest() != info["sha256"]:
+            raise ValueError("la descarga no coincide con la publicada")
+        if SISTEMA == "linux":  # el archivo es un .tar.gz con el programa adentro
+            gestor, listo = tempfile.mkstemp(prefix="TecladoCientifico-", suffix=".nuevo", dir=carpeta)
+            with tarfile.open(descarga, "r:gz") as paquete, os.fdopen(gestor, "wb") as salida:
+                miembro = next((m for m in paquete.getmembers()
+                                if m.isfile() and os.path.basename(m.name) == NOMBRE_APP), None)
+                if miembro is None:
+                    raise ValueError("el paquete no contiene el programa")
+                contenido = paquete.extractfile(miembro)
+                while True:
+                    trozo = contenido.read(256 * 1024)
+                    if not trozo:
+                        break
+                    salida.write(trozo)
+            os.chmod(listo, 0o755)
+            os.remove(descarga)
+            descarga = None
+            return listo
+        with open(descarga, "rb") as comprobar:
+            if comprobar.read(2) != b"MZ":
+                raise ValueError("el archivo descargado no es un programa de Windows")
+        listo, descarga = descarga, None
+        return listo
+    except BaseException:
+        for resto in (descarga, listo):
+            if resto:
+                try:
+                    os.remove(resto)
+                except OSError:
+                    pass
+        raise
+
+
+def reemplazar_ejecutable(actual, nuevo):
+    """Pone el programa nuevo en el lugar del actual. El actual queda como «.old» hasta que se borre."""
+    viejo = actual + ".old"
+    try:
+        os.remove(viejo)
+    except FileNotFoundError:
+        pass
+    os.replace(actual, viejo)  # un programa en uso se puede renombrar, aunque no borrar
+    try:
+        os.replace(nuevo, actual)
+    except OSError:
+        os.replace(viejo, actual)  # si falla, vuelve todo a como estaba
+        raise
+
+
+def borrar_restos():
+    """Elimina el programa anterior que quedó como «.old» tras actualizar. True si ya no hay restos."""
+    ruta = ruta_ejecutable()
+    if not ruta:
+        return True
+    try:
+        os.remove(ruta + ".old")
+    except FileNotFoundError:
+        pass
+    except OSError:
+        return False  # todavía en uso: se reintenta más tarde
+    return True
+
+
+def relanzar(ruta):
+    """Abre el programa actualizado como proceso independiente."""
+    entorno = dict(os.environ)
+    entorno["PYINSTALLER_RESET_ENVIRONMENT"] = "1"  # que no reutilice la carpeta temporal de este proceso
+    opciones = {"env": entorno, "close_fds": True, "stdin": subprocess.DEVNULL,
+                "stdout": subprocess.DEVNULL, "stderr": subprocess.DEVNULL}
+    if SISTEMA == "win32":
+        opciones["creationflags"] = 0x00000008 | 0x00000200  # DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP
+    else:
+        opciones["start_new_session"] = True
+    subprocess.Popen([ruta, "--actualizado"], **opciones)
+
+
+# ---------------------------------------------------------------------------
 # Interfaz
 # ---------------------------------------------------------------------------
 class Teclado:
@@ -448,6 +644,11 @@ class Teclado:
         self.oculto = False
         self.cola_atajo = queue.SimpleQueue()
         self.escucha_atajo = None
+        self.cola_actualizacion = queue.SimpleQueue()
+        self.buscar_actualizaciones = config.get("buscar_actualizaciones") is not False
+        self.info_actualizacion = None
+        self.actualizando = False
+        self.forzar_navegador = False
         aviso_atajo = None
         atajo_texto = config.get("atajo", ATAJO_PREDETERMINADO)
         if atajo_texto == "":
@@ -490,6 +691,11 @@ class Teclado:
             al_pasar=lambda dentro: self.mostrar_nombre(
                 ("Expandir" if self.compacto else "Modo compacto") if dentro else None))
         self.boton_compacto.pack(side="right")
+        self.boton_actualizar = crear_boton(
+            self.barra, "↑", self.pulsar_actualizar, tamano=10, negrita=True, bg=BARRA, fg=ACENTO,
+            al_pasar=lambda dentro: self.mostrar_nombre(
+                f"Actualizar a la versión {self.info_actualizacion['version']}"
+                if dentro and self.info_actualizacion else None))
         # width=1: el texto se recorta en vez de agrandar la ventana
         self.asa = tk.Label(self.barra, text="⠿", bg=BARRA, fg=ASA_TEXTO, width=1,
                             cursor="fleur", font=(FUENTE, 10))
@@ -522,6 +728,14 @@ class Teclado:
         if self.atajo and SISTEMA in ("win32", "linux"):
             self.escucha_atajo = iniciar_atajo(*self.atajo, self.cola_atajo)
         raiz.after(100, self.revisar_atajo)
+        raiz.after(500, self.revisar_actualizacion)
+        if "--actualizado" in sys.argv[1:]:
+            raiz.after(900, lambda: self.avisar(f"Teclado actualizado a la versión {VERSION}.", segundos=8))
+            raiz.after(6000, self.limpiar_restos)
+        else:
+            self.limpiar_restos()
+        if self.buscar_actualizaciones and ruta_ejecutable():
+            raiz.after(4000, self.buscar_actualizacion)
 
     # -- ícono ---------------------------------------------------------------
     def poner_icono(self):
@@ -743,7 +957,89 @@ class Teclado:
         guardar_config({"version": VERSION, "x": self.x, "y": self.y,
                         "pagina": self.pagina, "recientes": self.recientes,
                         "compacto": self.compacto,
+                        "buscar_actualizaciones": self.buscar_actualizaciones,
                         "atajo": texto_atajo(*self.atajo).lower() if self.atajo else ""})
+
+    # -- actualización automática --------------------------------------------
+    def limpiar_restos(self, intento=0):
+        if not borrar_restos() and intento < 3:
+            self.raiz.after(20000, lambda: self.limpiar_restos(intento + 1))
+
+    def buscar_actualizacion(self):
+        """Consulta GitHub en segundo plano (no demora el teclado). Se repite cada 6 horas."""
+        def trabajo():
+            try:
+                info = consultar_actualizacion()
+            except Exception:
+                info = None  # sin internet o GitHub no responde: se intenta más tarde, sin avisar
+            self.cola_actualizacion.put(("consulta", info))
+        threading.Thread(target=trabajo, daemon=True).start()
+        if self.info_actualizacion is None:
+            self.raiz.after(6 * 3600 * 1000, self.buscar_actualizacion)
+
+    def revisar_actualizacion(self):
+        """Atiende los resultados del hilo de actualización (se consulta cada 500 ms)."""
+        try:
+            while True:
+                tipo, dato = self.cola_actualizacion.get_nowait()
+                if tipo == "consulta" and dato and self.info_actualizacion is None:
+                    self.info_actualizacion = dato
+                    self.boton_actualizar.pack(side="right", after=self.boton_compacto)
+                    self.avisar(f"Hay una versión nueva del teclado ({dato['version']}). "
+                                "Haga clic en ↑ para actualizar.", segundos=15)
+                elif tipo == "lista":
+                    self.terminar_actualizacion(dato)
+                elif tipo == "error":
+                    self.actualizando = False
+                    self.forzar_navegador = True
+                    self.avisar("No se pudo actualizar automáticamente. Haga clic en ↑ para abrir "
+                                "la página de descarga.", segundos=15)
+        except queue.Empty:
+            pass
+        self.raiz.after(500, self.revisar_actualizacion)
+
+    def pulsar_actualizar(self):
+        info = self.info_actualizacion
+        if not info or self.actualizando:
+            return
+        if self.forzar_navegador or not puede_autoactualizar():
+            webbrowser.open(info["pagina"])
+            self.avisar("Se abrió la página de descarga de la versión nueva en su navegador.", segundos=10)
+            return
+        self.actualizando = True
+        self.avisar(f"Descargando la versión {info['version']}… no cierre el teclado.", segundos=300)
+
+        def trabajo():
+            try:
+                actual = ruta_ejecutable()
+                nuevo = descargar_actualizacion(info, os.path.dirname(actual))
+                try:
+                    reemplazar_ejecutable(actual, nuevo)
+                except BaseException:
+                    try:
+                        os.remove(nuevo)
+                    except OSError:
+                        pass
+                    raise
+                self.cola_actualizacion.put(("lista", actual))
+            except Exception:
+                self.cola_actualizacion.put(("error", None))
+        threading.Thread(target=trabajo, daemon=True).start()
+
+    def terminar_actualizacion(self, ruta):
+        """El programa nuevo ya está en su lugar: se abre y este se cierra."""
+        self.guardar()
+        liberar_instancia()
+        try:
+            relanzar(ruta)
+        except Exception:
+            if SISTEMA == "win32":
+                instancia_unica()  # no se pudo abrir el nuevo: este sigue funcionando
+            self.actualizando = False
+            self.avisar("El teclado se actualizó. Ciérrelo y vuelva a abrirlo para usar la versión nueva.",
+                        segundos=20)
+            return
+        self.raiz.destroy()
 
     # -- minimizar / restaurar / cerrar --------------------------------------
     def minimizar_ventana(self):
@@ -804,7 +1100,13 @@ def main():
         sys.exit(autodiagnostico())
     if SISTEMA == "win32":
         activar_dpi()  # debe hacerse antes de crear la ventana
-        if not instancia_unica():
+        # Tras una actualización, la copia anterior tarda un instante en cerrarse: se la espera.
+        for _ in range(20 if "--actualizado" in sys.argv[1:] else 1):
+            if instancia_unica():
+                break
+            liberar_instancia()
+            time.sleep(0.5)
+        else:
             avisar_ya_abierto()
             return
     Teclado().ejecutar()

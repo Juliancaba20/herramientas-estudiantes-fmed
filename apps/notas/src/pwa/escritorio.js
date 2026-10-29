@@ -7,7 +7,7 @@
 
 // La web (app/notas/Descargas.js) importa este mismo archivo: así el repositorio, los nombres de archivo y la
 // regla de qué sistema recibe qué son los mismos en la app y en la página, y no pueden separarse.
-export const REPO = 'Juliancaba20/herramientas-estudiantes-fmed';
+export const REPO = 'Juliancaba20/hipocampus';
 // Publicación fija que el flujo de compilación mantiene al día en cada versión nueva (.github/workflows/compilar-notas.yml).
 // Al ser siempre la misma dirección, el enlace nunca depende de la etiqueta ni se cruza con las versiones del Teclado.
 export const ETIQUETA_ULTIMA = 'notas-ultima';

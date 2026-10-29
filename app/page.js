@@ -4,7 +4,7 @@ export default function Inicio() {
   return (
     <main className="page" data-tema="inicio">
       <header className="top">
-        <h1>Herramientas para estudiantes</h1>
+        <h1>Hipocampus</h1>
         <p className="sub">Recursos de estudio pensados para estudiantes de medicina.</p>
       </header>
       <div className="tools">

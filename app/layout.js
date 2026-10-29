@@ -5,12 +5,12 @@ import Nav from './Nav';
 import Link from 'next/link';
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://herramientas-estudiantes-fmed.vercel.app'),
-  title: { default: 'Herramientas para estudiantes', template: '%s | Herramientas para estudiantes' },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://hipocampus.vercel.app'),
+  title: { default: 'Hipocampus', template: '%s | Hipocampus' },
   description: 'Recursos de estudio pensados para estudiantes de medicina.',
   openGraph: {
-    siteName: 'Herramientas para estudiantes',
-    title: 'Herramientas para estudiantes',
+    siteName: 'Hipocampus',
+    title: 'Hipocampus',
     description: 'Recursos de estudio pensados para estudiantes de medicina.',
     locale: 'es_AR',
     type: 'website',

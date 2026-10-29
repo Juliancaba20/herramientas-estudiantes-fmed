@@ -1,6 +1,6 @@
-# Herramientas para estudiantes
+# Hipocampus
 
-Sitio gratuito y sin fines de lucro con herramientas para estudiantes, en especial de medicina. Hecho con Next.js (App Router).
+Hipocampus es un sitio gratuito y sin fines de lucro con herramientas para estudiantes, en especial de medicina. Hecho con Next.js (App Router).
 
 - `/` portada con las herramientas
 - `/metodos` catálogo de métodos de estudio con nivel de respaldo (lo básico de cada uno)
@@ -135,4 +135,4 @@ Siguen las convenciones de Next.js en `app/`: `icon.svg` y `favicon.ico` (pesta�
 
 ## Publicación
 
-Vercel detecta Next.js sin configuración adicional. Para que las vistas previas al compartir el enlace usen el dominio propio, defina la variable de entorno `NEXT_PUBLIC_SITE_URL` (por defecto usa `https://herramientas-estudiantes-fmed.vercel.app`).
+Vercel detecta Next.js sin configuración adicional. Para que las vistas previas al compartir el enlace usen el dominio propio, defina la variable de entorno `NEXT_PUBLIC_SITE_URL` (por defecto usa `https://hipocampus.vercel.app`).

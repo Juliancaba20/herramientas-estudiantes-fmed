@@ -1,5 +1,5 @@
 // Repositorio único del proyecto: el sitio y el programa del teclado viven aquí.
-export const REPO = 'Juliancaba20/herramientas-estudiantes-fmed';
+export const REPO = 'Juliancaba20/hipocampus';
 
 // Nombres de los archivos que genera la compilación (.github/workflows/compilar-teclado.yml).
 export const ARCHIVOS = {
