@@ -20,6 +20,17 @@ Notas:
 - Si un release quedó mal (archivos con otro nombre o de una versión equivocada), bórrelo junto con su etiqueta (*Releases > Delete*, y luego *Tags* para borrar la etiqueta) y vuelva a crearlo.
 - También puede ejecutar la compilación a mano desde *Actions > Compilar Teclado Científico > Run workflow*, eligiendo una etiqueta existente.
 
+## Actualización automática (desde la versión 1.5)
+
+- Al abrirse (y cada 6 horas), el programa consulta en GitHub si hay una versión del teclado más nueva. Si la hay, aparece un botón **↑** en la barra y un aviso; con un clic descarga la versión nueva, la verifica (tamaño y huella SHA-256 que publica GitHub), reemplaza su propio archivo y se reinicia. La configuración se conserva.
+- **Windows y Linux:** se actualiza solo. **Mac:** el botón abre la página de descarga (la aplicación no está firmada y no puede reemplazarse a sí misma).
+- Si la carpeta donde está el programa no permite escribir (por ejemplo, `C:\Program Files`), o algo falla, el botón abre la página de la versión en el navegador.
+- Tras actualizar, queda un archivo `.old` junto al programa; se borra solo unos segundos después.
+- Para desactivar la búsqueda, con el programa cerrado agregue `"buscar_actualizaciones": false` en `config.json`.
+- **Las versiones 1.4 y anteriores no tienen esta función:** se descarga la 1.5 una única vez a mano; de ahí en adelante se actualiza sola.
+- Para que una versión sea detectada, la etiqueta del release debe ser `teclado-vX.Y` (como indica «Publicar una versión nueva») y no estar marcada como *pre-release*.
+- Pruebas: desde esta carpeta, `python -m unittest pruebas.probar_actualizacion -v` (en Linux sin pantalla, anteponga `xvfb-run -a`).
+
 ## Uso del teclado
 
 - **Escribir:** haga clic en un símbolo y se escribe donde esté el cursor. Al pasar el mouse por encima, la barra superior muestra su nombre.

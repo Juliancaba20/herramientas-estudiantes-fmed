@@ -1,6 +1,6 @@
-# Herramientas para estudiantes
+# Hipocampus
 
-Sitio gratuito y sin fines de lucro con herramientas para estudiantes, en especial de medicina. Hecho con Next.js (App Router).
+Hipocampus es un sitio gratuito y sin fines de lucro con herramientas para estudiantes, en especial de medicina. Hecho con Next.js (App Router).
 
 - `/` portada con las herramientas
 - `/metodos` catálogo de métodos de estudio con nivel de respaldo (lo básico de cada uno)

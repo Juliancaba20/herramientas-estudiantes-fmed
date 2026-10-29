@@ -50,7 +50,7 @@ export async function POST(request) {
       method: 'POST',
       headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: CONTACT_FROM || 'Herramientas para estudiantes <onboarding@resend.dev>',
+        from: CONTACT_FROM || 'Hipocampus <onboarding@resend.dev>',
         to: [CONTACT_TO],
         subject: `[Sitio] ${etiqueta}`,
         html,
