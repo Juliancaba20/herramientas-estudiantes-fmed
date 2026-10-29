@@ -5,7 +5,7 @@ import Nav from './Nav';
 import Link from 'next/link';
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://hipocampus.vercel.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://herramientas-estudiantes-fmed.vercel.app'),
   title: { default: 'Hipocampus', template: '%s | Hipocampus' },
   description: 'Recursos de estudio pensados para estudiantes de medicina.',
   openGraph: {
