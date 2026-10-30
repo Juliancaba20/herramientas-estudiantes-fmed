@@ -136,3 +136,33 @@ Siguen las convenciones de Next.js en `app/`: `icon.svg` y `favicon.ico` (pesta�
 ## Publicación
 
 Vercel detecta Next.js sin configuración adicional. Para que las vistas previas al compartir el enlace usen el dominio propio, defina la variable de entorno `NEXT_PUBLIC_SITE_URL` (por defecto usa `https://hipocampus.vercel.app`).
+
+## Frase del día (portada)
+
+- Las 366 frases están en `content/frases.json`, en orden de calendario (la posición 0 es el 1 de enero y la 59 el 29 de febrero). Cada fecha tiene siempre la misma frase, todos los años, y no hay repeticiones dentro del año.
+- La portada (`app/FraseDelDia.js`) la calcula en el navegador con la fecha local de cada visitante: cambia a las 00:00 de su lugar, incluso con la página abierta. No hay página propia, solo se muestra en la portada.
+- Cada frase lleva autor y obra (`t` = texto, `a` = autor, `o` = obra). Las traducciones son libres. Para corregir una frase, edite solo ese archivo.
+- El tamaño de letra se ajusta solo según el largo del texto (web e historias).
+
+## Historias de Instagram
+
+Cada día a las 09:00 (hora de Argentina) una tarea programada de Vercel (`vercel.json`) llama a `/api/instagram/publicar`, que genera la imagen de la frase (`/api/frase-historia`, JPEG de 1080 × 1920) y la publica como historia con la API de Instagram. La imagen se puede ver en el navegador: `/api/frase-historia` (hoy) o `/api/frase-historia?fecha=05-25`.
+
+**Configuración (una sola vez)**
+
+1. Pase la cuenta de Instagram a profesional (Business o Creator), gratis, desde los ajustes de la cuenta.
+2. En <https://developers.facebook.com> cree una app, agregue el producto «Instagram» con inicio de sesión de Instagram y agregue la cuenta como usuario de prueba. Mientras la app esté en modo desarrollo y la cuenta sea de su propiedad no hace falta la revisión de Meta. Los nombres de los menús pueden cambiar.
+3. Genere el token de acceso con los permisos `instagram_business_basic` e `instagram_business_content_publish`. Debe ser un token de larga duración (60 días).
+4. En Vercel (Settings > Environment Variables) cargue `CRON_SECRET` (una clave larga inventada por usted) e `INSTAGRAM_ACCESS_TOKEN`.
+5. Recomendado: en Vercel > Storage agregue una base Redis (Upstash) para que se complete `KV_REST_API_URL` y `KV_REST_API_TOKEN`. Con eso el token se renueva solo cada 30 días y no se publica dos veces el mismo día. Sin ella, el token hay que generarlo de nuevo antes de los 60 días.
+6. Ensayo sin publicar (reemplace los datos): `curl -H "Authorization: Bearer SU_CRON_SECRET" "https://su-sitio/api/instagram/publicar?prueba=1"`. Debe responder `imagen_ok: true`.
+
+**Fechas especiales (días patrios y otras)**
+
+`content/fechas-especiales.json` define las fechas en que la historia lleva una etiqueta destacada (por ejemplo «25 de mayo · Revolución de Mayo»). La clave `MM-DD` se repite todos los años; la clave `AAAA-MM-DD` vale solo para ese día y tiene prioridad (útil para feriados que se mueven). Se programan de antemano editando ese archivo: no hace falta hacer nada más. Para ensayar una: `...publicar?prueba=1&fecha=05-25`.
+
+**Notas**
+
+- En el plan gratuito de Vercel las tareas programadas pueden ejecutarse una vez al día y con una demora de hasta una hora respecto de la hora indicada.
+- Si cambia la hora de publicación, edite `schedule` en `vercel.json` (formato cron, en UTC; Argentina es UTC−3).
+- Fuentes de las historias: Source Serif 4 y Bricolage Grotesque (licencia OFL, incluida en `app/api/frase-historia/fuentes`).

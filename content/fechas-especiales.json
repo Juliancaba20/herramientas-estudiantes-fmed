@@ -1,0 +1,19 @@
+{
+  "_ayuda": "Fechas con historia especial. Clave «MM-DD» se repite todos los años; clave «AAAA-MM-DD» vale solo para ese día y tiene prioridad. La frase del día no cambia: se agrega una etiqueta arriba. Para sumar una fecha, agregue una línea con su título.",
+  "01-01": { "titulo": "Feliz Año Nuevo" },
+  "03-24": { "titulo": "24 de marzo · Día de la Memoria, por la Verdad y la Justicia" },
+  "04-02": { "titulo": "2 de abril · Día del Veterano y de los Caídos en la Guerra de Malvinas" },
+  "05-01": { "titulo": "1 de mayo · Día del Trabajador" },
+  "05-12": { "titulo": "12 de mayo · Día Internacional de la Enfermería" },
+  "05-25": { "titulo": "25 de mayo · Revolución de Mayo" },
+  "06-17": { "titulo": "17 de junio · Paso a la Inmortalidad del General Güemes" },
+  "06-20": { "titulo": "20 de junio · Día de la Bandera" },
+  "07-09": { "titulo": "9 de julio · Día de la Independencia" },
+  "08-17": { "titulo": "17 de agosto · Paso a la Inmortalidad del General San Martín" },
+  "09-11": { "titulo": "11 de septiembre · Día del Maestro" },
+  "09-21": { "titulo": "21 de septiembre · Día del Estudiante" },
+  "10-12": { "titulo": "12 de octubre · Día del Respeto a la Diversidad Cultural" },
+  "11-20": { "titulo": "20 de noviembre · Día de la Soberanía Nacional" },
+  "12-03": { "titulo": "3 de diciembre · Día del Médico" },
+  "12-25": { "titulo": "Feliz Navidad" }
+}

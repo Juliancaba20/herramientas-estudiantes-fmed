@@ -1,5 +1,6 @@
 import '@fontsource-variable/bricolage-grotesque';
 import '@fontsource-variable/source-serif-4';
+import '@fontsource-variable/source-serif-4/wght-italic.css';
 import './globals.css';
 import Nav from './Nav';
 import Link from 'next/link';

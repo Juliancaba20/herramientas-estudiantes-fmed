@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import FraseDelDia from './FraseDelDia';
 
 export default function Inicio() {
   return (
@@ -7,6 +8,7 @@ export default function Inicio() {
         <h1>Hipocampus</h1>
         <p className="sub">Recursos de estudio pensados para estudiantes de medicina.</p>
       </header>
+      <FraseDelDia />
       <div className="tools">
         <Link className="card tool" data-tool="metodos" style={{ '--i': 0 }} href="/metodos">
           <span className="ico" aria-hidden="true">✓</span>

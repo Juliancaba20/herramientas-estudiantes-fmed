@@ -1,0 +1,1832 @@
+[
+ {
+  "t": "Un viaje de mil millas comienza con un solo paso.",
+  "a": "Lao Tse",
+  "o": "Tao Te Ching, 64"
+ },
+ {
+  "t": "Todos los hombres desean por naturaleza saber.",
+  "a": "Aristóteles",
+  "o": "Metafísica, I, 1"
+ },
+ {
+  "t": "Lo pasado es solo el prólogo.",
+  "a": "William Shakespeare",
+  "o": "La tempestad, II, 1"
+ },
+ {
+  "t": "Aferra cada hora: así dependerás menos del mañana si te apoderas del hoy.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 1"
+ },
+ {
+  "t": "Quien ha empezado ha hecho ya la mitad: atrévete a saber, empieza.",
+  "a": "Horacio",
+  "o": "Epístolas, I, 2"
+ },
+ {
+  "t": "El impedimento para la acción hace avanzar la acción: lo que se interpone en el camino se convierte en el camino.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, V, 20"
+ },
+ {
+  "t": "Aprender y practicar a menudo lo aprendido, ¿no es acaso un placer?",
+  "a": "Confucio",
+  "o": "Analectas, 1, 1"
+ },
+ {
+  "t": "Toda la vida hay que aprender a vivir.",
+  "a": "Séneca",
+  "o": "Sobre la brevedad de la vida, 7"
+ },
+ {
+  "t": "No exijas que las cosas sucedan como deseas; desea que sucedan como suceden, y serás feliz.",
+  "a": "Epicteto",
+  "o": "Enquiridión, 8"
+ },
+ {
+  "t": "Hay que ordenar cada día como si cerrara y completara nuestra vida.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 12"
+ },
+ {
+  "t": "Atrévete a saber. Ten el valor de servirte de tu propio entendimiento.",
+  "a": "Immanuel Kant",
+  "o": "¿Qué es la Ilustración?"
+ },
+ {
+  "t": "El trabajo tenaz lo vence todo.",
+  "a": "Virgilio",
+  "o": "Geórgicas, I"
+ },
+ {
+  "t": "¿Qué hay más duro que la roca y más blando que el agua? Y sin embargo, el agua blanda horada las rocas duras.",
+  "a": "Ovidio",
+  "o": "Arte de amar, I"
+ },
+ {
+  "t": "Es una gran parte del progreso querer progresar.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 71"
+ },
+ {
+  "t": "Primero dite a ti mismo lo que quieres ser; después haz lo que tengas que hacer.",
+  "a": "Epicteto",
+  "o": "Disertaciones, III, 23"
+ },
+ {
+  "t": "La raíz de la educación es amarga, pero su fruto es dulce.",
+  "a": "Aristóteles",
+  "o": "citado por Diógenes Laercio, Vidas, V"
+ },
+ {
+  "t": "El comienzo es lo más importante en toda obra.",
+  "a": "Platón",
+  "o": "La República, II"
+ },
+ {
+  "t": "Lo que hay que aprender a hacer, lo aprendemos haciéndolo.",
+  "a": "Aristóteles",
+  "o": "Ética a Nicómaco, II, 1"
+ },
+ {
+  "t": "No son las cosas las que perturban a los hombres, sino las opiniones que tienen sobre ellas.",
+  "a": "Epicteto",
+  "o": "Enquiridión, 5"
+ },
+ {
+  "t": "Pueden porque creen que pueden.",
+  "a": "Virgilio",
+  "o": "Eneida, V"
+ },
+ {
+  "t": "Mira hacia dentro: allí está la fuente del bien, que siempre brotará si no dejas de cavar.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, VII, 59"
+ },
+ {
+  "t": "Quien se vence a sí mismo es poderoso.",
+  "a": "Lao Tse",
+  "o": "Tao Te Ching, 33"
+ },
+ {
+  "t": "Una vida sin examen no merece ser vivida.",
+  "a": "Sócrates",
+  "o": "Platón, Apología, 38a"
+ },
+ {
+  "t": "Mientras aplazamos la vida, ella pasa.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 1"
+ },
+ {
+  "t": "Aprender sin pensar es inútil; pensar sin aprender es peligroso.",
+  "a": "Confucio",
+  "o": "Analectas, 2, 15"
+ },
+ {
+  "t": "La primera y mejor de las victorias es vencerse a sí mismo.",
+  "a": "Platón",
+  "o": "Leyes, I"
+ },
+ {
+  "t": "Nadie es bueno por casualidad: la virtud se aprende.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 123"
+ },
+ {
+  "t": "Envejezco aprendiendo siempre muchas cosas.",
+  "a": "Solón",
+  "o": "Fragmentos"
+ },
+ {
+  "t": "El principio de la filosofía es reconocer la propia debilidad.",
+  "a": "Epicteto",
+  "o": "Disertaciones, II, 11"
+ },
+ {
+  "t": "Cuando veas a un hombre bueno, procura imitarlo; cuando veas a uno malo, examínate a ti mismo.",
+  "a": "Confucio",
+  "o": "Analectas, 4, 17"
+ },
+ {
+  "t": "Ningún viento es favorable para quien no sabe a qué puerto se dirige.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 71"
+ },
+ {
+  "t": "La vida es breve, el arte largo, la ocasión fugaz, la experiencia engañosa, el juicio difícil.",
+  "a": "Hipócrates",
+  "o": "Aforismos, I, 1"
+ },
+ {
+  "t": "Conócete a ti mismo.",
+  "a": "Inscripción del templo de Apolo en Delfos",
+  "o": "citada por Platón en el Protágoras"
+ },
+ {
+  "t": "El que no sabe lo que busca no comprenderá lo que encuentra.",
+  "a": "Claude Bernard",
+  "o": "Introducción al estudio de la medicina experimental"
+ },
+ {
+  "t": "En los campos de la observación, el azar solo favorece a los espíritus preparados.",
+  "a": "Louis Pasteur",
+  "o": "Lección inaugural en Lille, 1854"
+ },
+ {
+  "t": "Hacer el bien o, al menos, no hacer daño.",
+  "a": "Hipócrates",
+  "o": "Epidemias, I"
+ },
+ {
+  "t": "Los médicos son los abogados naturales de los pobres.",
+  "a": "Rudolf Virchow",
+  "o": "El médico de los pobres, 1848"
+ },
+ {
+  "t": "Mientras el enfermo respira, hay esperanza.",
+  "a": "Cicerón",
+  "o": "Cartas a Ático, IX"
+ },
+ {
+  "t": "Saber es poder.",
+  "a": "Francis Bacon",
+  "o": "Meditationes sacrae, 1597"
+ },
+ {
+  "t": "La naturaleza, para ser gobernada, debe ser obedecida.",
+  "a": "Francis Bacon",
+  "o": "Novum Organum, I"
+ },
+ {
+  "t": "Con pureza y con santidad guardaré mi vida y mi arte.",
+  "a": "Juramento hipocrático",
+  "o": "Antigua Grecia"
+ },
+ {
+  "t": "En todas las cosas de la naturaleza hay algo maravilloso.",
+  "a": "Aristóteles",
+  "o": "Partes de los animales, I"
+ },
+ {
+  "t": "La ignorancia genera confianza con más frecuencia que el conocimiento.",
+  "a": "Charles Darwin",
+  "o": "El origen del hombre, introducción"
+ },
+ {
+  "t": "El arte es yo; la ciencia es nosotros.",
+  "a": "Claude Bernard",
+  "o": "Introducción al estudio de la medicina experimental"
+ },
+ {
+  "t": "El todo es más que la suma de sus partes.",
+  "a": "Aristóteles",
+  "o": "Metafísica, VIII"
+ },
+ {
+  "t": "Una onza de prevención vale más que una libra de curación.",
+  "a": "Benjamin Franklin",
+  "o": "Pennsylvania Gazette, 1735"
+ },
+ {
+  "t": "Lo primero que se exige a un hospital es que no haga daño a los enfermos.",
+  "a": "Florence Nightingale",
+  "o": "Notas sobre hospitales"
+ },
+ {
+  "t": "El cielo ayuda a quienes se ayudan.",
+  "a": "Samuel Smiles",
+  "o": "Self-Help (La ayuda propia), 1859"
+ },
+ {
+  "t": "El pensamiento no es más que un relámpago en medio de una larga noche, pero ese relámpago lo es todo.",
+  "a": "Henri Poincaré",
+  "o": "El valor de la ciencia"
+ },
+ {
+  "t": "El hombre es una caña, la más débil de la naturaleza, pero es una caña pensante.",
+  "a": "Blaise Pascal",
+  "o": "Pensamientos"
+ },
+ {
+  "t": "Prefiero una cabeza bien hecha a una cabeza bien llena.",
+  "a": "Michel de Montaigne",
+  "o": "Ensayos, I, 26"
+ },
+ {
+  "t": "Si he visto más lejos, es porque estoy sobre los hombros de gigantes.",
+  "a": "Isaac Newton",
+  "o": "Carta a Robert Hooke, 1675"
+ },
+ {
+  "t": "El libro de la naturaleza está escrito en lengua matemática.",
+  "a": "Galileo Galilei",
+  "o": "El ensayador, 1623"
+ },
+ {
+  "t": "No hay camino real hacia la geometría.",
+  "a": "Euclides",
+  "o": "atribuida por Proclo"
+ },
+ {
+  "t": "Nada es demasiado maravilloso para ser verdad, si es coherente con las leyes de la naturaleza.",
+  "a": "Michael Faraday",
+  "o": "Diario de laboratorio, 1849"
+ },
+ {
+  "t": "Dadme un punto de apoyo y moveré el mundo.",
+  "a": "Arquímedes",
+  "o": "citado por Pappus"
+ },
+ {
+  "t": "Dudando llegamos a la investigación; investigando percibimos la verdad.",
+  "a": "Pedro Abelardo",
+  "o": "Sí y no (Sic et non)"
+ },
+ {
+  "t": "La naturaleza y la enseñanza son parecidas: la enseñanza transforma al hombre y, al transformarlo, crea naturaleza.",
+  "a": "Demócrito",
+  "o": "Fragmentos"
+ },
+ {
+  "t": "Sin lucha no hay progreso.",
+  "a": "Frederick Douglass",
+  "o": "Discurso de 1857"
+ },
+ {
+  "t": "Todo lo excelente es tan difícil como raro.",
+  "a": "Baruch Spinoza",
+  "o": "Ética, V"
+ },
+ {
+  "t": "Nunca es demasiado pronto ni demasiado tarde para ocuparse de la salud del alma.",
+  "a": "Epicuro",
+  "o": "Carta a Meneceo"
+ },
+ {
+  "t": "La sabiduría es hija de la experiencia.",
+  "a": "Leonardo da Vinci",
+  "o": "Cuadernos"
+ },
+ {
+  "t": "Hierro que no se usa se oxida; el ingenio sin ejercicio se echa a perder.",
+  "a": "Leonardo da Vinci",
+  "o": "Cuadernos"
+ },
+ {
+  "t": "Nada grande se ha logrado jamás sin entusiasmo.",
+  "a": "Ralph Waldo Emerson",
+  "o": "Círculos"
+ },
+ {
+  "t": "Confía en ti mismo: cada corazón vibra con esa cuerda de hierro.",
+  "a": "Ralph Waldo Emerson",
+  "o": "Confianza en uno mismo"
+ },
+ {
+  "t": "Si has construido castillos en el aire, tu trabajo no tiene por qué perderse; ahí es donde deben estar. Ahora pon los cimientos debajo.",
+  "a": "Henry David Thoreau",
+  "o": "Walden"
+ },
+ {
+  "t": "No basta con estar ocupado; también las hormigas lo están. La cuestión es: ¿en qué estamos ocupados?",
+  "a": "Henry David Thoreau",
+  "o": "Carta a H. G. O. Blake, 1860"
+ },
+ {
+  "t": "Quien tiene un porqué para vivir puede soportar casi cualquier cómo.",
+  "a": "Friedrich Nietzsche",
+  "o": "Crepúsculo de los ídolos"
+ },
+ {
+  "t": "Hay que tener todavía caos dentro de sí para poder dar a luz una estrella danzarina.",
+  "a": "Friedrich Nietzsche",
+  "o": "Así habló Zaratustra"
+ },
+ {
+  "t": "Llega a ser el que eres, habiendo aprendido quién eres.",
+  "a": "Píndaro",
+  "o": "Pítica II"
+ },
+ {
+  "t": "Gris, amigo mío, es toda teoría, y verde el árbol dorado de la vida.",
+  "a": "Johann Wolfgang von Goethe",
+  "o": "Fausto, I"
+ },
+ {
+  "t": "Quien siempre se esfuerza, a ese podemos redimirlo.",
+  "a": "Johann Wolfgang von Goethe",
+  "o": "Fausto, II"
+ },
+ {
+  "t": "Lo que heredaste de tus padres, adquiérelo para poseerlo.",
+  "a": "Johann Wolfgang von Goethe",
+  "o": "Fausto, I"
+ },
+ {
+  "t": "No basta saber: hay que aplicar. No basta querer: hay que hacer.",
+  "a": "Johann Wolfgang von Goethe",
+  "o": "Los años de peregrinaje de Wilhelm Meister"
+ },
+ {
+  "t": "Para investigar la verdad es preciso dudar, una vez en la vida, de todas las cosas.",
+  "a": "René Descartes",
+  "o": "Principios de la filosofía, I"
+ },
+ {
+  "t": "No basta con tener buen ingenio; lo principal es aplicarlo bien.",
+  "a": "René Descartes",
+  "o": "Discurso del método, I"
+ },
+ {
+  "t": "El corazón tiene razones que la razón no conoce.",
+  "a": "Blaise Pascal",
+  "o": "Pensamientos"
+ },
+ {
+  "t": "Esta carta es más larga porque no he tenido tiempo de hacerla más corta.",
+  "a": "Blaise Pascal",
+  "o": "Cartas provinciales, XVI"
+ },
+ {
+  "t": "Trabajemos, pues, en pensar bien: he ahí el principio de la moral.",
+  "a": "Blaise Pascal",
+  "o": "Pensamientos"
+ },
+ {
+  "t": "La vida solo puede comprenderse hacia atrás, pero debe vivirse hacia adelante.",
+  "a": "Søren Kierkegaard",
+  "o": "Diarios"
+ },
+ {
+  "t": "Tenga paciencia con todo lo no resuelto en su corazón y trate de amar las preguntas mismas.",
+  "a": "Rainer Maria Rilke",
+  "o": "Cartas a un joven poeta"
+ },
+ {
+  "t": "Dudar de todo o creerlo todo son dos soluciones igualmente cómodas; ambas nos dispensan de reflexionar.",
+  "a": "Henri Poincaré",
+  "o": "La ciencia y la hipótesis"
+ },
+ {
+  "t": "Las grandes obras se hacen no con la fuerza, sino con la perseverancia.",
+  "a": "Samuel Johnson",
+  "o": "Rasselas"
+ },
+ {
+  "t": "Cien veces sobre el telar vuelve a poner tu obra: púlela y vuelve a pulirla sin cesar.",
+  "a": "Nicolas Boileau",
+  "o": "El arte poética"
+ },
+ {
+  "t": "Aprender a leer es encender un fuego: cada sílaba deletreada es una chispa.",
+  "a": "Victor Hugo",
+  "o": "Los miserables"
+ },
+ {
+  "t": "La mente no necesita llenarse como una botella, sino encenderse como la leña.",
+  "a": "Plutarco",
+  "o": "Sobre el modo de escuchar"
+ },
+ {
+  "t": "El que lee mucho y anda mucho, ve mucho y sabe mucho.",
+  "a": "Miguel de Cervantes",
+  "o": "Don Quijote, II, 25"
+ },
+ {
+  "t": "Cada uno es hijo de sus obras.",
+  "a": "Miguel de Cervantes",
+  "o": "Don Quijote, I, 47"
+ },
+ {
+  "t": "La diligencia es madre de la buena ventura.",
+  "a": "Miguel de Cervantes",
+  "o": "Don Quijote, II, 43"
+ },
+ {
+  "t": "La verdad adelgaza, pero no quiebra, y siempre anda sobre la mentira como el aceite sobre el agua.",
+  "a": "Miguel de Cervantes",
+  "o": "Don Quijote, II, 10"
+ },
+ {
+  "t": "Zamora no se ganó en una hora.",
+  "a": "Miguel de Cervantes",
+  "o": "Don Quijote, II, 71"
+ },
+ {
+  "t": "Donde una puerta se cierra, otra se abre.",
+  "a": "Miguel de Cervantes",
+  "o": "Don Quijote, I, 21"
+ },
+ {
+  "t": "Caminante, no hay camino, se hace camino al andar.",
+  "a": "Antonio Machado",
+  "o": "Proverbios y cantares"
+ },
+ {
+  "t": "Despacito y buena letra: el hacer las cosas bien importa más que el hacerlas.",
+  "a": "Antonio Machado",
+  "o": "Proverbios y cantares"
+ },
+ {
+  "t": "Todo pasa y todo queda, pero lo nuestro es pasar, pasar haciendo caminos.",
+  "a": "Antonio Machado",
+  "o": "Proverbios y cantares"
+ },
+ {
+  "t": "Obrar bien es lo que importa.",
+  "a": "Pedro Calderón de la Barca",
+  "o": "La vida es sueño"
+ },
+ {
+  "t": "Lo bueno, si breve, dos veces bueno.",
+  "a": "Baltasar Gracián",
+  "o": "Oráculo manual y arte de prudencia"
+ },
+ {
+  "t": "Yo soy yo y mi circunstancia, y si no la salvo a ella no me salvo yo.",
+  "a": "José Ortega y Gasset",
+  "o": "Meditaciones del Quijote"
+ },
+ {
+  "t": "Ser cultos es el único modo de ser libres.",
+  "a": "José Martí",
+  "o": "Maestros ambulantes"
+ },
+ {
+  "t": "Trincheras de ideas valen más que trincheras de piedra.",
+  "a": "José Martí",
+  "o": "Nuestra América"
+ },
+ {
+  "t": "Moral y luces son nuestras primeras necesidades.",
+  "a": "Simón Bolívar",
+  "o": "Discurso de Angostura, 1819"
+ },
+ {
+  "t": "O inventamos o erramos.",
+  "a": "Simón Rodríguez",
+  "o": "Sociedades americanas"
+ },
+ {
+  "t": "No te des por vencido, ni aun vencido.",
+  "a": "Almafuerte",
+  "o": "Piedra libre"
+ },
+ {
+  "t": "No hay grandeza donde faltan la sencillez, la bondad y la verdad.",
+  "a": "León Tolstói",
+  "o": "Guerra y paz"
+ },
+ {
+  "t": "Es preciso amar la vida más que el sentido de la vida.",
+  "a": "Fiódor Dostoievski",
+  "o": "Los hermanos Karamázov"
+ },
+ {
+  "t": "El secreto de la existencia humana no está solo en vivir, sino en saber para qué se vive.",
+  "a": "Fiódor Dostoievski",
+  "o": "Los hermanos Karamázov"
+ },
+ {
+  "t": "Nuestras dudas son traidoras y nos hacen perder el bien que podríamos ganar por miedo a intentarlo.",
+  "a": "William Shakespeare",
+  "o": "Medida por medida, I, 4"
+ },
+ {
+  "t": "Esforzarse, buscar, hallar y no rendirse.",
+  "a": "Alfred Tennyson",
+  "o": "Ulises"
+ },
+ {
+  "t": "Las alturas que alcanzaron y conservaron los grandes hombres no se ganaron de un salto: mientras sus compañeros dormían, ellos subían fatigosamente en la noche.",
+  "a": "Henry Wadsworth Longfellow",
+  "o": "La escala de San Agustín"
+ },
+ {
+  "t": "Nunca dejes para mañana lo que puedas hacer hoy.",
+  "a": "Benjamin Franklin",
+  "o": "El camino de la riqueza, 1758"
+ },
+ {
+  "t": "Trabaja mientras se llama hoy, pues llega la noche en que nadie puede trabajar.",
+  "a": "Thomas Carlyle",
+  "o": "Sartor Resartus"
+ },
+ {
+  "t": "Un poco de saber es cosa peligrosa; bebed hondo o no probéis de la fuente.",
+  "a": "Alexander Pope",
+  "o": "Ensayo sobre la crítica"
+ },
+ {
+  "t": "La educación no es una preparación para la vida: es la vida misma.",
+  "a": "John Dewey",
+  "o": "Mi credo pedagógico"
+ },
+ {
+  "t": "El hábito es el enorme volante de la sociedad.",
+  "a": "William James",
+  "o": "Principios de psicología"
+ },
+ {
+  "t": "Si Dios tuviera encerrada en su mano derecha toda la verdad, y en la izquierda el único y eterno afán de buscarla, aunque con la condición de errar siempre, y me dijera «¡elige!», me inclinaría con humildad hacia su izquierda.",
+  "a": "Gotthold Ephraim Lessing",
+  "o": "Una réplica, 1778"
+ },
+ {
+  "t": "Quien ha hecho lo mejor de su tiempo ha vivido para todos los tiempos.",
+  "a": "Friedrich Schiller",
+  "o": "Wallenstein"
+ },
+ {
+  "t": "Las grandes ideas vienen del corazón.",
+  "a": "Vauvenargues",
+  "o": "Reflexiones y máximas"
+ },
+ {
+  "t": "Hay que cultivar nuestro jardín.",
+  "a": "Voltaire",
+  "o": "Cándido"
+ },
+ {
+  "t": "El trabajo nos aleja de tres grandes males: el aburrimiento, el vicio y la necesidad.",
+  "a": "Voltaire",
+  "o": "Cándido"
+ },
+ {
+  "t": "Vivir no es respirar, es obrar.",
+  "a": "Jean-Jacques Rousseau",
+  "o": "Emilio"
+ },
+ {
+  "t": "Un sabio proporciona su creencia a la evidencia.",
+  "a": "David Hume",
+  "o": "Investigación sobre el entendimiento humano"
+ },
+ {
+  "t": "Todo hombre puede ser, si se lo propone, escultor de su propio cerebro.",
+  "a": "Santiago Ramón y Cajal",
+  "o": "Reglas y consejos sobre investigación científica"
+ },
+ {
+  "t": "La filosofía enseña a obrar, no a hablar.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 20"
+ },
+ {
+  "t": "La naturaleza ama ocultarse.",
+  "a": "Heráclito",
+  "o": "Fragmentos"
+ },
+ {
+  "t": "La esperanza es el sueño del hombre despierto.",
+  "a": "Aristóteles",
+  "o": "citado por Diógenes Laercio, Vidas, V"
+ },
+ {
+  "t": "Si no soy yo para mí, ¿quién? Y si no es ahora, ¿cuándo?",
+  "a": "Hillel",
+  "o": "Pirkei Avot, 1, 14"
+ },
+ {
+  "t": "La vida, si sabes usarla, es larga.",
+  "a": "Séneca",
+  "o": "Sobre la brevedad de la vida, 2"
+ },
+ {
+  "t": "Mi vida tiene un límite, pero el saber no lo tiene.",
+  "a": "Zhuangzi",
+  "o": "Capítulo 3"
+ },
+ {
+  "t": "Domina el tema y las palabras vendrán.",
+  "a": "Catón el Viejo",
+  "o": "citado por Julio Víctor"
+ },
+ {
+  "t": "Lo más suave del mundo domina a lo más duro.",
+  "a": "Lao Tse",
+  "o": "Tao Te Ching, 43"
+ },
+ {
+  "t": "Si algo no es correcto, no lo hagas; si no es verdad, no lo digas.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, XII, 17"
+ },
+ {
+  "t": "Las circunstancias difíciles muestran qué clase de hombres somos.",
+  "a": "Epicteto",
+  "o": "Disertaciones, I, 24"
+ },
+ {
+  "t": "La observación indica cómo está el paciente; la reflexión indica qué hay que hacer.",
+  "a": "Florence Nightingale",
+  "o": "Notas sobre enfermería"
+ },
+ {
+  "t": "¿Qué mal tuyo has curado hoy? ¿A qué vicio te has opuesto? ¿En qué eres mejor?",
+  "a": "Séneca",
+  "o": "Sobre la ira, III"
+ },
+ {
+  "t": "Enseñar a todos todo.",
+  "a": "Juan Amós Comenio",
+  "o": "Didáctica magna"
+ },
+ {
+  "t": "No son la fuerza ni la rapidez las que hacen grandes cosas, sino la reflexión, el carácter y el juicio.",
+  "a": "Cicerón",
+  "o": "Sobre la vejez, 17"
+ },
+ {
+  "t": "El verdadero viaje de descubrimiento no consiste en buscar nuevos paisajes, sino en mirar con nuevos ojos.",
+  "a": "Marcel Proust",
+  "o": "La prisionera"
+ },
+ {
+  "t": "Debes cambiar de espíritu, no de cielo.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 28"
+ },
+ {
+  "t": "Algunos libros hay que gustarlos, otros engullirlos, y unos pocos masticarlos y digerirlos.",
+  "a": "Francis Bacon",
+  "o": "Ensayos, «De los estudios»"
+ },
+ {
+  "t": "Más vale ser un Sócrates insatisfecho que un necio satisfecho.",
+  "a": "John Stuart Mill",
+  "o": "El utilitarismo, II"
+ },
+ {
+  "t": "De nada sirve correr: hay que partir a tiempo.",
+  "a": "Jean de La Fontaine",
+  "o": "Fábulas, «La liebre y la tortuga»"
+ },
+ {
+  "t": "No esperes la república de Platón; conténtate con que las cosas avancen un poco, y considera eso un logro.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, IX, 29"
+ },
+ {
+  "t": "Las faltas, querido Bruto, no están en nuestras estrellas, sino en nosotros mismos.",
+  "a": "William Shakespeare",
+  "o": "Julio César, I, 2"
+ },
+ {
+  "t": "El destino guía al que lo acepta y arrastra al que se resiste.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 107"
+ },
+ {
+  "t": "La libertad, Sancho, es uno de los más preciosos dones que a los hombres dieron los cielos.",
+  "a": "Miguel de Cervantes",
+  "o": "Don Quijote, II, 58"
+ },
+ {
+  "t": "Si los pueblos no se ilustran, si no se vulgarizan sus derechos, si cada uno no conoce lo que vale, lo que puede y lo que se le debe, nuevas ilusiones sucederán a las antiguas.",
+  "a": "Mariano Moreno",
+  "o": "Gazeta de Buenos Aires, 1810"
+ },
+ {
+  "t": "Aprende con esmero cuanto debas aprender, y luego actúa conforme a ello.",
+  "a": "Tiruvalluvar",
+  "o": "Kural, 391"
+ },
+ {
+  "t": "En los mismos ríos entramos y no entramos; somos y no somos.",
+  "a": "Heráclito",
+  "o": "Fragmentos"
+ },
+ {
+  "t": "Un maestro afecta a la eternidad: nunca puede decir dónde se detiene su influencia.",
+  "a": "Henry Adams",
+  "o": "La educación de Henry Adams"
+ },
+ {
+  "t": "No hagas a otros lo que no quieres que te hagan.",
+  "a": "Confucio",
+  "o": "Analectas, 15, 24"
+ },
+ {
+  "t": "Examinadlo todo y quedaos con lo bueno.",
+  "a": "Pablo de Tarso",
+  "o": "Primera carta a los tesalonicenses, 5, 21"
+ },
+ {
+  "t": "Quienes no recuerdan el pasado están condenados a repetirlo.",
+  "a": "George Santayana",
+  "o": "La vida de la razón"
+ },
+ {
+  "t": "Los hombres buscan retiros en el campo o en la costa, pero tú puedes retirarte en ti mismo cuando quieras.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, IV, 3"
+ },
+ {
+  "t": "Imitemos a las abejas: lo que reunimos de muchas lecturas, convirtámoslo en algo propio.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 84"
+ },
+ {
+  "t": "Mi oficio y mi arte es vivir.",
+  "a": "Michel de Montaigne",
+  "o": "Ensayos, II, 6"
+ },
+ {
+  "t": "Nada te turbe, nada te espante; todo se pasa. La paciencia todo lo alcanza.",
+  "a": "Santa Teresa de Jesús",
+  "o": "Poesías"
+ },
+ {
+  "t": "No actúes como si fueras a vivir diez mil años; mientras vives, mientras puedes, sé bueno.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, IV, 17"
+ },
+ {
+  "t": "La lectura hace al hombre completo; la conversación, ágil; la escritura, exacto.",
+  "a": "Francis Bacon",
+  "o": "Ensayos, «De los estudios»"
+ },
+ {
+  "t": "Si vives conforme a la naturaleza, nunca serás pobre; si vives conforme a la opinión, nunca serás rico.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 16"
+ },
+ {
+  "t": "Nada hay más blando que el agua y, sin embargo, nada la supera para vencer lo duro.",
+  "a": "Lao Tse",
+  "o": "Tao Te Ching, 78"
+ },
+ {
+  "t": "La perfección del carácter consiste en vivir cada día como si fuera el último, sin agitación, sin indolencia, sin fingimiento.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, VII, 69"
+ },
+ {
+  "t": "Los hombres comienzan a filosofar movidos por la admiración.",
+  "a": "Aristóteles",
+  "o": "Metafísica, I, 2"
+ },
+ {
+  "t": "El secreto del éxito es la constancia en el propósito.",
+  "a": "Benjamin Disraeli",
+  "o": "Discurso de 1870"
+ },
+ {
+  "t": "Antes de emprender algo, considera lo que precede y lo que sigue; después, ponte manos a la obra.",
+  "a": "Epicteto",
+  "o": "Enquiridión, 29"
+ },
+ {
+  "t": "Acuérdate de conservar la serenidad en los momentos difíciles.",
+  "a": "Horacio",
+  "o": "Odas, II, 3"
+ },
+ {
+  "t": "Ver lo recto y no hacerlo es falta de valor.",
+  "a": "Confucio",
+  "o": "Analectas, 2, 24"
+ },
+ {
+  "t": "El azul sale del añil y es más azul que el añil.",
+  "a": "Xunzi",
+  "o": "Capítulo 1"
+ },
+ {
+  "t": "La atención es la forma más rara y más pura de generosidad.",
+  "a": "Simone Weil",
+  "o": "Carta a Joë Bousquet, 1942"
+ },
+ {
+  "t": "No hay cuestiones agotadas, sino hombres agotados en las cuestiones.",
+  "a": "Santiago Ramón y Cajal",
+  "o": "Reglas y consejos sobre investigación científica"
+ },
+ {
+  "t": "El mérito pertenece al hombre que está realmente en la arena, con el rostro marcado por el polvo, el sudor y la sangre.",
+  "a": "Theodore Roosevelt",
+  "o": "La ciudadanía en una república, 1910"
+ },
+ {
+  "t": "Es muy poco lo que hace falta para vivir una vida feliz.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, VII, 67"
+ },
+ {
+  "t": "La naturaleza no hace nada en vano.",
+  "a": "Aristóteles",
+  "o": "Política, I"
+ },
+ {
+  "t": "Es mejor sufrir una injusticia que cometerla.",
+  "a": "Platón",
+  "o": "Gorgias"
+ },
+ {
+  "t": "El éxito no se mide por la posición alcanzada, sino por los obstáculos superados.",
+  "a": "Booker T. Washington",
+  "o": "Memorias de un esclavo"
+ },
+ {
+  "t": "No malgastes lo que te queda de vida pensando en lo que hacen los demás.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, III, 4"
+ },
+ {
+  "t": "El trabajar es la ley, porque es preciso medrar.",
+  "a": "José Hernández",
+  "o": "Martín Fierro"
+ },
+ {
+  "t": "Sufrimos más a menudo en la imaginación que en la realidad.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 13"
+ },
+ {
+  "t": "Quien no piensa en lo lejano tendrá aflicciones cercanas.",
+  "a": "Confucio",
+  "o": "Analectas, 15, 12"
+ },
+ {
+  "t": "Ningún obstáculo me doblega: todo obstáculo se vence con el rigor.",
+  "a": "Leonardo da Vinci",
+  "o": "Cuadernos"
+ },
+ {
+  "t": "Dos cosas llenan el ánimo de admiración y respeto siempre nuevos y crecientes: el cielo estrellado sobre mí y la ley moral dentro de mí.",
+  "a": "Immanuel Kant",
+  "o": "Crítica de la razón práctica"
+ },
+ {
+  "t": "Me ha parecido siempre asombroso que cada hombre se ame más a sí mismo que a los demás y, sin embargo, dé más valor a la opinión ajena que a la propia.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, XII, 4"
+ },
+ {
+  "t": "No te preocupes de que nadie te conozca; busca ser digno de ser conocido.",
+  "a": "Confucio",
+  "o": "Analectas, 4, 14"
+ },
+ {
+  "t": "Todo vale la pena si el alma no es pequeña.",
+  "a": "Fernando Pessoa",
+  "o": "Mensaje"
+ },
+ {
+  "t": "¿Cuánto tiempo más vas a esperar para exigirte lo mejor?",
+  "a": "Epicteto",
+  "o": "Enquiridión, 51"
+ },
+ {
+  "t": "Hasta la muerte todo es vida.",
+  "a": "Miguel de Cervantes",
+  "o": "Don Quijote, II, 59"
+ },
+ {
+  "t": "Los hechos son cosas obstinadas.",
+  "a": "John Adams",
+  "o": "Alegato de 1770"
+ },
+ {
+  "t": "Cada uno vale tanto como las cosas a las que dedica su empeño.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, VII, 3"
+ },
+ {
+  "t": "La felicidad es una actividad conforme a la virtud.",
+  "a": "Aristóteles",
+  "o": "Ética a Nicómaco, X"
+ },
+ {
+  "t": "Los hombres creen de buen grado lo que desean.",
+  "a": "Julio César",
+  "o": "La guerra de las Galias, III"
+ },
+ {
+  "t": "Nada en exceso.",
+  "a": "Máxima del templo de Apolo en Delfos",
+  "o": "Antigua Grecia"
+ },
+ {
+  "t": "Los hermanos sean unidos, porque esa es la ley primera.",
+  "a": "José Hernández",
+  "o": "Martín Fierro"
+ },
+ {
+  "t": "Quita la opinión de que te han hecho daño, y quedará quitado el daño.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, IV, 7"
+ },
+ {
+  "t": "El asombro es el principio de la filosofía.",
+  "a": "Platón",
+  "o": "Teeteto"
+ },
+ {
+  "t": "Quien estudia el fenómeno de la enfermedad sin libros navega por un mar sin cartas; quien estudia con libros sin pacientes no ha ido nunca al mar.",
+  "a": "William Osler",
+  "o": "Libros y hombres, 1901"
+ },
+ {
+  "t": "Vivir, Lucilio, es luchar.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 96"
+ },
+ {
+  "t": "Conviértete en el que eres.",
+  "a": "Friedrich Nietzsche",
+  "o": "La gaya ciencia, 270"
+ },
+ {
+  "t": "El hombre superior busca en sí mismo; el inferior busca en los demás.",
+  "a": "Confucio",
+  "o": "Analectas, 15, 21"
+ },
+ {
+  "t": "La práctica de la medicina es un arte, no un comercio; una vocación, no un negocio.",
+  "a": "William Osler",
+  "o": "Aequanimitas"
+ },
+ {
+  "t": "No nos atrevemos a muchas cosas porque son difíciles; pero son difíciles porque no nos atrevemos a ellas.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 104"
+ },
+ {
+  "t": "Hay una marea en los asuntos de los hombres que, tomada a tiempo, conduce a la fortuna.",
+  "a": "William Shakespeare",
+  "o": "Julio César, IV, 3"
+ },
+ {
+  "t": "Todas las cosas son veneno y nada hay sin veneno; solo la dosis hace que una cosa no sea veneno.",
+  "a": "Paracelso",
+  "o": "Septem defensiones"
+ },
+ {
+  "t": "La experiencia mantiene una escuela cara, pero los necios no aprenden en otra.",
+  "a": "Benjamin Franklin",
+  "o": "Almanaque del pobre Richard, 1743"
+ },
+ {
+  "t": "No es pobre el que tiene poco, sino el que desea más.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 2"
+ },
+ {
+  "t": "La sabiduría llega por el sufrimiento.",
+  "a": "Esquilo",
+  "o": "Agamenón"
+ },
+ {
+  "t": "El tiempo es una imagen móvil de la eternidad.",
+  "a": "Platón",
+  "o": "Timeo"
+ },
+ {
+  "t": "Recuerda que eres actor de un drama: a ti te toca representar bien el papel que se te asigne.",
+  "a": "Epicteto",
+  "o": "Enquiridión, 17"
+ },
+ {
+  "t": "No muchas cosas, sino mucho.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 2"
+ },
+ {
+  "t": "Todo lo que te venga a la mano para hacer, hazlo según tus fuerzas.",
+  "a": "Eclesiastés",
+  "o": "9, 10"
+ },
+ {
+  "t": "Lo principal es la sabiduría: adquiere sabiduría.",
+  "a": "Proverbios",
+  "o": "4, 7"
+ },
+ {
+  "t": "Es imposible que alguien aprenda lo que cree que ya sabe.",
+  "a": "Epicteto",
+  "o": "Disertaciones, II, 17"
+ },
+ {
+  "t": "Todo, Lucilio, es ajeno; solo el tiempo es nuestro.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 1"
+ },
+ {
+  "t": "Hoy me libré de toda circunstancia adversa, o mejor, la arrojé fuera: no estaba fuera, sino dentro, en mis opiniones.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, IX, 13"
+ },
+ {
+  "t": "El tímido no aprende.",
+  "a": "Hillel",
+  "o": "Pirkei Avot, 2, 5"
+ },
+ {
+  "t": "La pereza viaja tan despacio que la pobreza pronto la alcanza.",
+  "a": "Benjamin Franklin",
+  "o": "El camino de la riqueza"
+ },
+ {
+  "t": "El hombre debe ser cosa sagrada para el hombre.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 95"
+ },
+ {
+  "t": "Si tienes un jardín y una biblioteca, nada te faltará.",
+  "a": "Cicerón",
+  "o": "Cartas a los familiares, IX, 4"
+ },
+ {
+  "t": "Los grandes hombres no pierden su corazón de niño.",
+  "a": "Mencio",
+  "o": "Mencio, IV B"
+ },
+ {
+  "t": "Saber y hacer son una sola cosa.",
+  "a": "Wang Yangming",
+  "o": "Instrucciones para la práctica"
+ },
+ {
+  "t": "Vive con tu inferior como querrías que viviera contigo tu superior.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 47"
+ },
+ {
+  "t": "Feliz quien pudo conocer las causas de las cosas.",
+  "a": "Virgilio",
+  "o": "Geórgicas, II"
+ },
+ {
+  "t": "La libertad es el mayor fruto de la autosuficiencia.",
+  "a": "Epicuro",
+  "o": "Sentencias vaticanas"
+ },
+ {
+  "t": "A mí me parece haber sido solo un niño que juega a la orilla del mar, divirtiéndose al encontrar de vez en cuando un guijarro más liso o una concha más bonita, mientras el gran océano de la verdad se extendía inexplorado ante mí.",
+  "a": "Isaac Newton",
+  "o": "recogida por Joseph Spence"
+ },
+ {
+  "t": "La gratitud no es solo la mayor de las virtudes, sino la madre de todas.",
+  "a": "Cicerón",
+  "o": "En defensa de Plancio"
+ },
+ {
+  "t": "La fortuna ayuda a los audaces.",
+  "a": "Virgilio",
+  "o": "Eneida, X"
+ },
+ {
+  "t": "Siéntate ante los hechos como un niño pequeño y prepárate para abandonar toda noción preconcebida.",
+  "a": "Thomas Henry Huxley",
+  "o": "Carta a Charles Kingsley, 1860"
+ },
+ {
+  "t": "Quien canta sus males espanta.",
+  "a": "Miguel de Cervantes",
+  "o": "Don Quijote, I, 22"
+ },
+ {
+  "t": "Si algo externo te aflige, no es esa cosa lo que te perturba, sino tu juicio sobre ella.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, VIII, 47"
+ },
+ {
+  "t": "Elévate por ti mismo; no te hundas: el yo es amigo y enemigo de sí mismo.",
+  "a": "Bhagavad Gita",
+  "o": "VI, 5"
+ },
+ {
+  "t": "Quien sabe no habla; quien habla no sabe.",
+  "a": "Lao Tse",
+  "o": "Tao Te Ching, 56"
+ },
+ {
+  "t": "Seamos libres, y lo demás no importa nada.",
+  "a": "José de San Martín",
+  "o": "Carta a Tomás Godoy Cruz, 1816"
+ },
+ {
+  "t": "Sé como el promontorio contra el cual se estrellan sin cesar las olas: él permanece en pie y en torno suyo se aquieta la espuma.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, IV, 49"
+ },
+ {
+  "t": "Por naturaleza los hombres son semejantes; la práctica los distingue.",
+  "a": "Confucio",
+  "o": "Analectas, 17, 2"
+ },
+ {
+  "t": "La historia es testigo de los tiempos, luz de la verdad, vida de la memoria, maestra de la vida.",
+  "a": "Cicerón",
+  "o": "Sobre el orador, II"
+ },
+ {
+  "t": "La naturaleza es el médico de las enfermedades.",
+  "a": "Hipócrates",
+  "o": "Epidemias, VI"
+ },
+ {
+  "t": "El carácter es el destino del hombre.",
+  "a": "Heráclito",
+  "o": "Fragmentos"
+ },
+ {
+  "t": "Todo arte y toda investigación, lo mismo que toda acción y toda elección, parecen tender a algún bien.",
+  "a": "Aristóteles",
+  "o": "Ética a Nicómaco, I, 1"
+ },
+ {
+  "t": "La salud del pueblo sea la ley suprema.",
+  "a": "Cicerón",
+  "o": "Sobre las leyes, III"
+ },
+ {
+  "t": "El hombre superior se avergüenza de que sus palabras superen a sus hechos.",
+  "a": "Confucio",
+  "o": "Analectas, 14, 27"
+ },
+ {
+  "t": "No hay nada bueno ni malo: es el pensamiento el que lo hace así.",
+  "a": "William Shakespeare",
+  "o": "Hamlet, II, 2"
+ },
+ {
+  "t": "No se debe intentar curar el cuerpo sin el alma.",
+  "a": "Platón",
+  "o": "Cármides"
+ },
+ {
+  "t": "La vida de los muertos está en el recuerdo de los vivos.",
+  "a": "Cicerón",
+  "o": "Filípicas, IX"
+ },
+ {
+  "t": "Uno mismo es su propio refugio.",
+  "a": "Buda",
+  "o": "Dhammapada, 160"
+ },
+ {
+  "t": "La mente de un hombre, una vez estirada por una idea nueva, nunca recupera sus dimensiones originales.",
+  "a": "Oliver Wendell Holmes",
+  "o": "El autócrata en la mesa del desayuno"
+ },
+ {
+  "t": "De las cosas, unas dependen de nosotros y otras no.",
+  "a": "Epicteto",
+  "o": "Enquiridión, 1"
+ },
+ {
+  "t": "Estos estudios alimentan la juventud, deleitan la vejez, adornan la prosperidad y ofrecen refugio y consuelo en la adversidad.",
+  "a": "Cicerón",
+  "o": "En defensa del poeta Arquias"
+ },
+ {
+  "t": "Si amas la vida, no malgastes el tiempo, porque de eso está hecha la vida.",
+  "a": "Benjamin Franklin",
+  "o": "Almanaque del pobre Richard"
+ },
+ {
+  "t": "Cuanto más se excava, más agua brota; cuanto más se aprende, más sabiduría fluye.",
+  "a": "Tiruvalluvar",
+  "o": "Kural, 396"
+ },
+ {
+  "t": "El arte de enseñar no es más que el arte de despertar la curiosidad.",
+  "a": "Anatole France",
+  "o": "El jardín de Epicuro"
+ },
+ {
+  "t": "Equivocarse y no corregirse: eso sí es equivocarse.",
+  "a": "Confucio",
+  "o": "Analectas, 15, 30"
+ },
+ {
+  "t": "Si puedo evitar que un corazón se rompa, no habré vivido en vano.",
+  "a": "Emily Dickinson",
+  "o": "Poemas"
+ },
+ {
+  "t": "Quien sabe que tiene suficiente es rico.",
+  "a": "Lao Tse",
+  "o": "Tao Te Ching, 33"
+ },
+ {
+  "t": "El talento da en un blanco que nadie más alcanza; el genio da en un blanco que nadie más ve.",
+  "a": "Arthur Schopenhauer",
+  "o": "El mundo como voluntad y representación"
+ },
+ {
+  "t": "Quien sigue a otro no descubre nada; ni siquiera busca.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 33"
+ },
+ {
+  "t": "A los quince años puse mi voluntad en el estudio.",
+  "a": "Confucio",
+  "o": "Analectas, 2, 4"
+ },
+ {
+  "t": "Las ideas no se matan.",
+  "a": "Domingo Faustino Sarmiento",
+  "o": "Inscripción en los baños de Zonda, 1840"
+ },
+ {
+  "t": "Compórtate en la vida como en un banquete: extiende la mano con moderación cuando te ofrezcan algo.",
+  "a": "Epicteto",
+  "o": "Enquiridión, 15"
+ },
+ {
+  "t": "El verdadero gozo es cosa seria.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 23"
+ },
+ {
+  "t": "Quien repasa lo antiguo y conoce lo nuevo puede ser maestro.",
+  "a": "Confucio",
+  "o": "Analectas, 2, 11"
+ },
+ {
+  "t": "Nunca hay que desesperar.",
+  "a": "Horacio",
+  "o": "Odas, I, 7"
+ },
+ {
+  "t": "¿Qué sé yo?",
+  "a": "Michel de Montaigne",
+  "o": "Ensayos, II, 12"
+ },
+ {
+  "t": "Para todo hay un tiempo, y un tiempo para cada cosa bajo el cielo.",
+  "a": "Eclesiastés",
+  "o": "3, 1"
+ },
+ {
+  "t": "La experiencia es el nombre que todos dan a sus errores.",
+  "a": "Oscar Wilde",
+  "o": "El abanico de lady Windermere"
+ },
+ {
+  "t": "Los antiguos estudiaban para perfeccionarse a sí mismos; los de hoy estudian para impresionar a otros.",
+  "a": "Confucio",
+  "o": "Analectas, 14, 24"
+ },
+ {
+  "t": "Mejor no tener libros que creer todo lo que dicen.",
+  "a": "Mencio",
+  "o": "Mencio, VII B"
+ },
+ {
+  "t": "Yo no estudio para saber más, sino para ignorar menos.",
+  "a": "Sor Juana Inés de la Cruz",
+  "o": "Respuesta a Sor Filotea de la Cruz"
+ },
+ {
+  "t": "El estudio ha sido para mí el soberano remedio contra las penas de la vida: nunca tuve una pena que una hora de lectura no disipara.",
+  "a": "Montesquieu",
+  "o": "Pensamientos"
+ },
+ {
+  "t": "Si lloras por haber perdido el sol, las lágrimas no te dejarán ver las estrellas.",
+  "a": "Rabindranath Tagore",
+  "o": "Pájaros perdidos"
+ },
+ {
+  "t": "Ni un día sin una línea.",
+  "a": "Plinio el Viejo",
+  "o": "Historia natural, XXXV"
+ },
+ {
+  "t": "No pierdas más tiempo discutiendo cómo debe ser un buen hombre. Sé uno.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, X, 16"
+ },
+ {
+  "t": "La verdadera gloria echa raíces.",
+  "a": "Cicerón",
+  "o": "Sobre los deberes, II"
+ },
+ {
+  "t": "Todo lo mío lo llevo conmigo.",
+  "a": "Biante de Priene",
+  "o": "citado por Cicerón, Paradojas"
+ },
+ {
+  "t": "Hay más cosas en el cielo y en la tierra, Horacio, de las que sueña tu filosofía.",
+  "a": "William Shakespeare",
+  "o": "Hamlet, I, 5"
+ },
+ {
+  "t": "La concordia hace crecer las cosas pequeñas.",
+  "a": "Salustio",
+  "o": "La guerra de Yugurta"
+ },
+ {
+  "t": "Aprovecha el día; confía lo menos posible en el mañana.",
+  "a": "Horacio",
+  "o": "Odas, I, 11"
+ },
+ {
+  "t": "La ciencia se construye con hechos como una casa con piedras, pero una acumulación de hechos no es más ciencia que un montón de piedras es una casa.",
+  "a": "Henri Poincaré",
+  "o": "La ciencia y la hipótesis"
+ },
+ {
+  "t": "Los hombres no nacen: se hacen.",
+  "a": "Erasmo de Róterdam",
+  "o": "Sobre la educación de los niños"
+ },
+ {
+  "t": "No es que tengamos poco tiempo, sino que perdemos mucho.",
+  "a": "Séneca",
+  "o": "Sobre la brevedad de la vida, 1"
+ },
+ {
+  "t": "Ama a las personas con quienes te toca vivir, pero hazlo con todo tu corazón.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, VI, 39"
+ },
+ {
+  "t": "Los límites de mi lenguaje significan los límites de mi mundo.",
+  "a": "Ludwig Wittgenstein",
+  "o": "Tractatus lógico-philosophicus"
+ },
+ {
+  "t": "El último paso de la razón es reconocer que hay una infinidad de cosas que la superan.",
+  "a": "Blaise Pascal",
+  "o": "Pensamientos"
+ },
+ {
+  "t": "Si un hombre empieza con certezas, acabará con dudas; pero si se conforma con empezar con dudas, acabará con certezas.",
+  "a": "Francis Bacon",
+  "o": "Del progreso del saber"
+ },
+ {
+  "t": "Considerad vuestro origen: no fuisteis hechos para vivir como brutos, sino para seguir virtud y conocimiento.",
+  "a": "Dante Alighieri",
+  "o": "Infierno, XXVI"
+ },
+ {
+  "t": "Quien poco piensa, mucho se equivoca.",
+  "a": "Leonardo da Vinci",
+  "o": "Cuadernos"
+ },
+ {
+  "t": "Apresúrate despacio.",
+  "a": "Augusto",
+  "o": "citado por Suetonio, Vidas de los césares"
+ },
+ {
+  "t": "La fe es el pájaro que siente la luz y canta cuando el alba aún es oscura.",
+  "a": "Rabindranath Tagore",
+  "o": "Pájaros perdidos"
+ },
+ {
+  "t": "Es un error capital teorizar antes de tener datos.",
+  "a": "Arthur Conan Doyle",
+  "o": "Escándalo en Bohemia"
+ },
+ {
+  "t": "Si caminan tres personas, siempre hay una que puede ser mi maestro.",
+  "a": "Confucio",
+  "o": "Analectas, 7, 22"
+ },
+ {
+  "t": "El que teme sufrir sufre ya lo que teme.",
+  "a": "Michel de Montaigne",
+  "o": "Ensayos, III, 13"
+ },
+ {
+  "t": "La paciencia y el tiempo logran más que la fuerza y la rabia.",
+  "a": "Jean de La Fontaine",
+  "o": "Fábulas, «El león y la rata»"
+ },
+ {
+  "t": "Nada grande en el mundo se ha hecho sin pasión.",
+  "a": "Georg Wilhelm Friedrich Hegel",
+  "o": "Lecciones sobre la filosofía de la historia"
+ },
+ {
+  "t": "Cuanto más dura es la lucha, más glorioso es el triunfo.",
+  "a": "Thomas Paine",
+  "o": "La crisis americana, 1776"
+ },
+ {
+  "t": "Nada es suficiente para quien lo suficiente es poco.",
+  "a": "Epicuro",
+  "o": "Sentencias vaticanas"
+ },
+ {
+  "t": "El presente está preñado del futuro.",
+  "a": "Gottfried Wilhelm Leibniz",
+  "o": "Nuevos ensayos sobre el entendimiento humano"
+ },
+ {
+  "t": "El alma se tiñe del color de sus pensamientos.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, V, 16"
+ },
+ {
+  "t": "Delante de la virtud, los dioses pusieron el sudor.",
+  "a": "Hesíodo",
+  "o": "Trabajos y días"
+ },
+ {
+  "t": "La madurez del hombre es haber recobrado la seriedad con que jugaba de niño.",
+  "a": "Friedrich Nietzsche",
+  "o": "Más allá del bien y del mal, 94"
+ },
+ {
+  "t": "Como una roca sólida no se mueve con el viento, así el sabio no se perturba ni por la alabanza ni por la censura.",
+  "a": "Buda",
+  "o": "Dhammapada, 81"
+ },
+ {
+  "t": "Las enfermedades graves requieren tratamientos extremos.",
+  "a": "Hipócrates",
+  "o": "Aforismos, I, 6"
+ },
+ {
+  "t": "No es fácil el camino de la tierra a las estrellas.",
+  "a": "Séneca",
+  "o": "Hércules loco"
+ },
+ {
+  "t": "Lo más difícil es conocerse a sí mismo; lo más fácil, dar consejos a otros.",
+  "a": "Tales de Mileto",
+  "o": "citado por Diógenes Laercio, Vidas, I"
+ },
+ {
+  "t": "Vive hoy: el mañana llega demasiado tarde.",
+  "a": "Marcial",
+  "o": "Epigramas, I, 15"
+ },
+ {
+  "t": "Una golondrina no hace verano.",
+  "a": "Aristóteles",
+  "o": "Ética a Nicómaco, I, 7"
+ },
+ {
+  "t": "El ocio sin estudio es una muerte en vida.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 82"
+ },
+ {
+  "t": "Lo difícil se resuelve cuando aún es fácil; lo grande se hace cuando aún es pequeño.",
+  "a": "Lao Tse",
+  "o": "Tao Te Ching, 63"
+ },
+ {
+  "t": "No me burlo, no lamento, no detesto: comprendo.",
+  "a": "Baruch Spinoza",
+  "o": "Tratado político, I"
+ },
+ {
+  "t": "La virtud moral es resultado del hábito.",
+  "a": "Aristóteles",
+  "o": "Ética a Nicómaco, II, 1"
+ },
+ {
+  "t": "La voz del intelecto es suave, pero no descansa hasta que consigue ser oída.",
+  "a": "Sigmund Freud",
+  "o": "El porvenir de una ilusión"
+ },
+ {
+  "t": "Lo que no beneficia a la colmena, tampoco beneficia a la abeja.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, VI, 54"
+ },
+ {
+  "t": "Ningún libro es tan malo que no tenga algo de provecho.",
+  "a": "Plinio el Joven",
+  "o": "Cartas, III, 5"
+ },
+ {
+  "t": "La medicina es mi esposa legítima; la literatura, mi amante.",
+  "a": "Antón Chéjov",
+  "o": "Carta a Alekséi Suvorin, 1888"
+ },
+ {
+  "t": "Estudia como si no pudieras alcanzarlo y como si temieras perderlo.",
+  "a": "Confucio",
+  "o": "Analectas, 8, 17"
+ },
+ {
+  "t": "Hay que perseverar y, sobre todo, tener confianza en uno mismo.",
+  "a": "Marie Curie",
+  "o": "citada por Ève Curie en Madame Curie"
+ },
+ {
+  "t": "La señal más clara de la sabiduría es una alegría constante.",
+  "a": "Michel de Montaigne",
+  "o": "Ensayos, I, 26"
+ },
+ {
+  "t": "La diferencia entre la palabra casi correcta y la correcta es la misma que hay entre la luciérnaga y el relámpago.",
+  "a": "Mark Twain",
+  "o": "Carta a George Bainton, 1888"
+ },
+ {
+  "t": "Mientras enseñamos, aprendemos.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 7"
+ },
+ {
+  "t": "Lo más importante no es vivir, sino vivir bien.",
+  "a": "Platón",
+  "o": "Critón"
+ },
+ {
+  "t": "Se miente más de la cuenta por falta de fantasía: también la verdad se inventa.",
+  "a": "Antonio Machado",
+  "o": "Proverbios y cantares"
+ },
+ {
+  "t": "No te toca terminar la tarea, pero tampoco eres libre de abandonarla.",
+  "a": "Rabí Tarfón",
+  "o": "Pirkei Avot, 2, 21"
+ },
+ {
+  "t": "Largo es el camino por los preceptos; breve y eficaz por los ejemplos.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 6"
+ },
+ {
+  "t": "El estilo es el hombre mismo.",
+  "a": "Georges-Louis Leclerc de Buffon",
+  "o": "Discurso sobre el estilo"
+ },
+ {
+  "t": "La educación es un adorno en la prosperidad y un refugio en la adversidad.",
+  "a": "Aristóteles",
+  "o": "citado por Diógenes Laercio, Vidas, V"
+ },
+ {
+  "t": "Ninguna enseñanza debe darse al alma como esclavitud: lo que se aprende a la fuerza no permanece.",
+  "a": "Platón",
+  "o": "La República, VII"
+ },
+ {
+  "t": "Ni sé ni creo saber.",
+  "a": "Sócrates",
+  "o": "Platón, Apología"
+ },
+ {
+  "t": "Saber que se sabe lo que se sabe y que no se sabe lo que no se sabe: eso es saber.",
+  "a": "Confucio",
+  "o": "Analectas, 2, 17"
+ },
+ {
+  "t": "La virtud consiste en un término medio entre dos vicios.",
+  "a": "Aristóteles",
+  "o": "Ética a Nicómaco, II, 6"
+ },
+ {
+  "t": "Tenemos dos orejas y una sola boca para oír más y hablar menos.",
+  "a": "Zenón de Citio",
+  "o": "citado por Diógenes Laercio, VII"
+ },
+ {
+  "t": "Un árbol que no se puede abarcar con los brazos nace de un brote.",
+  "a": "Lao Tse",
+  "o": "Tao Te Ching, 64"
+ },
+ {
+  "t": "Pasar demasiado tiempo en los estudios es pereza.",
+  "a": "Francis Bacon",
+  "o": "Ensayos, «De los estudios»"
+ },
+ {
+  "t": "Haz lo que puedas, con lo que tengas, donde estés.",
+  "a": "Theodore Roosevelt",
+  "o": "Autobiografía"
+ },
+ {
+  "t": "La lectura proporciona a la mente solo materiales de conocimiento; es el pensamiento lo que hace nuestro lo que leemos.",
+  "a": "John Locke",
+  "o": "Conducta del entendimiento"
+ },
+ {
+  "t": "La gloria es la sombra de la virtud.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 79"
+ },
+ {
+  "t": "Mente sana en cuerpo sano.",
+  "a": "Juvenal",
+  "o": "Sátiras, X"
+ },
+ {
+  "t": "La virtud nunca está sola: siempre tiene vecinos.",
+  "a": "Confucio",
+  "o": "Analectas, 4, 25"
+ },
+ {
+  "t": "La mejor venganza es no ser como tu enemigo.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, VI, 6"
+ },
+ {
+  "t": "Hay que vivir para los demás si se quiere vivir para uno mismo.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 48"
+ },
+ {
+  "t": "El sabio oye y aumenta su saber.",
+  "a": "Proverbios",
+  "o": "1, 5"
+ },
+ {
+  "t": "No hemos nacido solo para nosotros mismos.",
+  "a": "Cicerón",
+  "o": "Sobre los deberes, I"
+ },
+ {
+  "t": "Donde hay amor a los hombres, hay amor al arte de curar.",
+  "a": "Hipócrates",
+  "o": "Preceptos"
+ },
+ {
+  "t": "Elige a un hombre de bien y tenlo siempre ante tus ojos.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 11"
+ },
+ {
+  "t": "Soy hombre: nada humano me es ajeno.",
+  "a": "Terencio",
+  "o": "El atormentador de sí mismo"
+ },
+ {
+  "t": "Con esfuerzo, vigilancia, disciplina y dominio de sí, el sabio se hace una isla que ninguna inundación puede cubrir.",
+  "a": "Buda",
+  "o": "Dhammapada, 25"
+ },
+ {
+  "t": "Soy el amo de mi destino, soy el capitán de mi alma.",
+  "a": "William Ernest Henley",
+  "o": "Invictus"
+ },
+ {
+  "t": "Retírate en ti mismo cuanto puedas.",
+  "a": "Séneca",
+  "o": "Cartas a Lucilio, 7"
+ },
+ {
+  "t": "Quien solo entiende de química no entiende ni siquiera de química.",
+  "a": "Georg Christoph Lichtenberg",
+  "o": "Aforismos"
+ },
+ {
+  "t": "Sé paciente y fuerte: algún día este dolor te será útil.",
+  "a": "Ovidio",
+  "o": "Amores, III"
+ },
+ {
+  "t": "El alcance de un hombre debe exceder su agarre; si no, ¿para qué sirve el cielo?",
+  "a": "Robert Browning",
+  "o": "Andrea del Sarto"
+ },
+ {
+  "t": "Ciencia sin conciencia no es sino ruina del alma.",
+  "a": "François Rabelais",
+  "o": "Pantagruel"
+ },
+ {
+  "t": "Recuerde el alma dormida, avive el seso y despierte, contemplando cómo se pasa la vida.",
+  "a": "Jorge Manrique",
+  "o": "Coplas a la muerte de su padre"
+ },
+ {
+  "t": "A lo único que debemos temer es al propio miedo.",
+  "a": "Franklin D. Roosevelt",
+  "o": "Discurso inaugural, 1933"
+ },
+ {
+  "t": "Sin música la vida sería un error.",
+  "a": "Friedrich Nietzsche",
+  "o": "Crepúsculo de los ídolos"
+ },
+ {
+  "t": "Uno no puede pensar bien, amar bien, dormir bien, si no ha cenado bien.",
+  "a": "Virginia Woolf",
+  "o": "Un cuarto propio"
+ },
+ {
+  "t": "El secreto del cuidado del paciente es cuidar al paciente.",
+  "a": "Francis Peabody",
+  "o": "El cuidado del paciente, 1927"
+ },
+ {
+  "t": "Mucho saber no enseña a tener inteligencia.",
+  "a": "Demócrito",
+  "o": "Fragmentos"
+ },
+ {
+  "t": "Nadie puede construirte el puente por el que tendrás que cruzar el río de la vida, nadie salvo tú.",
+  "a": "Friedrich Nietzsche",
+  "o": "Schopenhauer como educador"
+ },
+ {
+  "t": "Tienes derecho a la acción, pero no a sus frutos.",
+  "a": "Bhagavad Gita",
+  "o": "II, 47"
+ },
+ {
+  "t": "Sin acumular pasos no se recorren mil li; sin acumular arroyos no se forma un río.",
+  "a": "Xunzi",
+  "o": "Capítulo 1"
+ },
+ {
+  "t": "El cultivo del alma es la filosofía.",
+  "a": "Cicerón",
+  "o": "Tusculanas, II"
+ },
+ {
+  "t": "Al amanecer, cuando te cueste levantarte, piensa: me despierto para hacer el trabajo de un ser humano.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, V, 1"
+ },
+ {
+  "t": "Viajar con esperanza es mejor que llegar.",
+  "a": "Robert Louis Stevenson",
+  "o": "Virginibus puerisque"
+ },
+ {
+  "t": "¿Quién es sabio? El que aprende de todo hombre.",
+  "a": "Ben Zomá",
+  "o": "Pirkei Avot, 4, 1"
+ },
+ {
+  "t": "Acepta la verdad, de quienquiera que la diga.",
+  "a": "Maimónides",
+  "o": "Ocho capítulos"
+ },
+ {
+  "t": "La ciencia no tiene patria, porque el saber es patrimonio de la humanidad.",
+  "a": "Louis Pasteur",
+  "o": "Discurso de 1888"
+ },
+ {
+  "t": "Resiste, corazón: has soportado cosas más duras.",
+  "a": "Homero",
+  "o": "Odisea, XX"
+ },
+ {
+  "t": "Quien se pone de puntillas no se sostiene.",
+  "a": "Lao Tse",
+  "o": "Tao Te Ching, 24"
+ },
+ {
+  "t": "Haz cada cosa como si fuera la última de tu vida.",
+  "a": "Marco Aurelio",
+  "o": "Meditaciones, II, 5"
+ },
+ {
+  "t": "Quizá algún día nos alegre recordar incluso esto.",
+  "a": "Virgilio",
+  "o": "Eneida, I"
+ }
+]
