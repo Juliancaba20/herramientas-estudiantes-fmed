@@ -3,9 +3,10 @@ import '@fontsource-variable/source-serif-4';
 import './globals.css';
 import Nav from './Nav';
 import Link from 'next/link';
+import { GoogleTagManager } from '@next/third-parties/google';
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://herramientas-estudiantes-fmed.vercel.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://hipocampus.vercel.app'),
   title: { default: 'Hipocampus', template: '%s | Hipocampus' },
   description: 'Recursos de estudio pensados para estudiantes de medicina.',
   openGraph: {
@@ -19,9 +20,13 @@ export const metadata = {
 };
 export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', colorScheme: 'light', themeColor: '#0f766e' };
 
+// Google Tag Manager: solo se carga en producción, para que las visitas de desarrollo no ensucien las estadísticas.
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-WGZJCV8X';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
+      {process.env.NODE_ENV === 'production' && <GoogleTagManager gtmId={GTM_ID} />}
       <body>
         <a className="skip" href="#contenido">Saltar al contenido</a>
         <div className="wrap">

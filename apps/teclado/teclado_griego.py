@@ -437,7 +437,7 @@ def crear_boton(padre, texto, comando, ancho=3, tamano=12, negrita=False,
 # ---------------------------------------------------------------------------
 # Actualización automática (Windows y Linux; en Mac solo se avisa)
 # ---------------------------------------------------------------------------
-REPO = "Juliancaba20/herramientas-estudiantes-fmed"
+REPO = "Juliancaba20/hipocampus"
 URL_VERSIONES = f"https://api.github.com/repos/{REPO}/releases?per_page=30"
 PREFIJO_DESCARGA = f"https://github.com/{REPO}/releases/download/"
 # Si algún día se renombra el repositorio, GitHub redirige las consultas y las descargas pasan a
